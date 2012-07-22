@@ -1,0 +1,68 @@
+
+module jockey 1.0.0;
+
+require {
+	type insmod_exec_t;
+	type initrc_tmp_t;
+	type lib_t;
+        type ldconfig_t;
+	type var_log_t;
+	type usr_t;
+	type modules_conf_t;
+	type modules_dep_t;
+	type modules_object_t;
+	type var_t;
+	type sysfs_t;
+	type system_dbusd_t;
+	type unconfined_t;
+	class capability sys_module;
+	class dbus send_msg;
+        class lnk_file read;
+	class dir { write getattr read remove_name create add_name };
+	class file { rename setattr execute read lock create execute_no_trans write getattr unlink open };
+}
+
+#============= system_dbusd_t ==============
+allow system_dbusd_t unconfined_t:dbus send_msg;
+
+allow system_dbusd_t insmod_exec_t:file { read execute open execute_no_trans };
+#!!!! The source type 'system_dbusd_t' can write to a 'dir' of the following types:
+# system_dbusd_var_run_t, tmp_t, system_dbusd_tmp_t, var_run_t
+
+allow system_dbusd_t lib_t:dir { write remove_name add_name };
+allow system_dbusd_t lib_t:file { write create unlink };
+#!!!! The source type 'system_dbusd_t' can write to a 'dir' of the following types:
+# system_dbusd_var_run_t, tmp_t, system_dbusd_tmp_t, var_run_t
+
+allow system_dbusd_t modules_conf_t:dir { read getattr write add_name remove_name };
+#!!!! The source type 'system_dbusd_t' can write to a 'file' of the following types:
+# system_dbusd_var_run_t, system_dbusd_tmp_t
+
+allow system_dbusd_t modules_conf_t:file { write getattr read lock create unlink open };
+allow system_dbusd_t modules_dep_t:file { read getattr open };
+allow system_dbusd_t sysfs_t:file write;
+allow system_dbusd_t usr_t:file { execute execute_no_trans };
+#!!!! The source type 'system_dbusd_t' can write to a 'dir' of the following types:
+# system_dbusd_var_run_t, tmp_t, system_dbusd_tmp_t, var_run_t
+
+allow system_dbusd_t var_log_t:dir { write add_name };
+allow system_dbusd_t var_log_t:file { create open };
+#!!!! The source type 'system_dbusd_t' can write to a 'dir' of the following types:
+# system_dbusd_var_run_t, system_dbusd_tmp_t
+
+allow system_dbusd_t var_t:dir { write create add_name };
+#!!!! The source type 'system_dbusd_t' can write to a 'file' of the following types:
+# system_dbusd_var_run_t, system_dbusd_tmp_t
+
+allow system_dbusd_t var_t:file { write read create open getattr };
+
+# allow changing installed_packages file
+allow system_dbusd_t var_t:dir remove_name;
+allow system_dbusd_t var_t:file unlink;
+allow system_dbusd_t self:capability sys_module;
+allow system_dbusd_t modules_object_t:file { read open };
+
+# allow ldconfig to write
+allow ldconfig_t initrc_tmp_t:dir { read write add_name remove_name };
+allow ldconfig_t initrc_tmp_t:lnk_file { read };
+allow ldconfig_t initrc_tmp_t:file { create write setattr rename };
