@@ -1,0 +1,654 @@
+# Swedish translation for restricted-manager
+# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
+# This file is distributed under the same license as the restricted-manager package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: restricted-manager\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-05 06:47+0100\n"
+"PO-Revision-Date: 2012-02-18 06:48+0000\n"
+"Last-Translator: Daniel Nylander <yeager@ubuntu.com>\n"
+"Language-Team: Swedish <sv@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-03-06 04:37+0000\n"
+"X-Generator: Launchpad (build 14900)\n"
+"Language: sv\n"
+
+#: ../text/jockey-text.py:72
+msgid "Please enter 'y' or 'n' and press Enter"
+msgstr "Ange \"j\" eller \"n\" och tryck sedan på Enter"
+
+#: ../text/jockey-text.py:74
+msgid "y\n"
+msgstr "j\n"
+
+#: ../text/jockey-text.py:76
+msgid "n\n"
+msgstr "n\n"
+
+#: ../kde/autostart/jockey-kde.desktop.in.h:1
+#: ../gtk/autostart/jockey-gtk.desktop.in.h:1
+msgid "Check for new hardware drivers"
+msgstr "Leta efter nya maskinvarudrivrutiner"
+
+#: ../kde/autostart/jockey-kde.desktop.in.h:2
+#: ../gtk/autostart/jockey-gtk.desktop.in.h:2
+msgid "Notify about new hardware drivers available for the system"
+msgstr ""
+"Notifiera om nya maskinvarudrivrutiner som är tillgängliga för systemet"
+
+#: ../jockey/ui.py:121
+msgid ""
+"Cannot connect to D-BUS, please use the --no-dbus option as root to use "
+"jockey without it."
+msgstr ""
+
+#: ../jockey/ui.py:132 ../jockey/ui.py:145
+msgid "Searching for available drivers..."
+msgstr "Söker efter tillgängliga drivrutiner..."
+
+#: ../jockey/ui.py:170
+msgid "Component"
+msgstr "Komponent"
+
+#: ../jockey/ui.py:171
+msgid "_Enable"
+msgstr "_Aktivera"
+
+#: ../jockey/ui.py:172
+msgid "_Disable"
+msgstr "_Inaktivera"
+
+#: ../jockey/ui.py:173
+msgid "Enabled"
+msgstr "Aktiverad"
+
+#: ../jockey/ui.py:174
+msgid "Disabled"
+msgstr "Inaktiverad"
+
+#: ../jockey/ui.py:175
+msgid "Status"
+msgstr "Status"
+
+#: ../jockey/ui.py:176
+msgid "Needs computer restart"
+msgstr "Omstart av dator är nödvändig"
+
+#: ../jockey/ui.py:177
+msgid "In use"
+msgstr "Används"
+
+#: ../jockey/ui.py:178
+msgid "Not in use"
+msgstr "Används inte"
+
+#: ../jockey/ui.py:179
+msgid "License:"
+msgstr "Licens:"
+
+#: ../jockey/ui.py:180
+msgid "details"
+msgstr "detaljer"
+
+#. this is used in the GUI and in --list output to denote free/restricted drivers
+#: ../jockey/ui.py:182
+msgid "Free"
+msgstr "Fri"
+
+#. this is used in the GUI and in --list output to denote free/restricted drivers
+#: ../jockey/ui.py:184
+msgid "Proprietary"
+msgstr "Proprietär"
+
+#: ../jockey/ui.py:185
+msgid "Download in progress"
+msgstr "Hämtning pågår"
+
+#: ../jockey/ui.py:186
+msgid "Unknown driver"
+msgstr "Okänd drivrutin"
+
+#: ../jockey/ui.py:187
+msgid "You are not authorized to perform this action."
+msgstr "Du är inte behörig att genomföra denna åtgärd."
+
+#. %s is the name of the operating system
+#: ../jockey/ui.py:189
+#, python-format
+msgid "Tested by the %s developers"
+msgstr "Testad av %s-utvecklarna"
+
+#. %s is the name of the operating system
+#: ../jockey/ui.py:191
+#, python-format
+msgid "Not tested by the %s developers"
+msgstr "Inte testad av %s-utvecklarna"
+
+#. this is used when one version of a driver is recommended over others
+#: ../jockey/ui.py:193
+msgid "Recommended"
+msgstr "Rekommenderad"
+
+#: ../jockey/ui.py:194
+msgid "License Text for Device Driver"
+msgstr "Licenstext för enhetsdrivrutin"
+
+#: ../jockey/ui.py:195
+msgid "Install Drivers"
+msgstr "Installera drivrutiner"
+
+#: ../jockey/ui.py:204
+msgid "Restricted Additional Drivers"
+msgstr "Proprietära hårdvarudrivrutiner"
+
+#: ../kde/jockey-kde.desktop.in.h:1 ../jockey/ui.py:206 ../jockey/ui.py:582
+#: ../jockey/ui.py:590 ../jockey/ui.py:598 ../jockey/ui.py:802
+#: ../gtk/jockey-gtk.desktop.in.h:1
+msgid "Additional Drivers"
+msgstr "Ytterligare drivrutiner"
+
+#: ../jockey/ui.py:216
+msgid "Driver search results"
+msgstr "Sökresultat för drivrutiner"
+
+#: ../jockey/ui.py:232
+msgid ""
+"Proprietary drivers are being used to make this computer work properly."
+msgstr ""
+"Proprietära drivrutiner används för att den här datorn ska fungera korrekt."
+
+#: ../jockey/ui.py:235
+msgid "No proprietary drivers are in use on this system."
+msgstr "Inga proprietära drivrutiner används på det här systemet."
+
+#. %(os)s stands for the OS name. Prefix it or suffix it,
+#. but do not replace it.
+#: ../jockey/ui.py:241
+#, python-format
+msgid ""
+"Proprietary drivers do not have public source code that %(os)s developers "
+"are free to modify. Security updates and corrections depend solely on the "
+"responsiveness of the manufacturer. %(os)s cannot fix or improve these "
+"drivers."
+msgstr ""
+"Proprietära drivrutiner saknar publik källkod som %(os)s-utvecklarna har "
+"möjlighet att ändra. Säkerhetsuppdateringar och felrättningar är helt "
+"beroende av tillverkarens vilja. %(os)s kan inte rätta till eller förbättra "
+"dessa drivrutiner."
+
+#: ../jockey/ui.py:254
+msgid "Graphics driver"
+msgstr "Grafikdrivrutin"
+
+#: ../jockey/ui.py:256
+msgid "Firmware"
+msgstr "Fast programvara"
+
+#: ../jockey/ui.py:258
+msgid "Device driver"
+msgstr "Enhetsdrivrutin"
+
+#: ../jockey/ui.py:268
+#, python-format
+msgid "version %s"
+msgstr "version %s"
+
+#: ../jockey/ui.py:322
+msgid "_Remove"
+msgstr "_Ta bort"
+
+#: ../jockey/ui.py:324
+msgid "_Deactivate"
+msgstr "_Inaktivera"
+
+#: ../jockey/ui.py:326
+msgid "This driver is activated and currently in use."
+msgstr "Denna drivrutin är aktiverad och används för närvarande."
+
+#: ../jockey/ui.py:330
+msgid "You need to restart the computer to activate this driver."
+msgstr "Du behöver starta om datorn för att aktivera denna drivrutin."
+
+#: ../jockey/ui.py:332
+msgid "This driver is activated but not currently in use."
+msgstr "Denna drivrutin är aktiverad men används för närvarande inte."
+
+#: ../jockey/ui.py:334
+msgid "_Activate"
+msgstr "_Aktivera"
+
+#: ../jockey/ui.py:338
+msgid "This driver was just disabled, but is still in use."
+msgstr "Denna drivrutin blev just inaktiverad men används fortfarande."
+
+#: ../jockey/ui.py:340
+msgid "A different version of this driver is in use."
+msgstr "En annan version av denna drivrutin används redan."
+
+#: ../jockey/ui.py:342
+msgid "This driver is not activated."
+msgstr "Denna drivrutin är inte aktiverad."
+
+#: ../jockey/ui.py:362
+msgid "Check for newly used or usable drivers and notify the user."
+msgstr ""
+"Leta efter nyligen använda eller användbara drivrutiner och informera "
+"användaren."
+
+#: ../jockey/ui.py:365
+msgid "Query driver databases for newly available or updated drivers."
+msgstr ""
+"Fråga drivrutinsdatabaser efter nya tillgängliga eller uppdaterade "
+"drivrutiner."
+
+#: ../jockey/ui.py:368
+msgid "List available drivers and their status."
+msgstr "Lista tillgängliga drivrutiner och deras status."
+
+#: ../jockey/ui.py:371
+msgid "Enable drivers that can be automatically installed."
+msgstr "Aktivera drivrutiner som kan installeras automatiskt."
+
+#: ../jockey/ui.py:374
+msgid "List hardware identifiers from this system."
+msgstr "Lista maskinvaruidentifierare från detta system."
+
+#: ../jockey/ui.py:377
+msgid "Enable a driver"
+msgstr "Aktivera en drivrutin"
+
+#: ../jockey/ui.py:380
+msgid "Disable a driver"
+msgstr "Inaktivera en drivrutin"
+
+#: ../jockey/ui.py:383
+msgid "Ask for confirmation for --enable/--disable"
+msgstr "Fråga efter bekräftelse för --enable/--disable"
+
+#: ../jockey/ui.py:386
+msgid ""
+"Check if there is a graphics driver available that supports composite and "
+"offer to enable it"
+msgstr ""
+"Kontrollera om det finns en grafikdrivrutin tillgänglig som har stöd för "
+"composite och erbjud att aktivera den"
+
+#: ../jockey/ui.py:391
+msgid ""
+"Only manage free/nonfree drivers. By default, all available drivers with any "
+"license are presented."
+msgstr ""
+"Hantera endast fria/ickefria drivrutiner. Som standard visas alla "
+"tillgängliga drivrutiner med alla licenstyper."
+
+#: ../jockey/ui.py:395
+msgid "Run as session D-BUS server."
+msgstr "Kör som D-BUS-server för sessionen"
+
+#: ../jockey/ui.py:397
+msgid ""
+"Do not use D-BUS for communicating with the backend. Needs root privileges."
+msgstr ""
+"Använd inte D-BUS för att kommunicera med bakänden. Kräver root-behörighet."
+
+#: ../jockey/ui.py:399
+msgid ""
+"Use a different target kernel version than the currently running one. This "
+"is only relevant with --no-dbus."
+msgstr ""
+"Använd en annan kärnversion som mål än den som körs för närvarande. Detta är "
+"endast relevant med --no-dbus."
+
+#: ../jockey/ui.py:539 ../jockey/ui.py:1022
+msgid "Restricted drivers available"
+msgstr "Proprietära drivrutiner finns tillgängliga"
+
+#: ../jockey/ui.py:540
+msgid ""
+"In order to use your hardware more efficiently, you can enable drivers which "
+"are not free software."
+msgstr ""
+"För att kunna använda din hårdvara mer effektivt kan du aktivera drivrutiner "
+"som inte är fri programvara."
+
+#: ../jockey/ui.py:543
+msgid "New drivers available"
+msgstr "Nya drivrutiner finns tillgängliga"
+
+#: ../jockey/ui.py:544
+msgid "There are new or updated drivers available for your hardware."
+msgstr ""
+"Det finns nya eller uppdaterade drivrutiner tillgängliga för din hårdvara."
+
+#: ../jockey/ui.py:548
+msgid "New restricted drivers in use"
+msgstr "Nya proprietära drivrutiner används"
+
+#. %(os)s stands for the OS name. Prefix it or suffix it,
+#. but do not replace it.
+#: ../jockey/ui.py:551
+#, python-format
+msgid ""
+"In order for this computer to function properly, %(os)s is using driver "
+"software that cannot be supported by %(os)s."
+msgstr ""
+"För att den här datorn ska fungera korrekt så använder %(os)s "
+"drivrutinsprogramvara som inte stöds av %(os)s."
+
+#: ../jockey/ui.py:577
+msgid ""
+"There is no available graphics driver for your system which supports the "
+"composite extension, or the current one already supports it."
+msgstr ""
+"Det finns inga tillgängliga grafikdrivrutiner för ditt system som har stöd "
+"för composite-utökningen eller att den nuvarande redan har stöd för det."
+
+#: ../jockey/ui.py:583
+msgid "Downloading and installing driver..."
+msgstr "Hämtar ner och installerar drivrutin..."
+
+#: ../jockey/ui.py:591
+msgid "Removing driver..."
+msgstr "Tar bort drivrutin..."
+
+#: ../jockey/ui.py:599
+msgid "Downloading and updating package indexes..."
+msgstr "Hämtar och uppdaterar paketindex..."
+
+#: ../jockey/ui.py:621
+msgid "Use --list to see available drivers"
+msgstr "Använd --list för att se tillgängliga drivrutiner"
+
+#: ../jockey/ui.py:638
+msgid "Cannot change driver"
+msgstr "Kan inte byta drivrutin"
+
+#: ../jockey/ui.py:651
+msgid "Enable driver?"
+msgstr "Aktivera drivrutinen?"
+
+#: ../jockey/ui.py:654
+msgid "Disable driver?"
+msgstr "Inaktivera drivrutinen?"
+
+#: ../jockey/ui.py:683
+msgid "Sorry, the Jockey backend crashed. Please file a bug at:"
+msgstr ""
+"Tyvärr, Jockeys bakgrundsprocess kraschade. Skicka in en felrapport på:"
+
+#: ../jockey/ui.py:684
+msgid "Trying to recover by restarting backend."
+msgstr "Försöker att återhämta sig genom att starta om bakgrundsprocessen."
+
+#: ../jockey/ui.py:694
+msgid "Sorry, installation of this driver failed."
+msgstr "Tyvärr, installationen av denna drivrutin misslyckades."
+
+#: ../jockey/ui.py:695
+msgid "Please have a look at the log file for details"
+msgstr "Ta en titt på loggfilen för mer information"
+
+#: ../jockey/ui.py:733
+msgid "Download error"
+msgstr "Hämtningsfel"
+
+#: ../jockey/ui.py:860
+msgid ""
+"Downloading package indexes failed, please check your network status. Most "
+"drivers will not be available."
+msgstr ""
+"Hämtningen av paketindex misslyckades. Kontrollera din nätverksstatus. De "
+"flesta drivrutiner kommer inte finnas tillgängliga."
+
+#: ../jockey/ui.py:930
+#, python-format
+msgid "Searching driver for %s..."
+msgstr "Söker efter en drivrutin för %s..."
+
+#: ../kde/jockey-kde.desktop.in.h:2 ../gtk/jockey-gtk.desktop.in.h:2
+msgid "Configure third-party and proprietary drivers"
+msgstr "Konfigurera tredjeparts- och proprietära drivrutiner"
+
+#: ../examples/handlers/madwifi.py:22 ../data/handlers/madwifi.py:22
+msgid "Alternate Atheros \"madwifi\" driver"
+msgstr "Alternativ Atheros \"madwifi\"-drivrutin"
+
+#: ../examples/handlers/madwifi.py:23 ../data/handlers/madwifi.py:23
+msgid "Alternate \"madwifi\" driver for Atheros wireless LAN cards."
+msgstr "Alternativ \"madwifi\"-drivrutin för trådlösa Atheros-kort."
+
+#: ../examples/handlers/madwifi.py:24 ../data/handlers/madwifi.py:24
+msgid ""
+"Only activate this driver if you have problems with your wireless LAN "
+"connection.\n"
+"\n"
+"The free \"ath5k\" driver should work with most Atheros cards nowadays, but "
+"on some computers this alternate (but proprietary) driver still works "
+"better, or at all."
+msgstr ""
+"Aktivera endast denna drivrutin om du har problem med dina trådlösa "
+"anslutningar.\n"
+"\n"
+"Den fria \"ath5k\"-drivrutin bör fungera med de flesta Atheros-kort i "
+"dagsläget men på vissa datorer så kan denna alternativa (men proprietära) "
+"drivrutin fungera bättre, eller inte alls."
+
+#: ../examples/handlers/madwifi.py:38 ../data/handlers/madwifi.py:38
+#, python-format
+msgid "You removed the configuration file %s"
+msgstr "Du tog bort konfigurationsfilen %s"
+
+#. translators: %s is the path to xorg.conf
+#: ../jockey/xorg_driver.py:99
+#, python-format
+msgid "Reconfiguring X.org video drivers is not possible: %s is invalid."
+msgstr ""
+"Omkonfigurering av grafikdrivrutiner för X.org är inte möjligt: %s är "
+"ogiltig."
+
+#: ../examples/handlers/fglrx.py:17
+msgid "AMD proprietary FGLRX graphics driver"
+msgstr "AMDs proprietära grafikdrivrutin FGLRX"
+
+#: ../examples/handlers/fglrx.py:18
+msgid "3D-accelerated proprietary graphics driver for AMD (ATI) cards."
+msgstr "3D-accelererad proprietär grafikdrivrutin för AMD-kort (ATI)."
+
+#: ../examples/handlers/fglrx.py:20
+msgid ""
+"This driver is required to fully utilise the 3D potential of some AMD (ATI) "
+"graphics cards, as well as provide 2D acceleration of newer cards."
+msgstr ""
+"Denna drivrutin krävs för att dra nytta av 3D-potentialen för en del "
+"grafikkort från AMD (ATI), såväl som att tillhandahålla 2D-acceleration för "
+"nyare kort."
+
+#: ../examples/handlers/sl_modem.py:15 ../data/handlers/sl_modem.py:15
+msgid "Software modem"
+msgstr "Programvarumodem"
+
+#: ../examples/handlers/sl_modem.py:17 ../data/handlers/sl_modem.py:17
+msgid ""
+"This driver enables the usage of many software modems, as commonly found in "
+"laptops.\n"
+"\n"
+"If this driver is not enabled, you will not be able to use your modem."
+msgstr ""
+"Den här drivrutinen erbjuder användning av många programvarumodem, vilka "
+"oftast kan hittas i bärbara datorer.\n"
+"\n"
+"Om den här drivrutinen inte är aktiverad kommer du inte kunna använda ditt "
+"modem."
+
+#: ../examples/handlers/vmware-client.py:17
+#: ../data/handlers/vmware-client.py:17
+msgid "VMWare Client Tools"
+msgstr "Klientverktyg för VMWare"
+
+#: ../examples/handlers/vmware-client.py:18
+#: ../data/handlers/vmware-client.py:18
+msgid "Install VMWare client drivers and tools"
+msgstr "Installera klientdrivrutiner och verktyg för VMWare"
+
+#: ../examples/handlers/vmware-client.py:19
+#: ../data/handlers/vmware-client.py:19
+msgid ""
+"Install the VMWare client drivers and tools for your VMWare based Ubuntu "
+"installation.\n"
+"\n"
+"This should help you use Ubuntu in your VM."
+msgstr ""
+"Installera drivrutiner och verktyg för VMWare-klienten för din VMWare-"
+"baserade Ubuntu-installation.\n"
+"\n"
+"Det här bör hjälpa dig att använda Ubuntu i din VM."
+
+#: ../backend/jockey-backend.py:32
+msgid "Enable debugging messages."
+msgstr "Aktivera felsökningsmeddelanden."
+
+#: ../backend/jockey-backend.py:35
+msgid "Write logging messages to a file instead to stderr."
+msgstr "Skriv loggmeddelanden till en fil istället för till standard fel."
+
+#: ../backend/jockey-backend.py:38
+msgid "Timeout for D-BUS service (default: 600, 0: run forever)"
+msgstr "Tidsgräns för D-BUS-tjänsten (standard: 600, 0: kör utan stopp)"
+
+#: ../backend/jockey-backend.py:41
+msgid "Add a custom handler directory."
+msgstr "Lägg till en anpassad hanterarkatalog."
+
+#: ../backend/jockey-backend.py:44
+msgid "Run on session D-BUS (only for testing)"
+msgstr "Kör på sessions-D-BUS (endast för test)"
+
+#: ../backend/jockey-backend.py:46
+msgid "Use a different target kernel version than the currently running one."
+msgstr "Använd en annan kärnversion som mål än den som körs för närvarande."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:1
+msgid "Get information about local device drivers"
+msgstr "Få information om lokala enhetsdrivrutiner"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:2
+msgid "To query the device drivers, you need to authenticate."
+msgstr ""
+"Du måste autentisera dig för att ställa frågor mot enhetsdrivrutiner."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:3
+msgid ""
+"Check for newly available drivers for, and used drivers on this system"
+msgstr ""
+"Leta efter nyligen tillgängliga drivrutiner och använda drivrutiner på detta "
+"system"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:4
+msgid "To check the driver status, you need to authenticate."
+msgstr "Du måste autentisera dig för att kontrollera drivrutinens status."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:5
+msgid ""
+"Query local and remote driver databases for updated drivers for the system"
+msgstr ""
+"Fråga lokala och fjärrdatabaser med drivrutiner efter uppdaterade "
+"drivrutiner för systemet"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:6
+msgid "To query the driver databases for updates, you need to authenticate."
+msgstr ""
+"Du måste autentisera dig för att leta efter uppdateringar för "
+"drivrutinsdatabasen."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:7
+msgid "Install or remove device drivers"
+msgstr "Installera eller ta bort enhetsdrivrutiner"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:8
+msgid "To install or remove device drivers, you need to authenticate."
+msgstr ""
+"Du måste autentisera dig för att installera eller ta bort enhetsdrivrutiner."
+
+#: ../examples/handlers/nvidia.py:26 ../data/handlers/nvidia.py:28
+msgid "NVIDIA accelerated graphics driver"
+msgstr "Accelererad grafikdrivrutin för NVIDIA"
+
+#: ../examples/handlers/nvidia.py:27
+msgid "3D-accelerated proprietary graphics driver for NVIDIA cards."
+msgstr "3D-accelererad proprietär grafikdrivrutin för NVIDIA-kort."
+
+#: ../examples/handlers/nvidia.py:29
+msgid ""
+"This driver is required to fully utilise the 3D potential of NVIDIA graphics "
+"cards, as well as provide 2D acceleration of newer cards.\n"
+"\n"
+"If you wish to enable desktop effects, this driver is required.\n"
+"\n"
+"If this driver is not enabled, you will not be able to enable desktop "
+"effects and will not be able to run software that requires 3D acceleration, "
+"such as some games."
+msgstr ""
+"Drivrutinen behövs för att kunna erbjuda fullständigt 3D-stöd för NVIDIA-"
+"grafikkort samt för att tillhandahålla 2D-accelerering på nyare kort.\n"
+"\n"
+"Om du vill använda skrivbordseffekter krävs den här drivrutinen.\n"
+"\n"
+"Om drivrutinen inte är aktiverad kommer du inte att kunna aktivera "
+"skrivbordseffekter och kommer inte heller kunna köra programvara som kräver "
+"3D-accelerering som t.ex. vissa spel."
+
+#~ msgid "Cannot connect to D-BUS"
+#~ msgstr "Kan inte ansluta till D-BUS"
+
+#~ msgid "Restricted Hardware Drivers"
+#~ msgstr "Proprietära hårdvarudrivrutiner"
+
+#~ msgid "Hardware Drivers"
+#~ msgstr "Hårdvarudrivrutiner"
+
+#, python-format
+#~ msgid ""
+#~ "Proprietary drivers do not have public source code that %(os)s developers "
+#~ "are free to modify. They represent a risk to you because they are only "
+#~ "available on the types of computer chosen by the manufacturer, and security "
+#~ "updates to them depend solely on the responsiveness of the manufacturer. "
+#~ "%(os)s cannot fix or improve these drivers."
+#~ msgstr ""
+#~ "Proprietära drivrutiner har inte publikt åtkomlig källkod som %(os)s-"
+#~ "utvecklare har möjlighet att ändra. Det innebär en risk för dig eftersom de "
+#~ "endast finns tillgängliga för de datortyper som har valts ut av tillverkaren "
+#~ "samt att säkerhetsuppdateringar till dem bara förlitar sig på tillverkarens "
+#~ "samarbetsvilja. %(os)s kan inte rätta till eller förbättra dessa drivrutiner."
+
+#~ msgid "System policy prevents checking driver status"
+#~ msgstr "Systempolicyn förhindrar kontroll av drivrutinsstatus"
+
+#~ msgid "System policy prevents installation/removal of device drivers"
+#~ msgstr ""
+#~ "Systempolicyn förhindrar installation/borttagning av enhetsdrivrutiner"
+
+#~ msgid "System policy prevents querying device drivers"
+#~ msgstr "Systempolicyn förhindrar frågor mot enhetsdrivrutiner"
+
+#~ msgid "System policy prevents querying driver databases for updates"
+#~ msgstr ""
+#~ "Systempolicyn förhindrar frågor om uppdateringar mot drivrutinsdatabaser"
+
+#~ msgid "ATI/AMD proprietary FGLRX graphics driver"
+#~ msgstr "Proprietär FGLRX-grafikdrivrutin för ATI/AMD"
+
+#~ msgid "3D-accelerated proprietary graphics driver for ATI cards."
+#~ msgstr "3D-accelererad proprietär grafikdrivrutin för ATI-kort."
+
+#~ msgid ""
+#~ "This driver is required to fully utilise the 3D potential of some ATI "
+#~ "graphics cards, as well as provide 2D acceleration of newer cards."
+#~ msgstr ""
+#~ "Denna drivrutin krävs för att fullständigt utnyttja 3D-funktionaliteten i "
+#~ "några av ATI:s grafikkort, såväl som att tillhandahålla 2D-acceleration för "
+#~ "nyare kort."

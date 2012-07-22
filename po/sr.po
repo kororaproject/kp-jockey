@@ -1,0 +1,665 @@
+# Serbian translation for restricted-manager
+# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
+# This file is distributed under the same license as the restricted-manager package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: restricted-manager\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-05 06:47+0100\n"
+"PO-Revision-Date: 2011-10-31 21:01+0000\n"
+"Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
+"Language-Team: Launchpad Serbian Translators\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-03-06 04:37+0000\n"
+"X-Generator: Launchpad (build 14900)\n"
+"Language: sr\n"
+
+#: ../text/jockey-text.py:72
+msgid "Please enter 'y' or 'n' and press Enter"
+msgstr "Упишите „y“ или „n“ и притисните „Ентер“"
+
+#: ../text/jockey-text.py:74
+msgid "y\n"
+msgstr "y\n"
+
+#: ../text/jockey-text.py:76
+msgid "n\n"
+msgstr "n\n"
+
+#: ../kde/autostart/jockey-kde.desktop.in.h:1
+#: ../gtk/autostart/jockey-gtk.desktop.in.h:1
+msgid "Check for new hardware drivers"
+msgstr "Провера за новим управљачким програмима"
+
+#: ../kde/autostart/jockey-kde.desktop.in.h:2
+#: ../gtk/autostart/jockey-gtk.desktop.in.h:2
+msgid "Notify about new hardware drivers available for the system"
+msgstr ""
+"Даје обавештења о новим доступним управљачким програмима за овај систем"
+
+#: ../jockey/ui.py:121
+msgid ""
+"Cannot connect to D-BUS, please use the --no-dbus option as root to use "
+"jockey without it."
+msgstr ""
+
+#: ../jockey/ui.py:132 ../jockey/ui.py:145
+msgid "Searching for available drivers..."
+msgstr "Тражим доступне управљачке програме..."
+
+#: ../jockey/ui.py:170
+msgid "Component"
+msgstr "Компонента"
+
+#: ../jockey/ui.py:171
+msgid "_Enable"
+msgstr "Укљ_учи"
+
+#: ../jockey/ui.py:172
+msgid "_Disable"
+msgstr "Иск_ључи"
+
+#: ../jockey/ui.py:173
+msgid "Enabled"
+msgstr "Укључен"
+
+#: ../jockey/ui.py:174
+msgid "Disabled"
+msgstr "Искључен"
+
+#: ../jockey/ui.py:175
+msgid "Status"
+msgstr "Стање"
+
+#: ../jockey/ui.py:176
+msgid "Needs computer restart"
+msgstr "Потребно је поновно покретање рачунара"
+
+#: ../jockey/ui.py:177
+msgid "In use"
+msgstr "У употреби"
+
+#: ../jockey/ui.py:178
+msgid "Not in use"
+msgstr "Није у употреби"
+
+#: ../jockey/ui.py:179
+msgid "License:"
+msgstr "Дозвола:"
+
+#: ../jockey/ui.py:180
+msgid "details"
+msgstr "детаљи"
+
+#. this is used in the GUI and in --list output to denote free/restricted drivers
+#: ../jockey/ui.py:182
+msgid "Free"
+msgstr "Слободан"
+
+#. this is used in the GUI and in --list output to denote free/restricted drivers
+#: ../jockey/ui.py:184
+msgid "Proprietary"
+msgstr "Власнички"
+
+#: ../jockey/ui.py:185
+msgid "Download in progress"
+msgstr "Преузимање је у току"
+
+#: ../jockey/ui.py:186
+msgid "Unknown driver"
+msgstr "Непознат управљачки програм"
+
+#: ../jockey/ui.py:187
+msgid "You are not authorized to perform this action."
+msgstr "Ви нисте овлашћени да обавите ову радњу."
+
+#. %s is the name of the operating system
+#: ../jockey/ui.py:189
+#, python-format
+msgid "Tested by the %s developers"
+msgstr "Тестиран од стране %s програмера"
+
+#. %s is the name of the operating system
+#: ../jockey/ui.py:191
+#, python-format
+msgid "Not tested by the %s developers"
+msgstr "Није тестиран од стране „%s“ програмера"
+
+#. this is used when one version of a driver is recommended over others
+#: ../jockey/ui.py:193
+msgid "Recommended"
+msgstr "Препоручује се"
+
+#: ../jockey/ui.py:194
+msgid "License Text for Device Driver"
+msgstr "Текст дозволе за управљачки програм уређаја"
+
+#: ../jockey/ui.py:195
+msgid "Install Drivers"
+msgstr "Инсталирајте управљачке програме"
+
+#: ../jockey/ui.py:204
+msgid "Restricted Additional Drivers"
+msgstr "Ограничени додатни управљачки програми"
+
+#: ../kde/jockey-kde.desktop.in.h:1 ../jockey/ui.py:206 ../jockey/ui.py:582
+#: ../jockey/ui.py:590 ../jockey/ui.py:598 ../jockey/ui.py:802
+#: ../gtk/jockey-gtk.desktop.in.h:1
+msgid "Additional Drivers"
+msgstr "Додатни управљачки програми"
+
+#: ../jockey/ui.py:216
+msgid "Driver search results"
+msgstr "Резултати претраге управљачких програма"
+
+#: ../jockey/ui.py:232
+msgid ""
+"Proprietary drivers are being used to make this computer work properly."
+msgstr ""
+"Власнички управљачки програми биће коришћени да би овај рачунар радио "
+"исправно."
+
+#: ../jockey/ui.py:235
+msgid "No proprietary drivers are in use on this system."
+msgstr "Власнички управљачки програми нису у употреби на овом систему."
+
+#. %(os)s stands for the OS name. Prefix it or suffix it,
+#. but do not replace it.
+#: ../jockey/ui.py:241
+#, python-format
+msgid ""
+"Proprietary drivers do not have public source code that %(os)s developers "
+"are free to modify. Security updates and corrections depend solely on the "
+"responsiveness of the manufacturer. %(os)s cannot fix or improve these "
+"drivers."
+msgstr ""
+"Власнички управљачки програми немају јавни изворни кôд који би „%(os)s“ "
+"програмери могли слободно да мењају. Безбедносне допуне и исправке зависе "
+"искључиво од одзива произвођача. „%(os)s“ не може поправити или побољшати "
+"ове управљачке програме."
+
+#: ../jockey/ui.py:254
+msgid "Graphics driver"
+msgstr "Графички управљачки програм"
+
+#: ../jockey/ui.py:256
+msgid "Firmware"
+msgstr "Фирмвер"
+
+#: ../jockey/ui.py:258
+msgid "Device driver"
+msgstr "Управљачки програм уређаја"
+
+#: ../jockey/ui.py:268
+#, python-format
+msgid "version %s"
+msgstr "издање „%s“"
+
+#: ../jockey/ui.py:322
+msgid "_Remove"
+msgstr "У_клони"
+
+#: ../jockey/ui.py:324
+msgid "_Deactivate"
+msgstr "Дизак_тивирај"
+
+#: ../jockey/ui.py:326
+msgid "This driver is activated and currently in use."
+msgstr "Овај управљачки програм је активиран и тренутно је у употреби."
+
+#: ../jockey/ui.py:330
+msgid "You need to restart the computer to activate this driver."
+msgstr ""
+"Морате поново покренути рачунар да бисте активирали овај управљачки програм."
+
+#: ../jockey/ui.py:332
+msgid "This driver is activated but not currently in use."
+msgstr "Овај управљачки програм је активиран али тренутно није у употреби."
+
+#: ../jockey/ui.py:334
+msgid "_Activate"
+msgstr "Акти_вирај"
+
+#: ../jockey/ui.py:338
+msgid "This driver was just disabled, but is still in use."
+msgstr ""
+"Овај управљачки програм је управо искључен, али је још увек у употреби."
+
+#: ../jockey/ui.py:340
+msgid "A different version of this driver is in use."
+msgstr "Различито издање овог управљачког програма је у употреби."
+
+#: ../jockey/ui.py:342
+msgid "This driver is not activated."
+msgstr "Овај управљачки програм није активиран."
+
+#: ../jockey/ui.py:362
+msgid "Check for newly used or usable drivers and notify the user."
+msgstr ""
+"Врши проверу за ново коришћеним или употребљивим управљачким програмима и "
+"обавештава корисника."
+
+#: ../jockey/ui.py:365
+msgid "Query driver databases for newly available or updated drivers."
+msgstr ""
+"Пропитује базу управљачких програма за ново доступним или ажурираним "
+"управљачким програмима."
+
+#: ../jockey/ui.py:368
+msgid "List available drivers and their status."
+msgstr "Исписује списак доступних управљачких програма и њихова стања."
+
+#: ../jockey/ui.py:371
+msgid "Enable drivers that can be automatically installed."
+msgstr "Укључује  управљачке програме који могу бити аутоматски инсталирани."
+
+#: ../jockey/ui.py:374
+msgid "List hardware identifiers from this system."
+msgstr "Прави списак идентификатора уређаја на овом систему."
+
+#: ../jockey/ui.py:377
+msgid "Enable a driver"
+msgstr "Укључује управљачки програм"
+
+#: ../jockey/ui.py:380
+msgid "Disable a driver"
+msgstr "Искључује управљачки програм"
+
+#: ../jockey/ui.py:383
+msgid "Ask for confirmation for --enable/--disable"
+msgstr "Тражи потврђивање за „--enable/--disable“ (укључи/искључи)"
+
+#: ../jockey/ui.py:386
+msgid ""
+"Check if there is a graphics driver available that supports composite and "
+"offer to enable it"
+msgstr ""
+"Проверава да ли постоји управљачки програм за графику који подржава "
+"композитност и нуди његово укључивање."
+
+#: ../jockey/ui.py:391
+msgid ""
+"Only manage free/nonfree drivers. By default, all available drivers with any "
+"license are presented."
+msgstr ""
+"Само управља слободним/неслободним управљачким програмима. По основи, сви "
+"доступни управљачки програми са било којом дозволом су представљени."
+
+#: ../jockey/ui.py:395
+msgid "Run as session D-BUS server."
+msgstr "Покреће се као сервер Д-БАС сесије."
+
+#: ../jockey/ui.py:397
+msgid ""
+"Do not use D-BUS for communicating with the backend. Needs root privileges."
+msgstr ""
+"Не користи Д-Бас за комуницирање са позадином. Потребна су овлашћења "
+"администратора."
+
+#: ../jockey/ui.py:399
+msgid ""
+"Use a different target kernel version than the currently running one. This "
+"is only relevant with --no-dbus."
+msgstr ""
+"Користи различито издање циљног језгра од тренутно покренутог. Ово је једино "
+"битно уз опцију „--no-dbus“."
+
+#: ../jockey/ui.py:539 ../jockey/ui.py:1022
+msgid "Restricted drivers available"
+msgstr "Доступни су ограничени управљачки програми"
+
+#: ../jockey/ui.py:540
+msgid ""
+"In order to use your hardware more efficiently, you can enable drivers which "
+"are not free software."
+msgstr ""
+"Да бисте што ефикасније користили ваше физичке компоненте, можете укључити "
+"управљачке програме који нису слободан софтвер."
+
+#: ../jockey/ui.py:543
+msgid "New drivers available"
+msgstr "Доступни су нови управљачки програми"
+
+#: ../jockey/ui.py:544
+msgid "There are new or updated drivers available for your hardware."
+msgstr ""
+"Доступни су нови или ажурирани управљачки програми за ваше физичке "
+"компоненте."
+
+#: ../jockey/ui.py:548
+msgid "New restricted drivers in use"
+msgstr "Нови ограничени управљачки програми у употреби"
+
+#. %(os)s stands for the OS name. Prefix it or suffix it,
+#. but do not replace it.
+#: ../jockey/ui.py:551
+#, python-format
+msgid ""
+"In order for this computer to function properly, %(os)s is using driver "
+"software that cannot be supported by %(os)s."
+msgstr ""
+"Да би овај рачунар радио исправно, „%(os)s“ користи управљачки програм за "
+"који „%(os)s“ не може да обезбеђује подршку."
+
+#: ../jockey/ui.py:577
+msgid ""
+"There is no available graphics driver for your system which supports the "
+"composite extension, or the current one already supports it."
+msgstr ""
+"Нема доступних графичких управљачких програма за ваш систем који подржавају "
+"композитно проширење, или је постојећи већ подржава."
+
+#: ../jockey/ui.py:583
+msgid "Downloading and installing driver..."
+msgstr "Преузимам и инсталирам управљачки програм..."
+
+#: ../jockey/ui.py:591
+msgid "Removing driver..."
+msgstr "Уклањам управљачки програм..."
+
+#: ../jockey/ui.py:599
+msgid "Downloading and updating package indexes..."
+msgstr "Преузимам и допуњујем индексе пакета..."
+
+#: ../jockey/ui.py:621
+msgid "Use --list to see available drivers"
+msgstr "Користите „--list“ да видите доступне управљачке програме"
+
+#: ../jockey/ui.py:638
+msgid "Cannot change driver"
+msgstr "Не могу да променим управљачки програм"
+
+#: ../jockey/ui.py:651
+msgid "Enable driver?"
+msgstr "Да укључим управљачки програм?"
+
+#: ../jockey/ui.py:654
+msgid "Disable driver?"
+msgstr "Да искључим управљачки програм?"
+
+#: ../jockey/ui.py:683
+msgid "Sorry, the Jockey backend crashed. Please file a bug at:"
+msgstr "Извините, Џокеј позадинац се урушио. Молим пошаљите грешку на:"
+
+#: ../jockey/ui.py:684
+msgid "Trying to recover by restarting backend."
+msgstr ""
+"Покушавам да поправим ситуацију поновним покретањем позадинског програма."
+
+#: ../jockey/ui.py:694
+msgid "Sorry, installation of this driver failed."
+msgstr "Извините, инсталација овог управљачког програма није успела."
+
+#: ../jockey/ui.py:695
+msgid "Please have a look at the log file for details"
+msgstr "Молим погледајте датотеку записника за детаље"
+
+#: ../jockey/ui.py:733
+msgid "Download error"
+msgstr "Грешка приликом преузимања"
+
+#: ../jockey/ui.py:860
+msgid ""
+"Downloading package indexes failed, please check your network status. Most "
+"drivers will not be available."
+msgstr ""
+"Преузимање индекса пакета није успело, молим проверите стање ваше мреже. "
+"Већина управљачких програма неће бити доступни."
+
+#: ../jockey/ui.py:930
+#, python-format
+msgid "Searching driver for %s..."
+msgstr "Тражим управљачки програм за „%s“..."
+
+#: ../kde/jockey-kde.desktop.in.h:2 ../gtk/jockey-gtk.desktop.in.h:2
+msgid "Configure third-party and proprietary drivers"
+msgstr "Подешавање власничких и управљачких програма трећих лица"
+
+#: ../examples/handlers/madwifi.py:22 ../data/handlers/madwifi.py:22
+msgid "Alternate Atheros \"madwifi\" driver"
+msgstr "Алтернативни Атерос „madwifi“ управљачки програм"
+
+#: ../examples/handlers/madwifi.py:23 ../data/handlers/madwifi.py:23
+msgid "Alternate \"madwifi\" driver for Atheros wireless LAN cards."
+msgstr ""
+"Алтернативни „madwifi“ управљачки програм за Атерос бежичне мрежне картице"
+
+#: ../examples/handlers/madwifi.py:24 ../data/handlers/madwifi.py:24
+msgid ""
+"Only activate this driver if you have problems with your wireless LAN "
+"connection.\n"
+"\n"
+"The free \"ath5k\" driver should work with most Atheros cards nowadays, but "
+"on some computers this alternate (but proprietary) driver still works "
+"better, or at all."
+msgstr ""
+"Користите овај управљачки програм само ако имате проблема са повезивањем на "
+"локалну мрежу.\n"
+"\n"
+"Слободни „ath5k“ управљачки програм би требао да ради са скоро свим Атерос "
+"картицама, али ипак на неким рачунарима овај алтернативни (али власнички) "
+"управљачки програм још увек ради боље или барем ради."
+
+#: ../examples/handlers/madwifi.py:38 ../data/handlers/madwifi.py:38
+#, python-format
+msgid "You removed the configuration file %s"
+msgstr "Уклонили сте датотеку подешавања „%s“"
+
+#. translators: %s is the path to xorg.conf
+#: ../jockey/xorg_driver.py:99
+#, python-format
+msgid "Reconfiguring X.org video drivers is not possible: %s is invalid."
+msgstr ""
+"Поновно подешавање управљачких програма „X.org“ видеа није могуће: „%s“ је "
+"неважећи."
+
+#: ../examples/handlers/fglrx.py:17
+msgid "AMD proprietary FGLRX graphics driver"
+msgstr "АМД власнички ФГЛРХ графички управљачки програм"
+
+#: ../examples/handlers/fglrx.py:18
+msgid "3D-accelerated proprietary graphics driver for AMD (ATI) cards."
+msgstr ""
+"Власнички управљачки програми са убрзањем 3Д графике за АМД АТИ) картице."
+
+#: ../examples/handlers/fglrx.py:20
+msgid ""
+"This driver is required to fully utilise the 3D potential of some AMD (ATI) "
+"graphics cards, as well as provide 2D acceleration of newer cards."
+msgstr ""
+"Овај управљачки програм је потребан за потпуно коришћење 3Д могућности неких "
+"АМД (АТИ) графичких картица, као и да обезбеди 2Д убрзање новијих картица."
+
+#: ../examples/handlers/sl_modem.py:15 ../data/handlers/sl_modem.py:15
+msgid "Software modem"
+msgstr "Софтверски модем"
+
+#: ../examples/handlers/sl_modem.py:17 ../data/handlers/sl_modem.py:17
+msgid ""
+"This driver enables the usage of many software modems, as commonly found in "
+"laptops.\n"
+"\n"
+"If this driver is not enabled, you will not be able to use your modem."
+msgstr ""
+"Овај управљачки програм омогућава употребу многих софтверских модема који се "
+"често налазе у преносним рачунарима.\n"
+"\n"
+"Ако овај управљачки програм није укључен, нећете моћи да користите ваш модем."
+
+#: ../examples/handlers/vmware-client.py:17
+#: ../data/handlers/vmware-client.py:17
+msgid "VMWare Client Tools"
+msgstr "Алати ВМВер програма"
+
+#: ../examples/handlers/vmware-client.py:18
+#: ../data/handlers/vmware-client.py:18
+msgid "Install VMWare client drivers and tools"
+msgstr "Инсталирај алате и драјвере ВМВер програма"
+
+#: ../examples/handlers/vmware-client.py:19
+#: ../data/handlers/vmware-client.py:19
+msgid ""
+"Install the VMWare client drivers and tools for your VMWare based Ubuntu "
+"installation.\n"
+"\n"
+"This should help you use Ubuntu in your VM."
+msgstr ""
+"Инсталирајте управљачке програме и алате ВМВер-а за вашу инсталацију Убунтуа "
+"засновану на ВМВер-у.\n"
+"\n"
+"То ће вам помоћи да користите Убунту у вашој Виртуелној Машини."
+
+#: ../backend/jockey-backend.py:32
+msgid "Enable debugging messages."
+msgstr "Омогућава поруке за пријављивање грешака."
+
+#: ../backend/jockey-backend.py:35
+msgid "Write logging messages to a file instead to stderr."
+msgstr "Записује поруке пријављивања у датотеку уместо у „stderr“."
+
+#: ../backend/jockey-backend.py:38
+msgid "Timeout for D-BUS service (default: 600, 0: run forever)"
+msgstr "Време трајања Д-БАС услуге (600 — подразумевано; 0 — радиће заувек)"
+
+#: ../backend/jockey-backend.py:41
+msgid "Add a custom handler directory."
+msgstr "Додаје произвољног руковаоца директоријума."
+
+#: ../backend/jockey-backend.py:44
+msgid "Run on session D-BUS (only for testing)"
+msgstr "Покрени на Д-БАС сесији (само за тестирање)"
+
+#: ../backend/jockey-backend.py:46
+msgid "Use a different target kernel version than the currently running one."
+msgstr "Користи различито издање циљног језгра од тренутно покренутог."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:1
+msgid "Get information about local device drivers"
+msgstr "Прибави информације о управљачким програмима локалних уређаја"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:2
+msgid "To query the device drivers, you need to authenticate."
+msgstr ""
+"Да бисте пропитали управљачке програме уређаја, требате да потврдите "
+"идентитет."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:3
+msgid ""
+"Check for newly available drivers for, and used drivers on this system"
+msgstr ""
+"Изврши проверу за новодоступним управљачким програмима, и коришћеним "
+"управљачким програмима на систему"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:4
+msgid "To check the driver status, you need to authenticate."
+msgstr ""
+"Да бисте проверили стање управљачких програма, требате да потврдите "
+"идентитет."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:5
+msgid ""
+"Query local and remote driver databases for updated drivers for the system"
+msgstr ""
+"Пропитај локалне и удаљене базе података управљачких програма за допуњеним "
+"управљачким програмима за систем"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:6
+msgid "To query the driver databases for updates, you need to authenticate."
+msgstr ""
+"Да бисте пропитали базу података управљачких програма за освежењима, требате "
+"да потврдите идентитет."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:7
+msgid "Install or remove device drivers"
+msgstr "Инсталирај или уклони управљачке програме уређаја"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:8
+msgid "To install or remove device drivers, you need to authenticate."
+msgstr ""
+"Да бисте инсталирали или уклонили управљачке програме уређаја, требате да "
+"потврдите идентитет."
+
+#: ../examples/handlers/nvidia.py:26 ../data/handlers/nvidia.py:28
+msgid "NVIDIA accelerated graphics driver"
+msgstr "НВИДИА управљачки програм са убрзањем графике"
+
+#: ../examples/handlers/nvidia.py:27
+msgid "3D-accelerated proprietary graphics driver for NVIDIA cards."
+msgstr ""
+"Власнички управљачки програми са убрзањем 3Д графике за НВИДИА картице."
+
+#: ../examples/handlers/nvidia.py:29
+msgid ""
+"This driver is required to fully utilise the 3D potential of NVIDIA graphics "
+"cards, as well as provide 2D acceleration of newer cards.\n"
+"\n"
+"If you wish to enable desktop effects, this driver is required.\n"
+"\n"
+"If this driver is not enabled, you will not be able to enable desktop "
+"effects and will not be able to run software that requires 3D acceleration, "
+"such as some games."
+msgstr ""
+"Овај управљачки програм је потребан да бисте у потпуности искористили 3Д "
+"потенцијал НВИДИА графичких картица, као и да пружи 2Д убрзавање нових "
+"картица.\n"
+"\n"
+"Ако желите да омогућите ефекте радне површи, овај управљачки програм је "
+"неопходан.\n"
+"\n"
+"Ако овај управљачки програм није укључен, нећете моћи да омогућите ефекте "
+"радне површи и нећете моћи да покренете програме који захтевају 3Д убрзање, "
+"као што су неке игрице."
+
+#, python-format
+#~ msgid ""
+#~ "Proprietary drivers do not have public source code that %(os)s developers "
+#~ "are free to modify. They represent a risk to you because they are only "
+#~ "available on the types of computer chosen by the manufacturer, and security "
+#~ "updates to them depend solely on the responsiveness of the manufacturer. "
+#~ "%(os)s cannot fix or improve these drivers."
+#~ msgstr ""
+#~ "Власнички драјвери немају јавниижворни код који %(os)s програмери могу "
+#~ "слободно мењати.Они представљају ризик за Вас јер  су једино доступни на "
+#~ "рачунарима који су одабрани од стране произвиђача, а сигурносно освежавање "
+#~ "зависи искључиво од одговорности произвиђача. %(os)s не може поправити или "
+#~ "унапредити такве драјвере."
+
+#~ msgid "ATI/AMD proprietary FGLRX graphics driver"
+#~ msgstr "АТИ/АМД власнички „ФГЛРХ“ графички управљачки програм"
+
+#~ msgid "3D-accelerated proprietary graphics driver for ATI cards."
+#~ msgstr "Власнички управљачки програми са убрзањем 3Д графике за АТИ картице."
+
+#~ msgid ""
+#~ "This driver is required to fully utilise the 3D potential of some ATI "
+#~ "graphics cards, as well as provide 2D acceleration of newer cards."
+#~ msgstr ""
+#~ "Овај управљачки програм је потребан за потпуно коришћење 3Д могућности неких "
+#~ "АТИ графичких картица, као и да обезбеди 2Д убрзање нових картица."
+
+#~ msgid "Hardware Drivers"
+#~ msgstr "Управљачки програми хардвера"
+
+#~ msgid "Cannot connect to D-BUS"
+#~ msgstr "Не могу да се повежем на Д-БУС"
+
+#~ msgid "Restricted Hardware Drivers"
+#~ msgstr "Ограничени управљачки програми хардвера"
+
+#~ msgid "System policy prevents checking driver status"
+#~ msgstr "Сигурност система спречава проверу стања управљачког програма"
+
+#~ msgid "System policy prevents installation/removal of device drivers"
+#~ msgstr "Сигурност система спречава инсталацију/уклањање управљачког програма"
+
+#~ msgid "System policy prevents querying device drivers"
+#~ msgstr "Сигурност система спречава претраживање управљачких програма уређаја"
+
+#~ msgid "System policy prevents querying driver databases for updates"
+#~ msgstr ""
+#~ "Сигурност система спречава претраживање база података управљачких програма "
+#~ "за ажурирањима"

@@ -1,0 +1,594 @@
+# Thai translation for restricted-manager
+# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
+# This file is distributed under the same license as the restricted-manager package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: restricted-manager\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-05 06:47+0100\n"
+"PO-Revision-Date: 2010-06-08 10:23+0000\n"
+"Last-Translator: SiraNokyoongtong <gumaraa@gmail.com>\n"
+"Language-Team: Thai <th@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-03-06 04:37+0000\n"
+"X-Generator: Launchpad (build 14900)\n"
+"Language: th\n"
+
+#: ../text/jockey-text.py:72
+msgid "Please enter 'y' or 'n' and press Enter"
+msgstr "โปรดกด y หรือ n แล้วตามด้วย Enter"
+
+#: ../text/jockey-text.py:74
+msgid "y\n"
+msgstr "y\n"
+
+#: ../text/jockey-text.py:76
+msgid "n\n"
+msgstr "n\n"
+
+#: ../kde/autostart/jockey-kde.desktop.in.h:1
+#: ../gtk/autostart/jockey-gtk.desktop.in.h:1
+msgid "Check for new hardware drivers"
+msgstr "ตรวจหาไดรเวอร์ใหม่ของฮาร์ดแวร์"
+
+#: ../kde/autostart/jockey-kde.desktop.in.h:2
+#: ../gtk/autostart/jockey-gtk.desktop.in.h:2
+msgid "Notify about new hardware drivers available for the system"
+msgstr "แจ้งเตือนเมื่อมีไดรเวอร์ใหม่ของฮาร์ดแวร์ที่สามารถใช้ได้กับระบบ"
+
+#: ../jockey/ui.py:121
+msgid ""
+"Cannot connect to D-BUS, please use the --no-dbus option as root to use "
+"jockey without it."
+msgstr ""
+
+#: ../jockey/ui.py:132 ../jockey/ui.py:145
+msgid "Searching for available drivers..."
+msgstr "กำลังค้นหาไดรเวอร์ที่ใช้ได้..."
+
+#: ../jockey/ui.py:170
+msgid "Component"
+msgstr "คอมโพเนนท์"
+
+#: ../jockey/ui.py:171
+msgid "_Enable"
+msgstr "เ_ปิดทำงาน"
+
+#: ../jockey/ui.py:172
+msgid "_Disable"
+msgstr "ปิ_ดทำงาน"
+
+#: ../jockey/ui.py:173
+msgid "Enabled"
+msgstr "เปิดทำงานแล้ว"
+
+#: ../jockey/ui.py:174
+msgid "Disabled"
+msgstr "ปิดทำงานแล้ว"
+
+#: ../jockey/ui.py:175
+msgid "Status"
+msgstr "สถานะ"
+
+#: ../jockey/ui.py:176
+msgid "Needs computer restart"
+msgstr "ต้องเริ่มคอมพิวเตอร์ใหม่"
+
+#: ../jockey/ui.py:177
+msgid "In use"
+msgstr "ใช้งานอยู่"
+
+#: ../jockey/ui.py:178
+msgid "Not in use"
+msgstr "ไม่ได้ใช้งาน"
+
+#: ../jockey/ui.py:179
+msgid "License:"
+msgstr "สัญญาอนุญาต:"
+
+#: ../jockey/ui.py:180
+msgid "details"
+msgstr "รายละเอียด"
+
+#. this is used in the GUI and in --list output to denote free/restricted drivers
+#: ../jockey/ui.py:182
+msgid "Free"
+msgstr "เสรี"
+
+#. this is used in the GUI and in --list output to denote free/restricted drivers
+#: ../jockey/ui.py:184
+msgid "Proprietary"
+msgstr "มีเจ้าของ"
+
+#: ../jockey/ui.py:185
+msgid "Download in progress"
+msgstr "กำลังดำเนินการดาวน์โหลด"
+
+#: ../jockey/ui.py:186
+msgid "Unknown driver"
+msgstr "ไดรเวอร์ไม่รู้จัก"
+
+#: ../jockey/ui.py:187
+msgid "You are not authorized to perform this action."
+msgstr "คุณไม่ได้รับสิทธิ์ให้ทำสิ่งนี้"
+
+#. %s is the name of the operating system
+#: ../jockey/ui.py:189
+#, python-format
+msgid "Tested by the %s developers"
+msgstr "ทดสอบแล้วโดยนักพัฒนา %s"
+
+#. %s is the name of the operating system
+#: ../jockey/ui.py:191
+#, python-format
+msgid "Not tested by the %s developers"
+msgstr "ยังไม่ได้ทดสอบโดยนักพัฒนา %s"
+
+#. this is used when one version of a driver is recommended over others
+#: ../jockey/ui.py:193
+msgid "Recommended"
+msgstr "แนะนำให้ใช้"
+
+#: ../jockey/ui.py:194
+msgid "License Text for Device Driver"
+msgstr "ข้อความสัญญาอนุญาตสำหรับไดรเวอร์อุปกรณ์"
+
+#: ../jockey/ui.py:195
+msgid "Install Drivers"
+msgstr "ติดตั้งไดรเวอร์"
+
+#: ../jockey/ui.py:204
+msgid "Restricted Additional Drivers"
+msgstr "ไดรเวอร์จำกัดสิทธิ์เพิ่มเติม"
+
+#: ../kde/jockey-kde.desktop.in.h:1 ../jockey/ui.py:206 ../jockey/ui.py:582
+#: ../jockey/ui.py:590 ../jockey/ui.py:598 ../jockey/ui.py:802
+#: ../gtk/jockey-gtk.desktop.in.h:1
+msgid "Additional Drivers"
+msgstr "ไดรเวอร์เพิ่มเติม"
+
+#: ../jockey/ui.py:216
+msgid "Driver search results"
+msgstr "ผลการค้นหาไดรเวอร์"
+
+#: ../jockey/ui.py:232
+msgid ""
+"Proprietary drivers are being used to make this computer work properly."
+msgstr "ไดรเวอร์ที่มีเจ้าของจะทำให้คอมพิวเตอร์นี้ทำงานได้อย่างถูกต้อง"
+
+#: ../jockey/ui.py:235
+msgid "No proprietary drivers are in use on this system."
+msgstr "ไม่มีไดรเวอร์ที่มีเจ้าของถูกใช้อยู่บนระบบนี้"
+
+#. %(os)s stands for the OS name. Prefix it or suffix it,
+#. but do not replace it.
+#: ../jockey/ui.py:241
+#, python-format
+msgid ""
+"Proprietary drivers do not have public source code that %(os)s developers "
+"are free to modify. Security updates and corrections depend solely on the "
+"responsiveness of the manufacturer. %(os)s cannot fix or improve these "
+"drivers."
+msgstr ""
+
+#: ../jockey/ui.py:254
+msgid "Graphics driver"
+msgstr "ไดรเวอร์กราฟิก"
+
+#: ../jockey/ui.py:256
+msgid "Firmware"
+msgstr "เฟิร์มแวร์"
+
+#: ../jockey/ui.py:258
+msgid "Device driver"
+msgstr "ไดรเวอร์อุปกรณ์"
+
+#: ../jockey/ui.py:268
+#, python-format
+msgid "version %s"
+msgstr "รุ่น %s"
+
+#: ../jockey/ui.py:322
+msgid "_Remove"
+msgstr "_ถอดถอน"
+
+#: ../jockey/ui.py:324
+msgid "_Deactivate"
+msgstr "_ปิดการเปิดใช้"
+
+#: ../jockey/ui.py:326
+msgid "This driver is activated and currently in use."
+msgstr "ไดรเวอร์นี้เปิดให้ใช้แล้วและกำลังใช้งานอยู่"
+
+#: ../jockey/ui.py:330
+msgid "You need to restart the computer to activate this driver."
+msgstr "คุณต้องเริ่มคอมพิวเตอร์ใหม่เพื่อเปิดใช้ไดรเวอร์นี้"
+
+#: ../jockey/ui.py:332
+msgid "This driver is activated but not currently in use."
+msgstr "ไดรเวอร์นี้เปิดให้ใช้แล้วแต่ยังไม่ได้ใช้งาน"
+
+#: ../jockey/ui.py:334
+msgid "_Activate"
+msgstr "เ_ปิดใช้"
+
+#: ../jockey/ui.py:338
+msgid "This driver was just disabled, but is still in use."
+msgstr "ไดรเวอร์นี้ทำให้ใช้งานไม่ได้แล้ว แต่ยังถูกใช้งานอยู่"
+
+#: ../jockey/ui.py:340
+msgid "A different version of this driver is in use."
+msgstr "รุ่นที่ต่างกันของไดรเวอร์นี้ทำงานอยู่"
+
+#: ../jockey/ui.py:342
+msgid "This driver is not activated."
+msgstr "ไดรเวอร์นี้ยังไม่เปิดใช้งาน"
+
+#: ../jockey/ui.py:362
+msgid "Check for newly used or usable drivers and notify the user."
+msgstr "ตรวจสอบไดรเวอร์ใหม่หรือที่ใช้งานได้และแจ้งเตือนผู้ใช้"
+
+#: ../jockey/ui.py:365
+msgid "Query driver databases for newly available or updated drivers."
+msgstr "ค้นหาจากฐานข้อมูลไดรเวอร์สำหรับไดรเวอร์ใหม่หรือที่มีการปรับปรุง"
+
+#: ../jockey/ui.py:368
+msgid "List available drivers and their status."
+msgstr "รายการไดรเวอร์ที่ใช้งานได้และสถานะ"
+
+#: ../jockey/ui.py:371
+msgid "Enable drivers that can be automatically installed."
+msgstr "เปิดใช้งานไดรเวอร์ที่สามารถติดตั้งอัตโนมัติได้"
+
+#: ../jockey/ui.py:374
+msgid "List hardware identifiers from this system."
+msgstr "รายการฮาร์ดแวร์ที่ระบุสำหรับระบบนี้"
+
+#: ../jockey/ui.py:377
+msgid "Enable a driver"
+msgstr "เปิดใช้งานไดรเวอร์"
+
+#: ../jockey/ui.py:380
+msgid "Disable a driver"
+msgstr "ปิดใช้งานไดรเวอร์"
+
+#: ../jockey/ui.py:383
+msgid "Ask for confirmation for --enable/--disable"
+msgstr "ถามเพื่อยืนยันว่าจะ--เปิด/--ปิด"
+
+#: ../jockey/ui.py:386
+msgid ""
+"Check if there is a graphics driver available that supports composite and "
+"offer to enable it"
+msgstr ""
+"ตรวจสอบหากมีไดรเวอร์กราฟิกที่เปิดใช้งานได้ รองรับคอมโพสิทและเสนอให้เปิดใช้งาน"
+
+#: ../jockey/ui.py:391
+msgid ""
+"Only manage free/nonfree drivers. By default, all available drivers with any "
+"license are presented."
+msgstr ""
+"บริหารจัดการไดรเวอร์เสรี/ไม่เสรีเท่านั้น โดยปริยายไดรเวอร์ทั้งหมดในทุก ๆ "
+"สัญญาอนุญาตจะถูกแสดง"
+
+#: ../jockey/ui.py:395
+msgid "Run as session D-BUS server."
+msgstr "ทำงานเป็นวาระเซิร์ฟเวอร์ D-BUS"
+
+#: ../jockey/ui.py:397
+msgid ""
+"Do not use D-BUS for communicating with the backend. Needs root privileges."
+msgstr "ต้องการยืนยันสิทธิของ root เพื่อปิดการสื่อสารกับแบ็กเอนด์ผ่าน D-BUS"
+
+#: ../jockey/ui.py:399
+msgid ""
+"Use a different target kernel version than the currently running one. This "
+"is only relevant with --no-dbus."
+msgstr ""
+
+#: ../jockey/ui.py:539 ../jockey/ui.py:1022
+msgid "Restricted drivers available"
+msgstr "ไดรเวอร์จำกัดสิทธิ์ที่เปิดใช้ได้"
+
+#: ../jockey/ui.py:540
+msgid ""
+"In order to use your hardware more efficiently, you can enable drivers which "
+"are not free software."
+msgstr ""
+"เพื่อใช้ฮาร์ดแวร์ของคุณอย่างเต็มประสิทธิ์ภาพ "
+"คุณสามารถเปิดใช้ไดรเวอร์ที่ไม่ใช่ซอฟต์แวร์เสรี"
+
+#: ../jockey/ui.py:543
+msgid "New drivers available"
+msgstr "ไดรเวอร์ใหม่ที่ใช้งานได้"
+
+#: ../jockey/ui.py:544
+msgid "There are new or updated drivers available for your hardware."
+msgstr "ไม่มีไดรเวอร์ใหม่หรือไดรเวอร์ที่อัปเดทได้สำหรับฮาร์ดแวร์ของคุณ"
+
+#: ../jockey/ui.py:548
+msgid "New restricted drivers in use"
+msgstr "ไดรเวอร์ใหม่ที่มีเจ้าของที่ใช้อยู่"
+
+#. %(os)s stands for the OS name. Prefix it or suffix it,
+#. but do not replace it.
+#: ../jockey/ui.py:551
+#, python-format
+msgid ""
+"In order for this computer to function properly, %(os)s is using driver "
+"software that cannot be supported by %(os)s."
+msgstr ""
+"เพื่อให้คอมพิวเตอร์นี้ทำงานได้อย่างถูกต้อง %(os)s "
+"ได้ใช้งานซอฟต์แวร์ไดรเวอร์ซึ่งไม่ได้รับการสนับสนุนจาก %(os)s"
+
+#: ../jockey/ui.py:577
+msgid ""
+"There is no available graphics driver for your system which supports the "
+"composite extension, or the current one already supports it."
+msgstr "ไม่มีไดรเวอร์กราฟิกสำหรับระบบของคุณที่รองรับส่วนขยายคอมโพสิท"
+
+#: ../jockey/ui.py:583
+msgid "Downloading and installing driver..."
+msgstr "กำลังดาวน์โหลดและติดตั้งไดรเวอร์..."
+
+#: ../jockey/ui.py:591
+msgid "Removing driver..."
+msgstr "กำลังถอดถอนไดรเวอร์..."
+
+#: ../jockey/ui.py:599
+msgid "Downloading and updating package indexes..."
+msgstr "กำลังดาวน์โหลดและปรับปรุงแพกเกจดัชนี.."
+
+#: ../jockey/ui.py:621
+msgid "Use --list to see available drivers"
+msgstr "ใช้ --list เพื่อดูไดรเวอร์ที่สามารถใช้ได้"
+
+#: ../jockey/ui.py:638
+msgid "Cannot change driver"
+msgstr "ไม่สามารถเปลี่ยนไดรเวอร์"
+
+#: ../jockey/ui.py:651
+msgid "Enable driver?"
+msgstr "เปิดใช้งานไดรเวอร์ไหม?"
+
+#: ../jockey/ui.py:654
+msgid "Disable driver?"
+msgstr "ปิดใช้งานไดรเวอร์ไหม?"
+
+#: ../jockey/ui.py:683
+msgid "Sorry, the Jockey backend crashed. Please file a bug at:"
+msgstr "ขออภัย การทำงานเบื้องหลังของ Jockey ขัดข้อง โปรดแจ้งบักที่:"
+
+#: ../jockey/ui.py:684
+msgid "Trying to recover by restarting backend."
+msgstr "กำลังพยายามกู้คืนโดยเรียกการทำงานเบื้องหลังใหม่"
+
+#: ../jockey/ui.py:694
+msgid "Sorry, installation of this driver failed."
+msgstr "ขออภัย การติดตั้งไดรเวอร์นี้ล้มเหลว"
+
+#: ../jockey/ui.py:695
+msgid "Please have a look at the log file for details"
+msgstr "โปรดดูแฟ้มปูมสำหรับรายละเอียด"
+
+#: ../jockey/ui.py:733
+msgid "Download error"
+msgstr "การดาวน์โหลดผิดพลาด"
+
+#: ../jockey/ui.py:860
+msgid ""
+"Downloading package indexes failed, please check your network status. Most "
+"drivers will not be available."
+msgstr ""
+"การดาวน์โหลดแพกเกจดัชนีล้มเหลว โปรดตรวจสอบสถานะเครือข่ายของคุณ "
+"ไดรเวอร์ส่วนใหญ่จะยังไม่สามารถใช้ได้"
+
+#: ../jockey/ui.py:930
+#, python-format
+msgid "Searching driver for %s..."
+msgstr "กำลังค้นหาไดรเวอร์สำหรับ %s..."
+
+#: ../kde/jockey-kde.desktop.in.h:2 ../gtk/jockey-gtk.desktop.in.h:2
+msgid "Configure third-party and proprietary drivers"
+msgstr "ตั้งค่าไดรเวอร์จากผู้ผลิตอื่นและไดรเวอร์ที่มีเจ้าของ"
+
+#: ../examples/handlers/madwifi.py:22 ../data/handlers/madwifi.py:22
+msgid "Alternate Atheros \"madwifi\" driver"
+msgstr "ไดรเวอร์ทางเลือกของ Atheros \"madwifi\""
+
+#: ../examples/handlers/madwifi.py:23 ../data/handlers/madwifi.py:23
+msgid "Alternate \"madwifi\" driver for Atheros wireless LAN cards."
+msgstr "ไดรเวอร์ทางเลือกของ \"madwifi\" สำหรับการ์ดแลนไร้สาย Atheros"
+
+#: ../examples/handlers/madwifi.py:24 ../data/handlers/madwifi.py:24
+msgid ""
+"Only activate this driver if you have problems with your wireless LAN "
+"connection.\n"
+"\n"
+"The free \"ath5k\" driver should work with most Atheros cards nowadays, but "
+"on some computers this alternate (but proprietary) driver still works "
+"better, or at all."
+msgstr ""
+"ให้เปิดใช้งานไดร์เวอร์เมื่อคุณเจอปัญหาเก็บกับการเชื่อม LAN "
+"แบบไร้สายเท่านั้น\n"
+"\n"
+"ไดร์เวอร์ฟรี \"ath5k\" ควรทำงานได้กับการ์ดเกือบทั้งหมดของ Atheros "
+"แต่ในบางระบบคอมพิวเตอร์ไดร์เวอร์นี้(ไม่ใช้รหัสเปิด)จะทำงานได้ดีกว่า"
+
+#: ../examples/handlers/madwifi.py:38 ../data/handlers/madwifi.py:38
+#, python-format
+msgid "You removed the configuration file %s"
+msgstr "คุณได้ลบแฟ้มการตั้งค่า %s"
+
+#. translators: %s is the path to xorg.conf
+#: ../jockey/xorg_driver.py:99
+#, python-format
+msgid "Reconfiguring X.org video drivers is not possible: %s is invalid."
+msgstr "ไม่สามารถตั้งค่าไดรเวอร์วิดีโอ X.org ใหม่ได้: %s ไม่สมบูรณ์"
+
+#: ../examples/handlers/fglrx.py:17
+msgid "AMD proprietary FGLRX graphics driver"
+msgstr ""
+
+#: ../examples/handlers/fglrx.py:18
+msgid "3D-accelerated proprietary graphics driver for AMD (ATI) cards."
+msgstr ""
+
+#: ../examples/handlers/fglrx.py:20
+msgid ""
+"This driver is required to fully utilise the 3D potential of some AMD (ATI) "
+"graphics cards, as well as provide 2D acceleration of newer cards."
+msgstr ""
+
+#: ../examples/handlers/sl_modem.py:15 ../data/handlers/sl_modem.py:15
+msgid "Software modem"
+msgstr "ซอฟต์แวร์โมเด็ม"
+
+#: ../examples/handlers/sl_modem.py:17 ../data/handlers/sl_modem.py:17
+msgid ""
+"This driver enables the usage of many software modems, as commonly found in "
+"laptops.\n"
+"\n"
+"If this driver is not enabled, you will not be able to use your modem."
+msgstr ""
+
+#: ../examples/handlers/vmware-client.py:17
+#: ../data/handlers/vmware-client.py:17
+msgid "VMWare Client Tools"
+msgstr "เครื่องมือลูกข่าย VMWare"
+
+#: ../examples/handlers/vmware-client.py:18
+#: ../data/handlers/vmware-client.py:18
+msgid "Install VMWare client drivers and tools"
+msgstr "ติดตั้งไดรเวอร์ลูกข่าย VMWare และเครื่องมือ"
+
+#: ../examples/handlers/vmware-client.py:19
+#: ../data/handlers/vmware-client.py:19
+msgid ""
+"Install the VMWare client drivers and tools for your VMWare based Ubuntu "
+"installation.\n"
+"\n"
+"This should help you use Ubuntu in your VM."
+msgstr ""
+
+#: ../backend/jockey-backend.py:32
+msgid "Enable debugging messages."
+msgstr "เปิดใช้ข้อความการดีบัก"
+
+#: ../backend/jockey-backend.py:35
+msgid "Write logging messages to a file instead to stderr."
+msgstr "เขียนปูมเป็นแฟ้มแทน stderr"
+
+#: ../backend/jockey-backend.py:38
+msgid "Timeout for D-BUS service (default: 600, 0: run forever)"
+msgstr "ตั้งการหมดเวลาสำหรับระบบ D-BUS(ค่าปริยาย: 600, 0: รันตลอด)"
+
+#: ../backend/jockey-backend.py:41
+msgid "Add a custom handler directory."
+msgstr "เพิ่มไดเรกทอรีสำหรับจัดการ"
+
+#: ../backend/jockey-backend.py:44
+msgid "Run on session D-BUS (only for testing)"
+msgstr "ทำงานบนวาระ D-BUS(สำหรับการทดสอบเท่านั้น)"
+
+#: ../backend/jockey-backend.py:46
+msgid "Use a different target kernel version than the currently running one."
+msgstr ""
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:1
+msgid "Get information about local device drivers"
+msgstr "รับข้อมูลเกี่ยวกับไดรเวอร์อุปกรณ์ภายใน"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:2
+msgid "To query the device drivers, you need to authenticate."
+msgstr ""
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:3
+msgid ""
+"Check for newly available drivers for, and used drivers on this system"
+msgstr "ตรวจสอบไดรเวอร์ใหม่ที่สามารถใช้ได้เพื่อใช้กับระบบนี้"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:4
+msgid "To check the driver status, you need to authenticate."
+msgstr ""
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:5
+msgid ""
+"Query local and remote driver databases for updated drivers for the system"
+msgstr "ค้นหาฐานข้อมูลไดรเวอร์จากภายในและทางไกลเพื่ออัปเดทไดรเวอร์สำหรับระบบ"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:6
+msgid "To query the driver databases for updates, you need to authenticate."
+msgstr ""
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:7
+msgid "Install or remove device drivers"
+msgstr "ติดตั้งหรือถอดถอนไดรเวอร์อุปกรณ์"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:8
+msgid "To install or remove device drivers, you need to authenticate."
+msgstr ""
+
+#: ../examples/handlers/nvidia.py:26 ../data/handlers/nvidia.py:28
+msgid "NVIDIA accelerated graphics driver"
+msgstr "ไดรเวอร์กราฟิก NVIDIA accelerated"
+
+#: ../examples/handlers/nvidia.py:27
+msgid "3D-accelerated proprietary graphics driver for NVIDIA cards."
+msgstr "ไดรเวอร์กราฟิก 3D-accelerated ที่มีเจ้าของสำหรับการ์ดของ NVIDIA"
+
+#: ../examples/handlers/nvidia.py:29
+msgid ""
+"This driver is required to fully utilise the 3D potential of NVIDIA graphics "
+"cards, as well as provide 2D acceleration of newer cards.\n"
+"\n"
+"If you wish to enable desktop effects, this driver is required.\n"
+"\n"
+"If this driver is not enabled, you will not be able to enable desktop "
+"effects and will not be able to run software that requires 3D acceleration, "
+"such as some games."
+msgstr ""
+"ไดร์เวอร์นี้ต้องการทำงานเต็มประสิทธิภาพในระบบ 3 มิติของการ์ดกราฟฟิก NVIDIA, "
+"รวมถึงการเร่งความเร็วในระบบ 2 มิติ ในการ์ดรุ่นใหม่\n"
+"ถ้าคุณต้องการเปิดใช้งานลูกเล่นของเดสก์ท็อป, ไดร์เวอร์นี้เป็นสิ่งจำเป็น\n"
+"ถ้าไดร์เวอร์ไม่เปิดใช้งาน, "
+"คุณจะไม่สามารถใช้งานลูกเล่นของเดสก์ท็อปและจะไม่สามารถทำงานกับซอฟต์แวร์ที่ต้อง"
+"การระบบเร่งความเร็ว 3 มิติ, อย่างเช่นโปรแกรมเกมต่าง ๆ ได้"
+
+#~ msgid "Cannot connect to D-BUS"
+#~ msgstr "ไม่สามารถเชื่อมต่อไปยัง D-BUS"
+
+#~ msgid "Restricted Hardware Drivers"
+#~ msgstr "ไดรเวอร์ฮาร์ดแวร์ที่จำกัดสิทธิ์"
+
+#~ msgid "Hardware Drivers"
+#~ msgstr "ไดรเวอร์ฮาร์ดแวร์"
+
+#~ msgid "System policy prevents checking driver status"
+#~ msgstr "นโยบายระบบป้องกันการตรวจสอบสถานะของไดรเวอร์"
+
+#~ msgid "System policy prevents installation/removal of device drivers"
+#~ msgstr "นโยบายระบบป้องกันการติดตั้ง/ถอดถอนไดรเวอร์อุปกรณ์"
+
+#~ msgid "System policy prevents querying device drivers"
+#~ msgstr "นโยบายระบบป้องกันการค้นหาไดรเวอร์อุปกรณ์"
+
+#~ msgid "System policy prevents querying driver databases for updates"
+#~ msgstr "นโยบายระบบป้องกันการค้นหาฐานข้อมูลไดรเวอร์เพื่อปรับปรุง"
+
+#~ msgid "ATI/AMD proprietary FGLRX graphics driver"
+#~ msgstr "ไดรเวอร์กราฟิก FGLRX ที่มี ATI/AMD เป็นเจ้าของ"
+
+#~ msgid "3D-accelerated proprietary graphics driver for ATI cards."
+#~ msgstr "ไดรเวอร์กราฟิก 3D-accelerated ที่มีเจ้าของสำหรับการ์ดของ ATI"
+
+#~ msgid ""
+#~ "This driver is required to fully utilise the 3D potential of some ATI "
+#~ "graphics cards, as well as provide 2D acceleration of newer cards."
+#~ msgstr ""
+#~ "ไดร์เวอร์นี้ต้องการทำงานเต็มประสิทธิภาพในระบบ 3 มิติของการ์ดกราฟฟิก ATI "
+#~ "บางรุ่น, รวมถึงการเร่งความเร็วในระบบ 2 มิติ ในการ์ดรุ่นใหม่"

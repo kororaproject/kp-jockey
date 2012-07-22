@@ -1,0 +1,609 @@
+# Lithuanian translation for restricted-manager
+# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
+# This file is distributed under the same license as the restricted-manager package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: restricted-manager\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-05 06:47+0100\n"
+"PO-Revision-Date: 2011-12-09 12:51+0000\n"
+"Last-Translator: Mantas Kriaučiūnas <mantas@akl.lt>\n"
+"Language-Team: Lithuanian <lt@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-03-06 04:37+0000\n"
+"X-Generator: Launchpad (build 14900)\n"
+"Language: lt\n"
+
+#: ../text/jockey-text.py:72
+msgid "Please enter 'y' or 'n' and press Enter"
+msgstr "Įveskite 't' ar 'n' ir spauskite Enter."
+
+#: ../text/jockey-text.py:74
+msgid "y\n"
+msgstr "t\n"
+
+#: ../text/jockey-text.py:76
+msgid "n\n"
+msgstr "n\n"
+
+#: ../kde/autostart/jockey-kde.desktop.in.h:1
+#: ../gtk/autostart/jockey-gtk.desktop.in.h:1
+msgid "Check for new hardware drivers"
+msgstr "Patikrinti ar yra naujų aparatinės įrangos valdyklių"
+
+#: ../kde/autostart/jockey-kde.desktop.in.h:2
+#: ../gtk/autostart/jockey-gtk.desktop.in.h:2
+msgid "Notify about new hardware drivers available for the system"
+msgstr ""
+"Pranešti apie naujas aparatinės įrangos valdykles, tinkančias šiam "
+"kompiuteriui"
+
+#: ../jockey/ui.py:121
+msgid ""
+"Cannot connect to D-BUS, please use the --no-dbus option as root to use "
+"jockey without it."
+msgstr ""
+
+#: ../jockey/ui.py:132 ../jockey/ui.py:145
+msgid "Searching for available drivers..."
+msgstr "Ieškoma prieinamų valdyklių..."
+
+#: ../jockey/ui.py:170
+msgid "Component"
+msgstr "Komponentas"
+
+#: ../jockey/ui.py:171
+msgid "_Enable"
+msgstr "Į_jungti"
+
+#: ../jockey/ui.py:172
+msgid "_Disable"
+msgstr "_Išjungti"
+
+#: ../jockey/ui.py:173
+msgid "Enabled"
+msgstr "Įjungta"
+
+#: ../jockey/ui.py:174
+msgid "Disabled"
+msgstr "Išjungta"
+
+#: ../jockey/ui.py:175
+msgid "Status"
+msgstr "Būsena"
+
+#: ../jockey/ui.py:176
+msgid "Needs computer restart"
+msgstr "Reikalauja sistemos perleidimo"
+
+#: ../jockey/ui.py:177
+msgid "In use"
+msgstr "Naudojama"
+
+#: ../jockey/ui.py:178
+msgid "Not in use"
+msgstr "Nenaudojama"
+
+#: ../jockey/ui.py:179
+msgid "License:"
+msgstr "Licencija:"
+
+#: ../jockey/ui.py:180
+msgid "details"
+msgstr "detalės"
+
+#. this is used in the GUI and in --list output to denote free/restricted drivers
+#: ../jockey/ui.py:182
+msgid "Free"
+msgstr "Laisva"
+
+#. this is used in the GUI and in --list output to denote free/restricted drivers
+#: ../jockey/ui.py:184
+msgid "Proprietary"
+msgstr "Nuosavybinė"
+
+#: ../jockey/ui.py:185
+msgid "Download in progress"
+msgstr "Siunčiama"
+
+#: ../jockey/ui.py:186
+msgid "Unknown driver"
+msgstr "Nežinoma valdyklė"
+
+#: ../jockey/ui.py:187
+msgid "You are not authorized to perform this action."
+msgstr "Jūs neturite teisės šiam veiksmui įvykdyti."
+
+#. %s is the name of the operating system
+#: ../jockey/ui.py:189
+#, python-format
+msgid "Tested by the %s developers"
+msgstr "Bandyta %s kūrėjų"
+
+#. %s is the name of the operating system
+#: ../jockey/ui.py:191
+#, python-format
+msgid "Not tested by the %s developers"
+msgstr "Nebandyta %s kūrėjų"
+
+#. this is used when one version of a driver is recommended over others
+#: ../jockey/ui.py:193
+msgid "Recommended"
+msgstr "Rekomenduojama"
+
+#: ../jockey/ui.py:194
+msgid "License Text for Device Driver"
+msgstr "Įrenginio valdyklės licencijos tekstas"
+
+#: ../jockey/ui.py:195
+msgid "Install Drivers"
+msgstr "Įdiegti valdykles"
+
+#: ../jockey/ui.py:204
+msgid "Restricted Additional Drivers"
+msgstr "Papildomos nuosavybinės valdyklės"
+
+#: ../kde/jockey-kde.desktop.in.h:1 ../jockey/ui.py:206 ../jockey/ui.py:582
+#: ../jockey/ui.py:590 ../jockey/ui.py:598 ../jockey/ui.py:802
+#: ../gtk/jockey-gtk.desktop.in.h:1
+msgid "Additional Drivers"
+msgstr "Aparatinės įrangos valdyklės"
+
+#: ../jockey/ui.py:216
+msgid "Driver search results"
+msgstr "Valdyklių paieškos rezultatai"
+
+#: ../jockey/ui.py:232
+msgid ""
+"Proprietary drivers are being used to make this computer work properly."
+msgstr ""
+"Šio kompiuterio pilnaverčiam veikimui yra naudojamos nuosavybinės valdyklės."
+
+#: ../jockey/ui.py:235
+msgid "No proprietary drivers are in use on this system."
+msgstr "Šiame kompiuteryje nenaudojamos nuosavybinės valdyklės"
+
+#. %(os)s stands for the OS name. Prefix it or suffix it,
+#. but do not replace it.
+#: ../jockey/ui.py:241
+#, python-format
+msgid ""
+"Proprietary drivers do not have public source code that %(os)s developers "
+"are free to modify. Security updates and corrections depend solely on the "
+"responsiveness of the manufacturer. %(os)s cannot fix or improve these "
+"drivers."
+msgstr ""
+"Nuosavybinės valdyklės neturi viešai prieinamo pirminio programos teksto, "
+"kurį %(os)s kūrėjai galėtų laisvai tobulinti. Saugumo atnaujinimai ir "
+"pataisymai priklauso vien tik nuo gamintojo atsakingumo. %(os)s negali "
+"taisyti ar tobulinti šių valdyklių."
+
+#: ../jockey/ui.py:254
+msgid "Graphics driver"
+msgstr "Vaizdo valdyklės"
+
+#: ../jockey/ui.py:256
+msgid "Firmware"
+msgstr "Mikroprogramos (firmware)"
+
+#: ../jockey/ui.py:258
+msgid "Device driver"
+msgstr "Įrenginio valdyklė"
+
+#: ../jockey/ui.py:268
+#, python-format
+msgid "version %s"
+msgstr "versija %s"
+
+#: ../jockey/ui.py:322
+msgid "_Remove"
+msgstr "_Pašalinti"
+
+#: ../jockey/ui.py:324
+msgid "_Deactivate"
+msgstr "_Deaktyvinti"
+
+#: ../jockey/ui.py:326
+msgid "This driver is activated and currently in use."
+msgstr "Ši valdyklė aktyvinta ir dabar naudojama."
+
+#: ../jockey/ui.py:330
+msgid "You need to restart the computer to activate this driver."
+msgstr ""
+"Jums reikia paleisti operacinę sistemą iš naujo šiai valdyklei aktyvinti."
+
+#: ../jockey/ui.py:332
+msgid "This driver is activated but not currently in use."
+msgstr "Ši valdyklė yra aktyvinta bet dar nenaudojama."
+
+#: ../jockey/ui.py:334
+msgid "_Activate"
+msgstr "_Aktyvinti"
+
+#: ../jockey/ui.py:338
+msgid "This driver was just disabled, but is still in use."
+msgstr "Ši valdyklė ką tik išjungta, bet dar naudojama."
+
+#: ../jockey/ui.py:340
+msgid "A different version of this driver is in use."
+msgstr "Naudojama kita šios valdyklės versija."
+
+#: ../jockey/ui.py:342
+msgid "This driver is not activated."
+msgstr "Ši valdyklė neaktyvinta."
+
+#: ../jockey/ui.py:362
+msgid "Check for newly used or usable drivers and notify the user."
+msgstr ""
+"Patikrinti naujai panaudotas ar galimas naudoti valdykles ir informuoti "
+"naudotoją"
+
+#: ../jockey/ui.py:365
+msgid "Query driver databases for newly available or updated drivers."
+msgstr "Valdyklių duomenų bazėje ieškoti naujų ar atnaujintų valdyklių."
+
+#: ../jockey/ui.py:368
+msgid "List available drivers and their status."
+msgstr "Parodyti prieinamas valdykles bei jų būseną."
+
+#: ../jockey/ui.py:371
+msgid "Enable drivers that can be automatically installed."
+msgstr "Įjungti valdykles, kurios gali būti įdiegtos automatiškai."
+
+#: ../jockey/ui.py:374
+msgid "List hardware identifiers from this system."
+msgstr "Pateikti šios sistemos aparatinės įrangos identifikatorius."
+
+#: ../jockey/ui.py:377
+msgid "Enable a driver"
+msgstr "Įjungti valdyklę"
+
+#: ../jockey/ui.py:380
+msgid "Disable a driver"
+msgstr "Išjungti valdyklę"
+
+#: ../jockey/ui.py:383
+msgid "Ask for confirmation for --enable/--disable"
+msgstr "Klausti patvirtinimo --enable/--disable naudojimui"
+
+#: ../jockey/ui.py:386
+msgid ""
+"Check if there is a graphics driver available that supports composite and "
+"offer to enable it"
+msgstr ""
+"Patikrinti, ar yra grafinės posistemės valdyklė, palaikanti trimačius "
+"darbastalio efektus (composite savybę), jei taip, pasiūlyti ją įjungti"
+
+#: ../jockey/ui.py:391
+msgid ""
+"Only manage free/nonfree drivers. By default, all available drivers with any "
+"license are presented."
+msgstr ""
+"Tvarkyti tik laisvas/nelaisvas valdykles. Numatyta reikšmė - rodyti visas "
+"prieinamas valdykles su bet kokia licencija."
+
+#: ../jockey/ui.py:395
+msgid "Run as session D-BUS server."
+msgstr "Paleisti kaip seanso D-BUS serverį."
+
+#: ../jockey/ui.py:397
+msgid ""
+"Do not use D-BUS for communicating with the backend. Needs root privileges."
+msgstr ""
+"Nenaudoti D-BUS komunikacijai su posisteme. Reikia „root“ privilegijų."
+
+#: ../jockey/ui.py:399
+msgid ""
+"Use a different target kernel version than the currently running one. This "
+"is only relevant with --no-dbus."
+msgstr ""
+"Naudoti kitą paskirties branduolio versiją negu dabar yra vykdoma. Tai "
+"aktualu tik su --no-dbus."
+
+#: ../jockey/ui.py:539 ../jockey/ui.py:1022
+msgid "Restricted drivers available"
+msgstr "Galite įdiegti nuosavybines valdykles"
+
+#: ../jockey/ui.py:540
+msgid ""
+"In order to use your hardware more efficiently, you can enable drivers which "
+"are not free software."
+msgstr ""
+"Jei norite efektyviau naudoti kompiuterio įrenginius - įjunkite nuosavybines "
+"valdykles (nelaisva programinė įranga)."
+
+#: ../jockey/ui.py:543
+msgid "New drivers available"
+msgstr "Yra naujų valdyklių"
+
+#: ../jockey/ui.py:544
+msgid "There are new or updated drivers available for your hardware."
+msgstr "Jūsų aparatinei įrangai yra naujų ar atnaujintų valdyklių."
+
+#: ../jockey/ui.py:548
+msgid "New restricted drivers in use"
+msgstr "Naudojamos naujos nuosavybinės valdyklės"
+
+#. %(os)s stands for the OS name. Prefix it or suffix it,
+#. but do not replace it.
+#: ../jockey/ui.py:551
+#, python-format
+msgid ""
+"In order for this computer to function properly, %(os)s is using driver "
+"software that cannot be supported by %(os)s."
+msgstr ""
+"Kad kompiuteris funkcionuotų tinkamai, %(os)s naudoja valdyklę, kuri negali "
+"būti palaikoma %(os)s."
+
+#: ../jockey/ui.py:577
+msgid ""
+"There is no available graphics driver for your system which supports the "
+"composite extension, or the current one already supports it."
+msgstr ""
+"Nėra prieinamos valdyklės jūsų sistemai, kuri palaikytų composite plėtinį "
+"arba dabartinė jau palaiko."
+
+#: ../jockey/ui.py:583
+msgid "Downloading and installing driver..."
+msgstr "Atsiunčiama ir diegiama valdyklė..."
+
+#: ../jockey/ui.py:591
+msgid "Removing driver..."
+msgstr "Šalinama valdyklė..."
+
+#: ../jockey/ui.py:599
+msgid "Downloading and updating package indexes..."
+msgstr "Atsiunčiami ir atnaujinami paketų indeksai..."
+
+#: ../jockey/ui.py:621
+msgid "Use --list to see available drivers"
+msgstr "Naudokite --list prieinamų valdyklių peržiūrai"
+
+#: ../jockey/ui.py:638
+msgid "Cannot change driver"
+msgstr "Nepavyko pakeisti valdyklės"
+
+#: ../jockey/ui.py:651
+msgid "Enable driver?"
+msgstr "Įjungti valdyklę?"
+
+#: ../jockey/ui.py:654
+msgid "Disable driver?"
+msgstr "Išjungti valdyklę?"
+
+#: ../jockey/ui.py:683
+msgid "Sorry, the Jockey backend crashed. Please file a bug at:"
+msgstr ""
+"Atsiprašome, įvyko Jockey posistemės strigtis. Praneškite apie klaidą čia:"
+
+#: ../jockey/ui.py:684
+msgid "Trying to recover by restarting backend."
+msgstr "Mėginama atkurti įkeliant posistemę iš naujo."
+
+#: ../jockey/ui.py:694
+msgid "Sorry, installation of this driver failed."
+msgstr "Atsiprašome, nepavyko įdiegti šios valdyklės."
+
+#: ../jockey/ui.py:695
+msgid "Please have a look at the log file for details"
+msgstr "Prašome pažiūrėti registracijos faile"
+
+#: ../jockey/ui.py:733
+msgid "Download error"
+msgstr "Siuntimo klaida"
+
+#: ../jockey/ui.py:860
+msgid ""
+"Downloading package indexes failed, please check your network status. Most "
+"drivers will not be available."
+msgstr ""
+"Nepavyko atsiųsti programų paketų indeksų, patikrinkite tinklo būseną. "
+"Dauguma naujų valdyklių bus neprieinamos."
+
+#: ../jockey/ui.py:930
+#, python-format
+msgid "Searching driver for %s..."
+msgstr "Ieškoma %s valdyklės..."
+
+#: ../kde/jockey-kde.desktop.in.h:2 ../gtk/jockey-gtk.desktop.in.h:2
+msgid "Configure third-party and proprietary drivers"
+msgstr "Tvarkyti papildomas bei nuosavybines valdykles"
+
+#: ../examples/handlers/madwifi.py:22 ../data/handlers/madwifi.py:22
+msgid "Alternate Atheros \"madwifi\" driver"
+msgstr "Alternatyvi Atheros „madwifi“ valdyklė"
+
+#: ../examples/handlers/madwifi.py:23 ../data/handlers/madwifi.py:23
+msgid "Alternate \"madwifi\" driver for Atheros wireless LAN cards."
+msgstr "Alternatyvi \"madwifi\" valdyklė Atheros belaidžio tinklo plokštėms."
+
+#: ../examples/handlers/madwifi.py:24 ../data/handlers/madwifi.py:24
+msgid ""
+"Only activate this driver if you have problems with your wireless LAN "
+"connection.\n"
+"\n"
+"The free \"ath5k\" driver should work with most Atheros cards nowadays, but "
+"on some computers this alternate (but proprietary) driver still works "
+"better, or at all."
+msgstr ""
+"Aktyvinkite šią valdyklę tik jei turite problemų su belaidžio tinklo ryšiu.\n"
+"\n"
+"Laisva „ath5k“ valdyklė turėtų veikti su daugeliu Atheros plokščių, bet kai "
+"kuriuose kompiuteriuose ši alternatyvi (bet nuosavybinė) valdyklė veikia "
+"geriau ar veikia tik ji."
+
+#: ../examples/handlers/madwifi.py:38 ../data/handlers/madwifi.py:38
+#, python-format
+msgid "You removed the configuration file %s"
+msgstr "Jūs pašalinote konfigūracijos failą %s"
+
+#. translators: %s is the path to xorg.conf
+#: ../jockey/xorg_driver.py:99
+#, python-format
+msgid "Reconfiguring X.org video drivers is not possible: %s is invalid."
+msgstr "Neįmanoma perkonfigūruoti X.org vaizdo valdyklių: %s yra netinkamas."
+
+#: ../examples/handlers/fglrx.py:17
+msgid "AMD proprietary FGLRX graphics driver"
+msgstr "AMD(ATI) FGLRX (Radeon) nuosavybinė vaizdo valdyklė"
+
+#: ../examples/handlers/fglrx.py:18
+msgid "3D-accelerated proprietary graphics driver for AMD (ATI) cards."
+msgstr "AMD(ATI) grafinės posistemės nuosavybinė valdyklė su 3D spartinimu."
+
+#: ../examples/handlers/fglrx.py:20
+msgid ""
+"This driver is required to fully utilise the 3D potential of some AMD (ATI) "
+"graphics cards, as well as provide 2D acceleration of newer cards."
+msgstr ""
+"Ši valdyklė reikalinga norint visiškai išnaudoti kai kurių AMD (ATI Radeon) "
+"vaizdo plokščių 3D spartinimą, taip pat palaikyti naujesnių plokščių 2D "
+"spartinimą."
+
+#: ../examples/handlers/sl_modem.py:15 ../data/handlers/sl_modem.py:15
+msgid "Software modem"
+msgstr "Programinis modemas"
+
+#: ../examples/handlers/sl_modem.py:17 ../data/handlers/sl_modem.py:17
+msgid ""
+"This driver enables the usage of many software modems, as commonly found in "
+"laptops.\n"
+"\n"
+"If this driver is not enabled, you will not be able to use your modem."
+msgstr ""
+"Ši valdyklė leidžia naudotis daugeliu programinių modemų, dažniausiai "
+"naudojamų nešiojamuose kompiuteriuose.\n"
+"\n"
+"Jūs galėsite naudotis savo modemu tik įjungę šią valdyklę."
+
+#: ../examples/handlers/vmware-client.py:17
+#: ../data/handlers/vmware-client.py:17
+msgid "VMWare Client Tools"
+msgstr "VMWare kliento įrankiai"
+
+#: ../examples/handlers/vmware-client.py:18
+#: ../data/handlers/vmware-client.py:18
+msgid "Install VMWare client drivers and tools"
+msgstr "Įdiegti VMWare kliento valdykles ir įrankius"
+
+#: ../examples/handlers/vmware-client.py:19
+#: ../data/handlers/vmware-client.py:19
+msgid ""
+"Install the VMWare client drivers and tools for your VMWare based Ubuntu "
+"installation.\n"
+"\n"
+"This should help you use Ubuntu in your VM."
+msgstr ""
+"Įdiegti VMWare kliento tvarkykles ir įrankius į jūsų VMWare paremtą Ubuntu "
+"įdiegimą.\n"
+"\n"
+"Tai turėtų jums padėti naudoti Ubuntu jūsų VM."
+
+#: ../backend/jockey-backend.py:32
+msgid "Enable debugging messages."
+msgstr "Įjungti derinimo pranešimus."
+
+#: ../backend/jockey-backend.py:35
+msgid "Write logging messages to a file instead to stderr."
+msgstr "Rašyti žurnalo pranešimus į failą, o ne „stderr“."
+
+#: ../backend/jockey-backend.py:38
+msgid "Timeout for D-BUS service (default: 600, 0: run forever)"
+msgstr "D-BUS tarnybai skirtas laikas (numatytasis: 600, 0: vykdyti be galo)"
+
+#: ../backend/jockey-backend.py:41
+msgid "Add a custom handler directory."
+msgstr "Pridėti savo doroklių katalogą."
+
+#: ../backend/jockey-backend.py:44
+msgid "Run on session D-BUS (only for testing)"
+msgstr "Vykdyti D-BUS seanse (tik testavimui)"
+
+#: ../backend/jockey-backend.py:46
+msgid "Use a different target kernel version than the currently running one."
+msgstr "Naudoti kitą paskirties branduolio versiją negu dabar yra vykdoma."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:1
+msgid "Get information about local device drivers"
+msgstr "Gauti informaciją apie vietinių įrenginių valdykles"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:2
+msgid "To query the device drivers, you need to authenticate."
+msgstr ""
+"Aparatinės įrangos valdyklių patikrinimui jūs turite patvirtinti tapatybę."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:3
+msgid ""
+"Check for newly available drivers for, and used drivers on this system"
+msgstr ""
+"Ieškoti naujai prieinamų valdyklių ir šioje sistemoje naudojamų valdyklių"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:4
+msgid "To check the driver status, you need to authenticate."
+msgstr ""
+"Aparatinės įrangos valdyklių patikrinimui jūs turite patvirtinti tapatybę."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:5
+msgid ""
+"Query local and remote driver databases for updated drivers for the system"
+msgstr ""
+"Užklausti vietinių ir nutolusių įrenginių duomenų bazes apie atnaujintas "
+"valdykles sistemai"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:6
+msgid "To query the driver databases for updates, you need to authenticate."
+msgstr ""
+"Norėdami užklausti tvarkyklių duomenų bazes atnaujinimų, turite patvirtinti "
+"tapatumą."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:7
+msgid "Install or remove device drivers"
+msgstr "Įdiegti ar pašalinti įrenginių valdykles"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:8
+msgid "To install or remove device drivers, you need to authenticate."
+msgstr ""
+"Aparatinės įrangos valdyklių įdiegimui ar pašalinimui jūs turite patvirtinti "
+"tapatybę."
+
+#: ../examples/handlers/nvidia.py:26 ../data/handlers/nvidia.py:28
+msgid "NVIDIA accelerated graphics driver"
+msgstr "NVIDIA grafinės posistemės valdyklė su spartinimu"
+
+#: ../examples/handlers/nvidia.py:27
+msgid "3D-accelerated proprietary graphics driver for NVIDIA cards."
+msgstr "NVIDIA grafinės posistemės nuosavybinės valdyklės su 3D spartinimu."
+
+#: ../examples/handlers/nvidia.py:29
+msgid ""
+"This driver is required to fully utilise the 3D potential of NVIDIA graphics "
+"cards, as well as provide 2D acceleration of newer cards.\n"
+"\n"
+"If you wish to enable desktop effects, this driver is required.\n"
+"\n"
+"If this driver is not enabled, you will not be able to enable desktop "
+"effects and will not be able to run software that requires 3D acceleration, "
+"such as some games."
+msgstr ""
+"Ši valdyklė yra būtina norint išnaudoti visą NVIDIA vaizdo plokštės 3D "
+"potencialą, o taip pat pasiūlyti dvimatės grafikos spartinimą naujosioms "
+"plokštėms.\n"
+"\n"
+"Jei norite įjungti darbalaukio efektus, ši valdyklė yra būtina.\n"
+"\n"
+"Jei ši valdyklė neįjungta, jūs negalėsite įjungti darbalaukio efektus bei "
+"negalėsite naudoti programinės įrangos, kuriai reikalingas 3D spartinimas, o "
+"taip pat ir kuriuos žaidimus."
+
+#~ msgid "Restricted Hardware Drivers"
+#~ msgstr "Nuosavybinės aparatinės įrangos valdyklės"
+
+#~ msgid "Hardware Drivers"
+#~ msgstr "Aparatinės įrangos valdyklės"
+
+#~ msgid "3D-accelerated proprietary graphics driver for ATI cards."
+#~ msgstr "ATI/AMD grafinės posistemės nuosavybinės valdyklės su 3D spartinimu."

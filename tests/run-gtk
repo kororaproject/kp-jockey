@@ -1,0 +1,228 @@
+#!/usr/bin/python
+
+'''Run self tests of the GTK implementation.'''
+
+# (c) 2008 Canonical Ltd.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+import sys, imp, os.path, unittest, time, os, signal
+
+from gi.repository import GObject,Gtk
+
+root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+
+# prefer modules in the local tree
+sys.path.insert(0, root_dir)
+
+from jockey.oslib import OSLib
+import jockey.backend
+import sandbox
+
+#--------------------------------------------------------------------#
+
+class GtkUITest(unittest.TestCase):
+    def setUp(self):
+        sys.argv = ['ui-test']
+        self.ui = GtkUI()
+        self.ui._dbus_iface = jockey.backend.Backend.create_dbus_client(session_bus=True)
+        self.ui.ui_init()
+        self.ui.have_ui = True
+        self.ui.backend().detect()
+
+    def test_convert_keybindings(self):
+        '''convert_keybindings()'''
+
+        self.assertEqual(self.ui.convert_keybindings('Foo'), 'Foo')
+        self.assertEqual(self.ui.convert_keybindings('_Foo'), '_Foo')
+        self.assertEqual(self.ui.convert_keybindings('F_oo'), 'F_oo')
+        self.assertEqual(self.ui.convert_keybindings('F_oo__bar'), 'F_oo__bar')
+
+    def _click_quit(self):
+        '''Send event of clicking the close button.'''
+
+        self.ui.w('button_close').emit('clicked')
+
+    def _respond_msgbox(self, response):
+        '''Send response to current messagebox.'''
+
+        self.ui.msgbox.response(response)
+
+    def test_main_window(self):
+        '''Main window and quitting'''
+
+        GObject.timeout_add(5000, self._click_quit)
+        self.ui.run()
+
+    def test_show_main_idempotency(self):
+        '''ui_show_main() idempotency'''
+
+        self.ui.ui_show_main()
+        orig_columns = self.ui.treeview.get_columns()
+        self.ui.ui_show_main()
+        self.ui.ui_show_main()
+        self.ui.ui_show_main()
+        self.assertEqual(self.ui.treeview.get_columns(), orig_columns)
+        GObject.timeout_add(5000, self._click_quit)
+        self.ui.run()
+
+    def test_main_window_nohandlers(self):
+        '''Main window and quitting without any handlers'''
+
+        self.ui._dbus_iface = jockey.backend.Backend()
+        self.ui._dbus_iface.handlers = {}
+        GObject.timeout_add(5000, self._click_quit)
+        self.ui.run()
+
+    def test_error_message(self):
+        '''error_message'''
+
+        GObject.timeout_add(500, self._respond_msgbox, Gtk.ResponseType.CLOSE)
+        self.ui.error_message('Error Title', 'Error text')
+
+    def test_confirm_action_simple(self):
+        '''confirm_action without subtext and default action'''
+
+        GObject.timeout_add(500, self._respond_msgbox, Gtk.ResponseType.OK)
+        self.assertEqual(self.ui.confirm_action('Confirm dialog test',
+            'Auto-clicking OK'), True)
+
+        GObject.timeout_add(500, self._respond_msgbox, Gtk.ResponseType.CANCEL)
+        self.assertEqual(self.ui.confirm_action('Confirm dialog test',
+            'Auto-clicking Cancel'), False)
+
+    def test_confirm_action_complex(self):
+        '''confirm_action with subtext and nondefault action'''
+
+        GObject.timeout_add(500, self._respond_msgbox, Gtk.ResponseType.OK)
+        self.assertEqual(self.ui.confirm_action('Confirm dialog test',
+            'Please press "Go"', 'This is a secondary text', 'Go'), True)
+
+    def test_0_ui_notification(self):
+        '''ui_notification()'''
+
+        self.ui.ui_notification('NotificationTitle', 'NotificationText')
+        GObject.timeout_add(5000, self._click_quit)
+        self.ui.run()
+
+    def test_progress(self):
+        '''progress dialog'''
+
+        cur = 0
+        total = 20000
+        self.ui.ui_progress_start('Test', 'Running complete progress', total)
+        self.ui.ui_idle()
+        while cur < total:
+            cur += 4096
+            if cur > total:
+                cur = total
+            self.assertEqual(self.ui.ui_progress_update(cur, total), False)
+            self.ui.ui_idle()
+            time.sleep(0.2)
+        self.ui.ui_progress_finish()
+
+    def test_progress_indefinite(self):
+        '''indefinite progress dialog'''
+
+        self.ui.ui_init()
+        self.ui.have_ui = True
+        timeout = 15
+        self.ui.ui_progress_start('Test', 'Running indefinite progress', -1)
+        self.ui.ui_idle()
+        while timeout > 0:
+            timeout -= 1
+            self.assertEqual(self.ui.ui_progress_update(-1, -1), False)
+            self.ui.ui_idle()
+            time.sleep(0.2)
+        self.ui.ui_progress_finish()
+
+    def test_progress_cancel(self):
+        '''progress dialog, cancelling'''
+
+        cur = 0
+        total = 300000
+        self.ui.ui_progress_start('Test', 'This gets auto-cancelled', total)
+        self.ui.ui_idle()
+        while cur < total:
+            cur += 4096
+            if cur > 20000:
+                self.ui.w('button_progress_cancel').emit('clicked')
+                self.assertEqual(self.ui.ui_progress_update(cur, total), True)
+                break
+            else:
+                self.assertEqual(self.ui.ui_progress_update(cur, total), False)
+            self.ui.ui_idle()
+            time.sleep(0.2)
+        self.ui.ui_progress_finish()
+        self.assert_(cur < total)
+
+    def test_help_notavail(self):
+        '''help button absent when help is not available'''
+
+        self.ui.ui_show_main()
+        self.failIf(self.ui.w('button_help').get_property('visible'))
+
+    def test_help_avail(self):
+        '''help button present when help is available'''
+
+        try:
+            OSLib.inst.help_available = True
+            self.ui.ui_show_main()
+            bhelp = self.ui.w('button_help')
+            self.failIf(OSLib.inst.help_called)
+            self.assert_(bhelp.get_property('visible'))
+            bhelp.emit('clicked')
+            self.ui.ui_idle()
+            self.assert_(OSLib.inst.help_called)
+        finally:
+            OSLib.inst.help_available = False
+
+#--------------------------------------------------------------------#
+
+if __name__ == '__main__':
+    # set the global OSLib instance for all tests
+    OSLib.inst = sandbox.TestOSLib()
+
+    # get GtkUI class
+    try:
+        GtkUI = getattr(imp.load_source('mod_gtk_impl', os.path.join(root_dir, 'gtk',
+            'jockey-gtk')), 'GtkUI')
+
+        # start backend 
+        env = os.environ
+        env.update({'PYTHONPATH': root_dir})
+        svr_pid = os.spawnle(os.P_NOWAIT, os.path.join(root_dir, 'backend',
+            'jockey-backend'), 'jockey-backend', '--test', env)
+
+        # wait until backend comes online
+        while True:
+            try:
+                jockey.backend.Backend.create_dbus_client(session_bus=True)
+                break
+            except Exception, e:
+                if hasattr(e, '_dbus_error_name') and e._dbus_error_name == \
+                        'org.freedesktop.DBus.Error.ServiceUnknown':
+                    time.sleep(0.2)
+                    pass
+
+        # run tests
+        unittest.main()
+    finally:
+        # clean up pyc
+        os.unlink(os.path.join(root_dir, 'gtk', 'jockey-gtkc'))
+        os.kill(svr_pid, signal.SIGTERM)
+        (p, st) = os.waitpid(svr_pid, 0)
+        assert p == svr_pid
+        assert os.WEXITSTATUS(st) == 0

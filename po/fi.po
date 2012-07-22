@@ -1,0 +1,655 @@
+# Finnish translation for restricted-manager
+# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
+# This file is distributed under the same license as the restricted-manager package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: restricted-manager\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-05 06:47+0100\n"
+"PO-Revision-Date: 2012-01-29 12:54+0000\n"
+"Last-Translator: Ville Pilvio <Unknown>\n"
+"Language-Team: Finnish <fi@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-03-06 04:37+0000\n"
+"X-Generator: Launchpad (build 14900)\n"
+"Language: fi\n"
+
+#: ../text/jockey-text.py:72
+msgid "Please enter 'y' or 'n' and press Enter"
+msgstr "Kirjoita joko ”k” tai ”e” ja paina Enter"
+
+#: ../text/jockey-text.py:74
+msgid "y\n"
+msgstr "k\n"
+
+#: ../text/jockey-text.py:76
+msgid "n\n"
+msgstr "e\n"
+
+#: ../kde/autostart/jockey-kde.desktop.in.h:1
+#: ../gtk/autostart/jockey-gtk.desktop.in.h:1
+msgid "Check for new hardware drivers"
+msgstr "Tarkista uudet laiteajurit"
+
+#: ../kde/autostart/jockey-kde.desktop.in.h:2
+#: ../gtk/autostart/jockey-gtk.desktop.in.h:2
+msgid "Notify about new hardware drivers available for the system"
+msgstr "Ilmoita saatavilla olevista uusista järjestelmän laiteajureista"
+
+#: ../jockey/ui.py:121
+msgid ""
+"Cannot connect to D-BUS, please use the --no-dbus option as root to use "
+"jockey without it."
+msgstr ""
+
+#: ../jockey/ui.py:132 ../jockey/ui.py:145
+msgid "Searching for available drivers..."
+msgstr "Etsitään saatavilla olevia ajureita..."
+
+#: ../jockey/ui.py:170
+msgid "Component"
+msgstr "Komponentti"
+
+#: ../jockey/ui.py:171
+msgid "_Enable"
+msgstr "As_enna"
+
+#: ../jockey/ui.py:172
+msgid "_Disable"
+msgstr "_Poista asennus"
+
+#: ../jockey/ui.py:173
+msgid "Enabled"
+msgstr "Asennettu"
+
+#: ../jockey/ui.py:174
+msgid "Disabled"
+msgstr "Ei asennettu"
+
+#: ../jockey/ui.py:175
+msgid "Status"
+msgstr "Tila"
+
+#: ../jockey/ui.py:176
+msgid "Needs computer restart"
+msgstr "Vaatii uudelleenkäynnistyksen"
+
+#: ../jockey/ui.py:177
+msgid "In use"
+msgstr "Käynnissä"
+
+#: ../jockey/ui.py:178
+msgid "Not in use"
+msgstr "Ei käynnissä"
+
+#: ../jockey/ui.py:179
+msgid "License:"
+msgstr "Lisenssi:"
+
+#: ../jockey/ui.py:180
+msgid "details"
+msgstr "kuvaus"
+
+#. this is used in the GUI and in --list output to denote free/restricted drivers
+#: ../jockey/ui.py:182
+msgid "Free"
+msgstr "Vapaa"
+
+#. this is used in the GUI and in --list output to denote free/restricted drivers
+#: ../jockey/ui.py:184
+msgid "Proprietary"
+msgstr "Suljettu"
+
+#: ../jockey/ui.py:185
+msgid "Download in progress"
+msgstr "Noudetaan"
+
+#: ../jockey/ui.py:186
+msgid "Unknown driver"
+msgstr "Tuntematon ajuri"
+
+#: ../jockey/ui.py:187
+msgid "You are not authorized to perform this action."
+msgstr "Sinulla ei ole valtuuksia suorittaa tätä toimintoa."
+
+#. %s is the name of the operating system
+#: ../jockey/ui.py:189
+#, python-format
+msgid "Tested by the %s developers"
+msgstr "%s-kehittäjien testaama"
+
+#. %s is the name of the operating system
+#: ../jockey/ui.py:191
+#, python-format
+msgid "Not tested by the %s developers"
+msgstr "Ei %s-kehittäjien testaama"
+
+#. this is used when one version of a driver is recommended over others
+#: ../jockey/ui.py:193
+msgid "Recommended"
+msgstr "Suositeltu"
+
+#: ../jockey/ui.py:194
+msgid "License Text for Device Driver"
+msgstr "Lisenssiteksti laiteajurille"
+
+#: ../jockey/ui.py:195
+msgid "Install Drivers"
+msgstr "Asenna laiteajureita"
+
+#: ../jockey/ui.py:204
+msgid "Restricted Additional Drivers"
+msgstr "Rajoitetut lisäajurit"
+
+#: ../kde/jockey-kde.desktop.in.h:1 ../jockey/ui.py:206 ../jockey/ui.py:582
+#: ../jockey/ui.py:590 ../jockey/ui.py:598 ../jockey/ui.py:802
+#: ../gtk/jockey-gtk.desktop.in.h:1
+msgid "Additional Drivers"
+msgstr "Lisäajurit"
+
+#: ../jockey/ui.py:216
+msgid "Driver search results"
+msgstr "Ajurihaun tulokset"
+
+#: ../jockey/ui.py:232
+msgid ""
+"Proprietary drivers are being used to make this computer work properly."
+msgstr ""
+"Suljettuja ajureita on käytössä, jotta tämä tietokone toimisi oikein."
+
+#: ../jockey/ui.py:235
+msgid "No proprietary drivers are in use on this system."
+msgstr "Suljettuja ajureita ei ole käytössä tässä tietokoneessa."
+
+#. %(os)s stands for the OS name. Prefix it or suffix it,
+#. but do not replace it.
+#: ../jockey/ui.py:241
+#, python-format
+msgid ""
+"Proprietary drivers do not have public source code that %(os)s developers "
+"are free to modify. Security updates and corrections depend solely on the "
+"responsiveness of the manufacturer. %(os)s cannot fix or improve these "
+"drivers."
+msgstr ""
+"Suljetun lähdekoodin ajureista ei ole saatavilla julkista lähdekoodia, jota "
+"%(os)s-kehittäjät saisivat muokata. Tietoturvapäivitykset ja korjaukset "
+"riippuvat täysin valmistajasta. %(os)s-kehittäjät eivät voi korjata tai "
+"parannella näitä ajureita."
+
+#: ../jockey/ui.py:254
+msgid "Graphics driver"
+msgstr "Grafiikka-ajuri"
+
+#: ../jockey/ui.py:256
+msgid "Firmware"
+msgstr "Laiteohjelmisto"
+
+#: ../jockey/ui.py:258
+msgid "Device driver"
+msgstr "Laiteajuri"
+
+#: ../jockey/ui.py:268
+#, python-format
+msgid "version %s"
+msgstr "versio %s"
+
+#: ../jockey/ui.py:322
+msgid "_Remove"
+msgstr "_Poista"
+
+#: ../jockey/ui.py:324
+msgid "_Deactivate"
+msgstr "_Kytke pois käytöstä"
+
+#: ../jockey/ui.py:326
+msgid "This driver is activated and currently in use."
+msgstr "Ajuri on kytketty käyttöön ja tällä hetkellä käynnissä."
+
+#: ../jockey/ui.py:330
+msgid "You need to restart the computer to activate this driver."
+msgstr ""
+"Sinun täytyy käynnistää tietokone uudelleen kytkeäksesi tämän ajurin "
+"käyttöön."
+
+#: ../jockey/ui.py:332
+msgid "This driver is activated but not currently in use."
+msgstr ""
+"Ajuri on kytketty käytettäväksi, mutta se ei tällä hetkellä käynnissä."
+
+#: ../jockey/ui.py:334
+msgid "_Activate"
+msgstr "_Kytke käyttöön"
+
+#: ../jockey/ui.py:338
+msgid "This driver was just disabled, but is still in use."
+msgstr "Tämän ajurin asennus poistettiin juuri, mutta se on vielä käynnissä."
+
+#: ../jockey/ui.py:340
+msgid "A different version of this driver is in use."
+msgstr "Toinen versio tästä ajurista on käytössä."
+
+#: ../jockey/ui.py:342
+msgid "This driver is not activated."
+msgstr "Tämä ajuri ei ole kytketty päälle."
+
+#: ../jockey/ui.py:362
+msgid "Check for newly used or usable drivers and notify the user."
+msgstr ""
+"Tarkista uudet käytössä tai käytettävissä olevat ajurit ja ilmoita "
+"käyttäjälle."
+
+#: ../jockey/ui.py:365
+msgid "Query driver databases for newly available or updated drivers."
+msgstr ""
+"Tee kyselyitä ajuritietokantoihin uusista saatavilla olevista tai "
+"päivitetyistä ajureista."
+
+#: ../jockey/ui.py:368
+msgid "List available drivers and their status."
+msgstr "Luettele saatavilla olevat ajurit ja niiden tilat."
+
+#: ../jockey/ui.py:371
+msgid "Enable drivers that can be automatically installed."
+msgstr "Ota käyttöön ajurit, jotka voidaan asentaa automaattisesti."
+
+#: ../jockey/ui.py:374
+msgid "List hardware identifiers from this system."
+msgstr "Luettelo järjestelmän laitetunnisteista."
+
+#: ../jockey/ui.py:377
+msgid "Enable a driver"
+msgstr "Asenna ajuri"
+
+#: ../jockey/ui.py:380
+msgid "Disable a driver"
+msgstr "Poista ajuri"
+
+#: ../jockey/ui.py:383
+msgid "Ask for confirmation for --enable/--disable"
+msgstr "Pyydä varmistusta käytettäessä --enable/--disable"
+
+#: ../jockey/ui.py:386
+msgid ""
+"Check if there is a graphics driver available that supports composite and "
+"offer to enable it"
+msgstr ""
+"Tarkista onko saatavilla näytönohjainajuria joka tukee kompositointia, ja "
+"tarjoa sen käyttöönottoa"
+
+#: ../jockey/ui.py:391
+msgid ""
+"Only manage free/nonfree drivers. By default, all available drivers with any "
+"license are presented."
+msgstr ""
+"Hallitse vain vapaita/epävapaita ajureita. Oletuksena kaikki saatavilla "
+"olevat ajurit näytetään, riippumatta lisenssistä."
+
+#: ../jockey/ui.py:395
+msgid "Run as session D-BUS server."
+msgstr "Suorita D-BUS-istuntopalvelimena."
+
+#: ../jockey/ui.py:397
+msgid ""
+"Do not use D-BUS for communicating with the backend. Needs root privileges."
+msgstr ""
+"Älä käytä D-Busia kommunikointiin taustajärjestelmän kanssa. Vaatii "
+"ylläpitäjän oikeudet."
+
+#: ../jockey/ui.py:399
+msgid ""
+"Use a different target kernel version than the currently running one. This "
+"is only relevant with --no-dbus."
+msgstr ""
+"Käytä eri kohdeydinversiota kuin mikä on tällä hetkellä käynnissä. Tämä on "
+"tarpeen vain käytettäessä valitsinta --no-dbus."
+
+#: ../jockey/ui.py:539 ../jockey/ui.py:1022
+msgid "Restricted drivers available"
+msgstr "Rajoitettuja ajureita saatavilla"
+
+#: ../jockey/ui.py:540
+msgid ""
+"In order to use your hardware more efficiently, you can enable drivers which "
+"are not free software."
+msgstr ""
+"Jotta laitteistoa käytettäisiin tehokkaammin, on mahdollista ottaa käyttöön "
+"ajureita, jotka eivät ole vapaita ohjelmistoja."
+
+#: ../jockey/ui.py:543
+msgid "New drivers available"
+msgstr "Uusia ajureita saatavilla"
+
+#: ../jockey/ui.py:544
+msgid "There are new or updated drivers available for your hardware."
+msgstr "Uusia tai päivitettyjä ajureita on saatavilla laitteistollesi."
+
+#: ../jockey/ui.py:548
+msgid "New restricted drivers in use"
+msgstr "Uudet käytössä olevat rajoitetut ajurit"
+
+#. %(os)s stands for the OS name. Prefix it or suffix it,
+#. but do not replace it.
+#: ../jockey/ui.py:551
+#, python-format
+msgid ""
+"In order for this computer to function properly, %(os)s is using driver "
+"software that cannot be supported by %(os)s."
+msgstr ""
+"Jotta tämä tietokone toimisi oikein, %(os)s käyttää ajuriohjelmistoa jota "
+"%(os)s ei tue."
+
+#: ../jockey/ui.py:577
+msgid ""
+"There is no available graphics driver for your system which supports the "
+"composite extension, or the current one already supports it."
+msgstr ""
+"Järjestelmällesi joko ei ole kompositointilaajennusta tukevaa grafiikka-"
+"ajuria, tai käytössä oleva tukee sitä jo."
+
+#: ../jockey/ui.py:583
+msgid "Downloading and installing driver..."
+msgstr "Noudetaan ja asennetaan ajuria..."
+
+#: ../jockey/ui.py:591
+msgid "Removing driver..."
+msgstr "Poistetaan ajuria..."
+
+#: ../jockey/ui.py:599
+msgid "Downloading and updating package indexes..."
+msgstr "Noudetaan ja päivitetään pakettitietoja...."
+
+#: ../jockey/ui.py:621
+msgid "Use --list to see available drivers"
+msgstr "Käytä --list nähdäksesi saatavilla olevat ajurit"
+
+#: ../jockey/ui.py:638
+msgid "Cannot change driver"
+msgstr "Ajuria ei voi muuttaa"
+
+#: ../jockey/ui.py:651
+msgid "Enable driver?"
+msgstr "Asenna ajuri?"
+
+#: ../jockey/ui.py:654
+msgid "Disable driver?"
+msgstr "Poista ajuri?"
+
+#: ../jockey/ui.py:683
+msgid "Sorry, the Jockey backend crashed. Please file a bug at:"
+msgstr ""
+"Jockeyn taustaprosessi kaatui. Kerro tästä virheraportilla osoitteessa:"
+
+#: ../jockey/ui.py:684
+msgid "Trying to recover by restarting backend."
+msgstr "Yritetään palautua käynnistämällä taustaprosessi uudelleen."
+
+#: ../jockey/ui.py:694
+msgid "Sorry, installation of this driver failed."
+msgstr "Tämän ajurin asennus epäonnistui."
+
+#: ../jockey/ui.py:695
+msgid "Please have a look at the log file for details"
+msgstr "Katso tarkempia tietoja lokitiedostosta"
+
+#: ../jockey/ui.py:733
+msgid "Download error"
+msgstr "Virhe noudettaessa"
+
+#: ../jockey/ui.py:860
+msgid ""
+"Downloading package indexes failed, please check your network status. Most "
+"drivers will not be available."
+msgstr ""
+"Pakettitietojen nouto epäonnistui. Tarkista Internet-yhteytesi. Useimmat "
+"ajurit eivät tästä johtuen ole saatavilla."
+
+#: ../jockey/ui.py:930
+#, python-format
+msgid "Searching driver for %s..."
+msgstr "Etsitään ajuri laitteelle %s..."
+
+#: ../kde/jockey-kde.desktop.in.h:2 ../gtk/jockey-gtk.desktop.in.h:2
+msgid "Configure third-party and proprietary drivers"
+msgstr ""
+"Muuta kolmannen osapuolen ajureiden tai suljettujen ajureiden asetuksia"
+
+#: ../examples/handlers/madwifi.py:22 ../data/handlers/madwifi.py:22
+msgid "Alternate Atheros \"madwifi\" driver"
+msgstr "Vaihtoehtoinen Atheros ”madwifi” -ajuri"
+
+#: ../examples/handlers/madwifi.py:23 ../data/handlers/madwifi.py:23
+msgid "Alternate \"madwifi\" driver for Atheros wireless LAN cards."
+msgstr ""
+"Vaihtoehtoinen ”madwifi” -ajuri langattomille Atheros-WLAN-korteille."
+
+#: ../examples/handlers/madwifi.py:24 ../data/handlers/madwifi.py:24
+msgid ""
+"Only activate this driver if you have problems with your wireless LAN "
+"connection.\n"
+"\n"
+"The free \"ath5k\" driver should work with most Atheros cards nowadays, but "
+"on some computers this alternate (but proprietary) driver still works "
+"better, or at all."
+msgstr ""
+"Aktivoi tämä ajuri vain, jos sinulla on ongelmia langattomien "
+"verkkoyhteyksien kanssa.\n"
+"\n"
+"Vapaan ”ath5k”-ajurin pitäisi toimia useimmilla Atheros-korteilla nykyään, "
+"mutta joillain tietokoneilla tämä vaihtoehtoinen (mutta suljettu) ajuri "
+"toimii paremmin, tai ylipäänsä toimii."
+
+#: ../examples/handlers/madwifi.py:38 ../data/handlers/madwifi.py:38
+#, python-format
+msgid "You removed the configuration file %s"
+msgstr "Poistit asetustiedoston %s"
+
+#. translators: %s is the path to xorg.conf
+#: ../jockey/xorg_driver.py:99
+#, python-format
+msgid "Reconfiguring X.org video drivers is not possible: %s is invalid."
+msgstr ""
+"X.org-videoajureiden uudelleenasetus ei ole mahdollista: %s on epäkelpo."
+
+#: ../examples/handlers/fglrx.py:17
+msgid "AMD proprietary FGLRX graphics driver"
+msgstr "AMD:n suljettu FGLRX-grafiikka-ajuri"
+
+#: ../examples/handlers/fglrx.py:18
+msgid "3D-accelerated proprietary graphics driver for AMD (ATI) cards."
+msgstr ""
+"3D-kiihdytetty, suljettu grafiikka-ajuri AMD:n (ATI) näytönohjaimille."
+
+#: ../examples/handlers/fglrx.py:20
+msgid ""
+"This driver is required to fully utilise the 3D potential of some AMD (ATI) "
+"graphics cards, as well as provide 2D acceleration of newer cards."
+msgstr ""
+"Tämä ajuri vaaditaan täyden 3D-kokemuksen saavuttamiseksi joillain AMD:n "
+"(ATI) grafiikkapiireillä. Myös jotkin uudemmat AMD:n (ATI) grafiikkapiirit "
+"vaativat tämän kelvollisen 2D-kokemuksen takaamiseksi."
+
+#: ../examples/handlers/sl_modem.py:15 ../data/handlers/sl_modem.py:15
+msgid "Software modem"
+msgstr "Ohjelmistomodeemi"
+
+#: ../examples/handlers/sl_modem.py:17 ../data/handlers/sl_modem.py:17
+msgid ""
+"This driver enables the usage of many software modems, as commonly found in "
+"laptops.\n"
+"\n"
+"If this driver is not enabled, you will not be able to use your modem."
+msgstr ""
+"Tämä ajuri mahdollistaa useiden ohjelmistomodeemien käytön, joita on usein "
+"kannettavissa tietokoneissa.\n"
+"\n"
+"Jos tämä ajuri ei ole asennettu, modeemi ei toimi."
+
+#: ../examples/handlers/vmware-client.py:17
+#: ../data/handlers/vmware-client.py:17
+msgid "VMWare Client Tools"
+msgstr "VMware-asiakkaan työkalut"
+
+#: ../examples/handlers/vmware-client.py:18
+#: ../data/handlers/vmware-client.py:18
+msgid "Install VMWare client drivers and tools"
+msgstr "Asenna VMware-asiakkaan ajurit ja työkalut"
+
+#: ../examples/handlers/vmware-client.py:19
+#: ../data/handlers/vmware-client.py:19
+msgid ""
+"Install the VMWare client drivers and tools for your VMWare based Ubuntu "
+"installation.\n"
+"\n"
+"This should help you use Ubuntu in your VM."
+msgstr ""
+"Asenna VMWare työasema ajurit ja työkalut tähän VMWare pohjaiseen Ubuntu "
+"järjestelmään.\n"
+"\n"
+"Siitä on selvä hyöty kun käyttää Ubuntua VM:n kautta."
+
+#: ../backend/jockey-backend.py:32
+msgid "Enable debugging messages."
+msgstr "Ota käyttöön virheenjäljitysviestit."
+
+#: ../backend/jockey-backend.py:35
+msgid "Write logging messages to a file instead to stderr."
+msgstr ""
+"Kirjoita lokiviesit tiedostoon standardivirheulostulon (stderr) sijaan."
+
+#: ../backend/jockey-backend.py:38
+msgid "Timeout for D-BUS service (default: 600, 0: run forever)"
+msgstr "D-BUS-palvelun aikakatkaisu (oletus: 600, 0: suorita ikuisesti)"
+
+#: ../backend/jockey-backend.py:41
+msgid "Add a custom handler directory."
+msgstr "Lisää oma käsittelijän hakemisto."
+
+#: ../backend/jockey-backend.py:44
+msgid "Run on session D-BUS (only for testing)"
+msgstr "Suorita istunto-D-BUS:ssa (vain testaukseen)"
+
+#: ../backend/jockey-backend.py:46
+msgid "Use a different target kernel version than the currently running one."
+msgstr "Käytä eri kohdeydinversiota kuin mikä on tällä hetkellä käynnissä."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:1
+msgid "Get information about local device drivers"
+msgstr "Tietoja paikallisista laiteajureista"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:2
+msgid "To query the device drivers, you need to authenticate."
+msgstr "Laiteajurien etsintä vaatii tunnistautumisen."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:3
+msgid ""
+"Check for newly available drivers for, and used drivers on this system"
+msgstr ""
+"Tarkista järjestelmälle saatavilla olevat uudet ajurit ja jo käytössä olevat "
+"ajurit."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:4
+msgid "To check the driver status, you need to authenticate."
+msgstr "Ajureiden tilan tarkistaminen vaatii tunnistautumista."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:5
+msgid ""
+"Query local and remote driver databases for updated drivers for the system"
+msgstr ""
+"Hae tietoja paikallisesti ja etätietokannoista järjestelmälle olevista "
+"päivitetyistä ajureista"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:6
+msgid "To query the driver databases for updates, you need to authenticate."
+msgstr ""
+"Ajuritietokantojen tarkistus päivitysten varalta vaatii tunnistautumisen."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:7
+msgid "Install or remove device drivers"
+msgstr "Asenna tai poista laiteajureita"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:8
+msgid "To install or remove device drivers, you need to authenticate."
+msgstr "Ajureiden asentaminen tai poistaminen vaatii tunnistautumista."
+
+#: ../examples/handlers/nvidia.py:26 ../data/handlers/nvidia.py:28
+msgid "NVIDIA accelerated graphics driver"
+msgstr "NVIDIA-näytönohjaimien ajuri"
+
+#: ../examples/handlers/nvidia.py:27
+msgid "3D-accelerated proprietary graphics driver for NVIDIA cards."
+msgstr "NVIDIA-näytönohjaimien rajoitettu 3D-ajuri"
+
+#: ../examples/handlers/nvidia.py:29
+msgid ""
+"This driver is required to fully utilise the 3D potential of NVIDIA graphics "
+"cards, as well as provide 2D acceleration of newer cards.\n"
+"\n"
+"If you wish to enable desktop effects, this driver is required.\n"
+"\n"
+"If this driver is not enabled, you will not be able to enable desktop "
+"effects and will not be able to run software that requires 3D acceleration, "
+"such as some games."
+msgstr ""
+"Tämä ajuri vaaditaan NVIDIA-näytönohjaimien 3D-ominaisuuksien käyttämiseksi "
+"sekä myös 2D-kiihdytykseen uudemmilla korteilla.\n"
+"\n"
+"Jos haluat käyttää työpöytätehosteita, tämä ajuri vaaditaan.\n"
+"\n"
+"Jos tätä ajuria ei käytetä, et voi ottaa työpöytätehosteita käyttöön etkä "
+"voi suorittaa sovelluksia jotka vaativat 3D-kiihdytystä, kuten joitain "
+"pelejä."
+
+#~ msgid "Restricted Hardware Drivers"
+#~ msgstr "Rajoitetut laiteajurit"
+
+#~ msgid "Hardware Drivers"
+#~ msgstr "Laiteajurit"
+
+#, python-format
+#~ msgid ""
+#~ "Proprietary drivers do not have public source code that %(os)s developers "
+#~ "are free to modify. They represent a risk to you because they are only "
+#~ "available on the types of computer chosen by the manufacturer, and security "
+#~ "updates to them depend solely on the responsiveness of the manufacturer. "
+#~ "%(os)s cannot fix or improve these drivers."
+#~ msgstr ""
+#~ "Suljetun lähdekoodin ajureista ei ole saatavilla julkista lähdekoodia, jota "
+#~ "%(os)s-kehittäjät voisivat muokata vapaasti. Suljettujen ajureiden käyttö on "
+#~ "riski, sillä ne ovat saatavilla vain valmistajan valitsemiin "
+#~ "tietokonetyyppeihin, ja niiden tietoturvapäivitykset riippuvat täysin "
+#~ "ajurien valmistajasta. %(os)s-kehittäjät eivät voi korjata tai parannella "
+#~ "tällaisia ajureita."
+
+#~ msgid "System policy prevents checking driver status"
+#~ msgstr "Järjestelmän valtuutussääntö estää ajuritilanteen tarkistamisen"
+
+#~ msgid "System policy prevents installation/removal of device drivers"
+#~ msgstr ""
+#~ "Järjestelmän valtuutussääntö estää laiteajureiden asennuksen tai poiston"
+
+#~ msgid "System policy prevents querying device drivers"
+#~ msgstr "Järjestelmän valtuutussääntö estää tietojen noudon laiteajureista"
+
+#~ msgid "System policy prevents querying driver databases for updates"
+#~ msgstr ""
+#~ "Järjestelmän valtuutussääntö estää tietokannoista päivitystietojen noudon"
+
+#~ msgid "ATI/AMD proprietary FGLRX graphics driver"
+#~ msgstr "ATI/AMD:n suljettu FGLRX-grafiikka-ajuri"
+
+#~ msgid "3D-accelerated proprietary graphics driver for ATI cards."
+#~ msgstr "ATI-näytönohjaimien rajoitettu 3D-ajuri"
+
+#~ msgid ""
+#~ "This driver is required to fully utilise the 3D potential of some ATI "
+#~ "graphics cards, as well as provide 2D acceleration of newer cards."
+#~ msgstr ""
+#~ "Tämä ajuri vaaditaan tavallista nopeampaan 3D-käyttöön ATI-näytönohjaimilla, "
+#~ "sekä myös 2D-kiihdytykseen uusimmilla korteilla."
+
+#~ msgid "Cannot connect to D-BUS"
+#~ msgstr "D-BUSiin ei voi yhdistää"

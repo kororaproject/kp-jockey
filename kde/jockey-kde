@@ -1,0 +1,472 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# (c) 2007 Canonical Ltd.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+'''KDE user interface implementation.'''
+
+import sys
+import os.path
+import re
+
+from PyQt4.QtCore import QStringList, SIGNAL
+import PyQt4.QtGui
+from PyQt4 import uic
+from PyKDE4.kdecore import KAboutData, ki18n, KCmdLineArgs, KComponentData
+from PyKDE4.kdeui import KApplication, KIcon, KMessageBox, KNotification, KDialogButtonBox
+
+import jockey.ui
+from jockey.oslib import OSLib
+
+class JockeyTreeWidgetItem(PyQt4.QtGui.QTreeWidgetItem):
+    '''A subclassed QTreeWidgetItem that can store its handler.
+
+    A workaround for the Model/View framework which will be implemented later
+    on.
+    '''
+    def __init__(self, handler_id, parent=None):
+        super(JockeyTreeWidgetItem, self).__init__(parent)
+        self.handler_id = handler_id
+
+class UIDialog(PyQt4.QtGui.QDialog):
+    '''Dialog wrapper which provides .ui file loading'''
+
+    def __init__(self, ui, parent=None):
+        super(UIDialog, self).__init__(parent)
+        # find the .ui file
+        dirs = [os.path.dirname(sys.argv[0]), '/usr/local/share/jockey',
+            '/usr/share/jockey']
+        for d in dirs:
+            uifile = os.path.join(d, ui)
+            if os.path.exists(uifile):
+                PyQt4.uic.loadUi(uifile, self)
+                break
+        else:
+            raise SystemError, 'did not find %s in any of ' % ui + ' '.join(dirs)
+
+class ManagerWindowKDE4(UIDialog):
+    def __init__(self, parent=None):
+        super(ManagerWindowKDE4, self).__init__('ManagerWindowKDE4.ui', parent)
+
+class ProgressDialog(UIDialog):
+    def __init__(self, parent=None):
+        super(ProgressDialog, self).__init__('ProgressDialog.ui', parent)
+
+class LicenseDialog(UIDialog):
+    def __init__(self, parent=None):
+        super(LicenseDialog, self).__init__('LicenseDialog.ui', parent)
+
+class KDEUI(jockey.ui.AbstractUI):
+    '''KDE user interface implementation.'''
+
+    keyb_trans_re = re.compile('(?<! _) _ (?! _)', re.X)
+
+    def convert_keybindings(self, str):
+        return self.keyb_trans_re.sub('&', str)
+
+    def ui_init(self):
+        '''Initialize UI.'''
+
+        self.mw = ManagerWindowKDE4()
+
+        # set icon
+        jockeyIcon = KIcon('jockey-kde')
+
+        # Prep KNotification
+        self.mw.notify = KNotification('Drivers', None, KNotification.Persistent)
+        self.mw.notify.setComponentData(KComponentData("jockey"))
+
+        self.mw.notify.setPixmap(jockeyIcon.pixmap(22,22))
+        stringList = QStringList("Manage drivers")
+        stringList.append("Ignore")
+        self.mw.notify.setActions(stringList)
+
+        # connect the notification signals
+        self.mw.connect(self.mw.notify,
+                        SIGNAL('action1Activated()'),
+                        self.open_app);
+
+        # Set window icon
+        self.mw.setWindowIcon(jockeyIcon)
+
+        # connect signals
+        self.mw.connect(self.mw.buttonBox, SIGNAL('rejected()'), self.on_buttonBox_rejected)
+        self.mw.connect(self.mw, SIGNAL('rejected()'), self.on_buttonBox_rejected) # A minor hack, but since we now exit with sys.exit(  ) - we will avoid a Segmentation fault
+                                                                                 # This is not the best fix, but is 100x better than no fix.
+        self.mw.connect(self.mw.buttonBox, SIGNAL('helpRequested()'),
+                        self.on_buttonBox_helpRequested)
+
+        self.mw.connect(self.mw.button_toggle, SIGNAL('clicked()'),
+                          self.on_button_toggle_clicked)
+
+        # Set Logo
+        self.mw.logo_image.setPixmap(jockeyIcon.pixmap(48,48))
+
+        # disable help button if help is not available
+        if not OSLib.inst.ui_help_available(self):
+            self.mw.buttonBox.setStandardButtons(KDialogButtonBox.Close)
+
+        # load progress dialog UI
+        self.progress_ui = ProgressDialog(self.mw)
+
+        # load license dialog UI
+        self.dialog_licensetext_ui = LicenseDialog(self.mw)
+        self.dialog_licensetext_ui.setWindowTitle(self.string_license_dialog_title)
+
+        # connect signals
+        self.mw.connect(self.mw.linkbutton_licensetext, SIGNAL('leftClickedUrl()'),
+                        self.on_linkbutton_licensetext_leftClickedUrl)
+
+        # connect the signals
+        self.progress_ui.connect(self.progress_ui.buttonCancel, SIGNAL('clicked()'),
+                          self.on_buttonCancel_clicked)
+
+        # we have to connect this signal here, but that still is a
+        # bad solution.
+        self.mw.connect(self.mw.treeview_drivers,
+                        SIGNAL('currentItemChanged(QTreeWidgetItem*, QTreeWidgetItem* )'),
+                        self.on_treeview_drivers_currentItemChanged)
+
+        self.mw.setWindowTitle(self.main_window_title())
+        self.mw.label_license_label.setText(self.string_license_label)
+        self.mw.linkbutton_licensetext.setText('(%s)' % self.string_details)
+
+    def set_help_button_visible(self, buttonbox, is_visible):
+        for myButton in buttonbox.buttons():
+            # if it is a help button
+            if buttonbox.buttonRole(myButton) == 4:
+                myButton.setVisible(is_visible)
+
+    def ui_show_main(self):
+        '''Show the main window.'''
+
+        # update tree model
+        self.update_driver_info_ui(None)
+        self.update_tree_model()
+
+        # show help button?
+        if not OSLib.inst.ui_help_available(self):
+            self.set_help_button_visible(self.mw.buttonBox, False)
+
+        self.mw.show()
+
+    def ui_main_loop(self):
+        '''Main loop for the user interface.'''
+
+        KApplication.exec_() #MIGHT NEED TO INITIALISE KApp at some point
+
+    def error_message(self, title, text):
+        '''Present an error message box.'''
+
+        text = '<h3>' + title + '</h3>' + text
+
+        msgbox = KMessageBox.sorry(None, text, title, KMessageBox.Notify)
+
+        # KMessageBox returns nothing in this case, but when it closes we can return true (I think...)
+        return True
+
+    def confirm_action(self, title, text, subtext=None, action=None):
+        '''Present a confirmation dialog.
+
+        If action is given, it is used as button label instead of the default
+        'Continue'.  Return True if the user confirms, False otherwise.
+        '''
+        text = '<h3>%s</h3>' % text
+        if subtext:
+            text += subtext
+        text = text.replace('\n', '<br/>')
+        # FIXME: action doesn't replace the default button label "continue".
+        # The Hardy release doesn't either though...
+        msgbox = KMessageBox.warningContinueCancel(self.mw, text, title)
+
+        if msgbox == KMessageBox.Continue:
+            return True
+        elif msgbox == KMessageBox.Cancel:
+            return False
+
+    def ui_notification(self, title, text):
+        '''Present a notification popup.
+
+        This should preferably create a tray icon. Clicking on the tray icon or
+        notification should run the GUI.
+        '''
+        self.mw.notify.setTitle(title)
+        self.mw.notify.setText(text)
+        self.mw.notify.sendEvent()
+
+    def open_app(self, argument = None):
+        '''Tray activation callback, launch the elevated app.'''
+
+        self.ui_show_main()
+
+    def ui_idle(self):
+        '''Redraw app while external package manager progresses.'''
+
+        KApplication.processEvents()
+
+    def ui_progress_start(self, title, description, total):
+        '''Create a progress dialog.'''
+
+        # hint: you achieve the indeterminate value by setting
+        # both min and max to 0
+
+        if(total == -1):
+            total = 0
+
+        self.progress_ui.progressBar.setRange(0, total)
+
+        # set translations
+        self.progress_ui.setWindowTitle(title)
+        self.progress_ui.description.setText(description)
+
+        self.progress_ui.show()
+        self.cancel_progress = False 
+
+    def ui_progress_update(self, current, total):
+        '''Update status of current progress dialog.
+
+        current/total specify the number of steps done and total steps to
+        do, or -1 if it cannot be determined. In this case the dialog should
+        display an indeterminated progress bar (bouncing back and forth).
+
+        This should return True to cancel, and False otherwise.
+        '''
+        if current < 0 or total < 0:
+            # indeterminated mode
+            if self.progress_ui.progressBar.maximum() != 0:
+                self.progress_ui.progressBar.setRange(0, 0)
+        else:
+            self.progress_ui.progressBar.setRange(0, total)
+            self.progress_ui.progressBar.setValue(current)
+
+        return self.cancel_progress
+
+    def ui_progress_finish(self):
+        '''Close the current progress dialog.'''
+
+        self.progress_ui.close()
+
+    # callbacks
+    def on_buttonBox_rejected(self):
+        '''Callback for clicked Close button.'''
+
+        self.mw.close()
+        # Ugly hack since pyqt doesn't seem to exit the main loop
+        # without segfaulting since the class is not a subclass of
+        # a QDialog or of something related to QT.
+        if __name__ == '__main__':# don't break the tests
+            sys.exit()
+
+    def on_buttonBox_helpRequested(self):
+        '''Callback for clicked Help button.'''
+
+        OSLib.inst.ui_help(self)
+        return True
+
+    def on_button_toggle_clicked(self):    
+        item = self.mw.treeview_drivers.currentItem()
+        if item:
+            self.mw.treeview_drivers.setEnabled(False)
+            self.mw.button_toggle.setEnabled(False)
+            h_id = item.handler_id
+            if self.set_handler_enable(h_id, 'toggle', False):
+                self.update_tree_model()
+            self.mw.treeview_drivers.setEnabled(True)
+            self.mw.button_toggle.setEnabled(True)
+        return True
+
+    def on_treeview_drivers_currentItemChanged(self, old, new):
+        if new:
+            item = self.mw.treeview_drivers.currentItem()
+            if item:
+                h_id = item.handler_id
+                self.update_driver_info_ui(h_id)
+        return True
+
+    def on_buttonCancel_clicked(self):
+        '''Callback for cancelling the progress dialog.'''
+
+        self.cancel_progress = True
+        return True
+
+    def update_tree_model(self):
+        '''Updates the tree model with up to date information.
+
+        Unfortunately, due to time contraints, the KDE frontend does not use a
+        Model/View framework yet.'''
+
+        # we have to workaround the model/view with a subclassed
+        # QTreeWidgetItem
+
+        self.mw.label_heading.setText('<b>%s</b><br/><br/>%s' % self.main_window_text())
+
+        # keep current selection if we have one
+        cur_item = self.mw.treeview_drivers.currentItem()
+        if cur_item:
+            cur_handler = cur_item.handler_id
+            cur_item = None
+        else:
+            cur_handler = None
+
+        # first clear the list
+        self.mw.treeview_drivers.clear()
+
+        # then repopulate
+        for h_id in self.get_displayed_handlers():
+            info = self.get_ui_driver_info(h_id)
+            if info['needs_reboot']:
+                icon = KIcon('system-reboot')
+            elif info['enabled']:
+                icon = KIcon('jockey-enabled')
+            else:
+                icon = KIcon('jockey-disabled')
+
+            # load the item
+            # here we make use of the subclassed QTreeWidgetItem
+            i = JockeyTreeWidgetItem(h_id, self.mw.treeview_drivers)
+            i.setIcon(0, icon)
+            i.setText(1, info['name'])
+            if h_id == cur_handler:
+                cur_item = i
+
+        # Sort the items in alphabetical order
+        self.mw.treeview_drivers.sortItems (1, PyQt4.QtCore.Qt.AscendingOrder)
+
+        # We want to adjust the columns and expand the tree.
+        self.mw.treeview_drivers.expandAll()
+        self.mw.treeview_drivers.resizeColumnToContents(0)
+        self.mw.treeview_drivers.resizeColumnToContents(1)
+
+        # if we previously had a selection, restore it, otherwise select the
+        # first one
+        if not cur_item:
+            cur_item = self.mw.treeview_drivers.topLevelItem(0)
+        if cur_item:
+            self.mw.treeview_drivers.setCurrentItem(cur_item)
+            self.update_driver_info_ui(cur_item.handler_id)
+
+    def update_driver_info_ui(self, handler_id):
+        '''Update UI elements which show the driver details.
+
+        If handler_id is None, then no driver is selected, no information
+        shown, and the appropriate controls are disabled.'''
+
+#        info = self.get_ui_driver_info(unicode(handler_id))
+        info = self.get_ui_driver_info(handler_id)
+        self.mw.label_drivername.setText('<b>%s</b>' % info['name'])
+        self.current_driver_name = info['name']
+        self.mw.textview_description.setText(info['description'])
+        self.mw.button_toggle.show()
+
+        if info['certified'] == None:
+            self.mw.image_certification.hide()
+        elif info['certified']:
+            self.mw.image_certification.setPixmap(KIcon('jockey-certified.svg').pixmap(16,16))
+            self.mw.image_certification.show()
+        else:
+            self.mw.image_certification.setPixmap(KIcon('dialog-warning').pixmap(16,16))
+            self.mw.image_certification.show()
+
+        self.mw.label_certification.setText(info['certification_label'])
+
+        if info['free'] == None:
+            self.mw.image_license.hide()
+            self.mw.label_license_label.hide()
+        elif info['free']:
+            self.mw.image_license.setPixmap(KIcon('jockey-free').pixmap(16,16))
+            self.mw.image_license.show()
+            self.mw.label_license_label.show()
+        else:
+            self.mw.image_license.setPixmap(KIcon('jockey-proprietary.svg').pixmap(16,16))
+            self.mw.image_license.show()
+            self.mw.label_license_label.show()
+
+        self.mw.label_license.setText(info['license_label'])
+
+        if info['license_text']:
+            self.mw.linkbutton_licensetext.show()
+            self.current_license_text = info['license_text']
+        else:
+            self.mw.linkbutton_licensetext.hide()
+            self.current_license_text = None
+
+        enabledIcon = KIcon("jockey-enabled")
+        disabledIcon = KIcon("jockey-disabled")
+        if info['enabled'] == None:
+            self.mw.image_enabled.hide()
+        elif info['needs_reboot']:
+            self.mw.button_toggle.hide()
+            self.mw.image_enabled.setPixmap(KIcon('system-reboot').pixmap(16,16))
+            self.mw.image_enabled.show()
+        elif info['enabled']:
+            self.mw.image_enabled.setPixmap(enabledIcon.pixmap(16,16))
+            self.mw.image_enabled.show()
+        else:
+            self.mw.image_enabled.setPixmap(disabledIcon.pixmap(16,16))
+            self.mw.image_enabled.show()
+
+        self.mw.label_status.setText(info['status_label'])
+
+        if not info['button_toggle_label']:
+            self.mw.button_toggle.setText(self.string_button_enable)
+            self.mw.button_toggle.setEnabled(False)
+        else:
+            self.mw.button_toggle.setEnabled(True)
+            self.mw.button_toggle.setText(info['button_toggle_label'])
+            if info['enabled']:
+                self.mw.button_toggle.setIcon(disabledIcon)
+            else:
+                self.mw.button_toggle.setIcon(enabledIcon)
+
+    def on_linkbutton_licensetext_leftClickedUrl(self):
+        self.dialog_licensetext_ui.label_license_drivername.setText('<b>%s</b>' %
+            self.current_driver_name)
+        self.dialog_licensetext_ui.textview_license_text.setPlainText(self.current_license_text)
+        self.dialog_licensetext_ui.show()
+        return True
+
+appName = 'jockey'
+catalog = ''
+programName = ki18n ('Jockey')
+version = '0.5.7'
+description = ki18n ('Jockey driver manager')
+license = KAboutData.License_GPL
+copyright = ki18n('(c) 2007, 2008 Canonical Ltd')
+text = ki18n ('none')
+homePage = 'https://launchpad.net/jockey'
+bugEmail = "https://launchpad.net/ubuntu/+source/jockey/+filebug"
+
+#generates the about data entry from the provided information.
+aboutData = KAboutData(appName, catalog, programName, version, description, license, copyright, text, homePage, bugEmail)
+
+aboutData.addAuthor(ki18n('Martin Pitt'), ki18n('Main author'))
+aboutData.addAuthor(ki18n('Jonathan Thomas'), ki18n('Work on PyQt4 to PyKDE4 port')) 
+aboutData.addAuthor(ki18n('Alberto Milone'), ki18n('Work on PyQt4 to PyKDE4 port'))
+
+if __name__ == '__main__':
+    # We need a copy of sys.argv for ui.py to use
+    argscopy = sys.argv
+    # We don't want KCmdLineArgs to parse our cmd line args but it'll need 
+    # something... Just give it nothing and let ui.py worry about args.
+    sys.argv = [""]
+
+    KCmdLineArgs.init(sys.argv, aboutData)
+    kapp = KApplication()
+
+    sys.argv = argscopy
+    u = KDEUI()
+    sys.exit(u.run())

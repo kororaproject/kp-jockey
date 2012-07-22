@@ -1,0 +1,630 @@
+# Tibetan translation for jockey
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the jockey package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: jockey\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-05 06:47+0100\n"
+"PO-Revision-Date: 2011-02-28 09:59+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Tibetan <bo@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-03-06 04:37+0000\n"
+"X-Generator: Launchpad (build 14900)\n"
+"Language: bo\n"
+
+#: ../text/jockey-text.py:72
+msgid "Please enter 'y' or 'n' and press Enter"
+msgstr "“y”འམ“n”ཡིག་འཇུག་བྱས་ནས་ཐག་གཅོད་མཐེབ་མནན་རོགས"
+
+#: ../text/jockey-text.py:74
+msgid "y\n"
+msgstr "y\n"
+
+#: ../text/jockey-text.py:76
+msgid "n\n"
+msgstr "n\n"
+
+#: ../kde/autostart/jockey-kde.desktop.in.h:1
+#: ../gtk/autostart/jockey-gtk.desktop.in.h:1
+msgid "Check for new hardware drivers"
+msgstr "སྲ་སྡེར་སྒུལ་གཏོང་གསར་བ་ལ་འཚོལ་ཞིབ་བྱེད་པ"
+
+#: ../kde/autostart/jockey-kde.desktop.in.h:2
+#: ../gtk/autostart/jockey-gtk.desktop.in.h:2
+msgid "Notify about new hardware drivers available for the system"
+msgstr "སྲ་སྡེར་ལ་སྒུལ་གཏོང་གསར་བ་ཡོད་དུས་གསལ་འདེབས་བྱེད་པ"
+
+#: ../jockey/ui.py:121
+msgid ""
+"Cannot connect to D-BUS, please use the --no-dbus option as root to use "
+"jockey without it."
+msgstr ""
+
+#: ../jockey/ui.py:132 ../jockey/ui.py:145
+msgid "Searching for available drivers..."
+msgstr "སྤྱོད་རུང་བའི་སྒུལ་གཏོང་འཚོལ་བཤེར..."
+
+#: ../jockey/ui.py:170
+msgid "Component"
+msgstr "ལྷུ་ཆས"
+
+#: ../jockey/ui.py:171
+msgid "_Enable"
+msgstr "སྤྱོད་པ(_E)"
+
+#: ../jockey/ui.py:172
+msgid "_Disable"
+msgstr "སྤྱོད་མཚམས་འཇོག་པ(_D)"
+
+#: ../jockey/ui.py:173
+msgid "Enabled"
+msgstr "སྤྱད"
+
+#: ../jockey/ui.py:174
+msgid "Disabled"
+msgstr "སྤྱོད་མཚམས་བཞག"
+
+#: ../jockey/ui.py:175
+msgid "Status"
+msgstr "གནས་སྟངས"
+
+#: ../jockey/ui.py:176
+msgid "Needs computer restart"
+msgstr "རྩིས་འཁོར་སྒོ་སྐྱར་དུ་ཕྱེ་བ"
+
+#: ../jockey/ui.py:177
+msgid "In use"
+msgstr "སྤྱོད་བཞིན་པའི་སྒང"
+
+#: ../jockey/ui.py:178
+msgid "Not in use"
+msgstr "བེད་མི་སྤྱོད་པ"
+
+#: ../jockey/ui.py:179
+msgid "License:"
+msgstr "ཆོག་པ："
+
+#: ../jockey/ui.py:180
+msgid "details"
+msgstr "ཞིབ་ཕྲ"
+
+#. this is used in the GUI and in --list output to denote free/restricted drivers
+#: ../jockey/ui.py:182
+msgid "Free"
+msgstr "རང་མོས"
+
+#. this is used in the GUI and in --list output to denote free/restricted drivers
+#: ../jockey/ui.py:184
+msgid "Proprietary"
+msgstr "གཅིག་དབང་མཉེན་ཆས"
+
+#: ../jockey/ui.py:185
+msgid "Download in progress"
+msgstr "འཕེལ་རིམ་ནང་དུ་ལེན་འཇུག"
+
+#: ../jockey/ui.py:186
+msgid "Unknown driver"
+msgstr "མི་ཤེས་པའི་སྒུལ་གཏོང"
+
+#: ../jockey/ui.py:187
+msgid "You are not authorized to perform this action."
+msgstr "བཀོལ་སྤྱོད་འདི་ཁྱོད་ལ་ལག་སྟར་བྱེད་པའི་དབང་ཆ་མི་འདུག"
+
+#. %s is the name of the operating system
+#: ../jockey/ui.py:189
+#, python-format
+msgid "Tested by the %s developers"
+msgstr "%sཡི་ཚད་ལེན་ཚོད་ལྟ་གསར་སྤེལ་མཁན"
+
+#. %s is the name of the operating system
+#: ../jockey/ui.py:191
+#, python-format
+msgid "Not tested by the %s developers"
+msgstr "%s ཡི་ཚད་ལེན་ཚོད་ལྟ་གསར་སྤེལ་མཁན་མེད་པ"
+
+#. this is used when one version of a driver is recommended over others
+#: ../jockey/ui.py:193
+msgid "Recommended"
+msgstr "འོས་སྦྱོར"
+
+#: ../jockey/ui.py:194
+msgid "License Text for Device Driver"
+msgstr "སྒྲིག་འགོད་སྒུལ་གཏོང་གི་ཆོག་མཆན་མ་དེབ"
+
+#: ../jockey/ui.py:195
+msgid "Install Drivers"
+msgstr "སྒུལ་གཏོང་སྒྲིག་འཇུག"
+
+#: ../jockey/ui.py:204
+msgid "Restricted Additional Drivers"
+msgstr "ཚད་འཛིན་ཅན་གྱི་སྲ་སྡེར་སྒུལ་ཆས"
+
+#: ../kde/jockey-kde.desktop.in.h:1 ../jockey/ui.py:206 ../jockey/ui.py:582
+#: ../jockey/ui.py:590 ../jockey/ui.py:598 ../jockey/ui.py:802
+#: ../gtk/jockey-gtk.desktop.in.h:1
+msgid "Additional Drivers"
+msgstr "ཟུར་སྣོན་སྒུལ་ཆས"
+
+#: ../jockey/ui.py:216
+msgid "Driver search results"
+msgstr "སྒུལ་གཏོང་གི་འབྲས་བུ"
+
+#: ../jockey/ui.py:232
+msgid ""
+"Proprietary drivers are being used to make this computer work properly."
+msgstr ""
+"རྩིས་འཁོར་གྱི་རྒྱུན་ལྡན་གྱི་ལས་ཀའི་ཆེད་ཚད་ཐེབས་པའི་སྒུལ་གཏང་བྱ་རིམ་བེད་སྤྱོད་"
+"པ"
+
+#: ../jockey/ui.py:235
+msgid "No proprietary drivers are in use on this system."
+msgstr "མ་ལག་འདིའི་ཐོག་གཅིག་དབང་གི་སྒུལ་གཏོང་མེད་པ"
+
+#. %(os)s stands for the OS name. Prefix it or suffix it,
+#. but do not replace it.
+#: ../jockey/ui.py:241
+#, python-format
+msgid ""
+"Proprietary drivers do not have public source code that %(os)s developers "
+"are free to modify. Security updates and corrections depend solely on the "
+"responsiveness of the manufacturer. %(os)s cannot fix or improve these "
+"drivers."
+msgstr ""
+"སྒེར་གྱི་སྒུལ་ཆས་ལ་%(os)s་དར་སྤེལ་མཁན་གྱིས་རང་མོས་ལྟར་བཟོ་བཅོས་ནུས་པའི་སྤྱི་ས"
+"ྤྱོད་ཐོག་མའི་ཨང་སྒྲིག་མེད་པ། "
+"དེའི་གསར་སྒྱུར་དང་བཟོ་བཅོས་ནི་བཟོ་གྲྭ་སོ་སོར་ལ་དབང་པ་དང་%(os)sཡིས་སྒུལ་ཆས་འདི"
+"་དག་དར་སྤེལ་དང་བཟོ་བཅོས་བྱེད་མི་ཐུབ།"
+
+#: ../jockey/ui.py:254
+msgid "Graphics driver"
+msgstr "དབྱིབས་རིས་སྒུལ་ཆས"
+
+#: ../jockey/ui.py:256
+msgid "Firmware"
+msgstr "སྲ་ལྷུ"
+
+#: ../jockey/ui.py:258
+msgid "Device driver"
+msgstr "སྒྲིག་འགོད་སྒུལ་གཏོང"
+
+#: ../jockey/ui.py:268
+#, python-format
+msgid "version %s"
+msgstr "པར་གཞི %s"
+
+#: ../jockey/ui.py:322
+msgid "_Remove"
+msgstr "སུབ་འདོར(_R)"
+
+#: ../jockey/ui.py:324
+msgid "_Deactivate"
+msgstr "སྤྱོད་མཚམས་འཇོག་པ_D)"
+
+#: ../jockey/ui.py:326
+msgid "This driver is activated and currently in use."
+msgstr "སྒུལ་གཏོང་འདི་བེད་སྤྱོད་ཞོར་སྒུལ་སློང་བྱས་ཟིན་པ"
+
+#: ../jockey/ui.py:330
+msgid "You need to restart the computer to activate this driver."
+msgstr ""
+"ཁྱོད་ཀྱིས་གློག་ཀླད་འགོ་སྐྱར་འཛུགས་བྱས་ནས་སྒུལ་གཏོང་འདི་སྒུལ་སློང་བྱེད་པ"
+
+#: ../jockey/ui.py:332
+msgid "This driver is activated but not currently in use."
+msgstr "སྒུལ་གཏོང་འདི་སྒུལ་སློང་བྱས་ཟིན་ཡིན་ཡང་བེད་སྤྱོད་མི་འདུག"
+
+#: ../jockey/ui.py:334
+msgid "_Activate"
+msgstr "སྒུལ་སློང(_A)"
+
+#: ../jockey/ui.py:338
+msgid "This driver was just disabled, but is still in use."
+msgstr "སྒུལ་གཏོང་འདི་ད་ལྟ་མཚམས་བཞག་འདུག་ཡིན་ཡང་མུ་མཐུད་དུ་སྤྱོད་པ"
+
+#: ../jockey/ui.py:340
+msgid "A different version of this driver is in use."
+msgstr "སྒུལ་གཏོང་འདིའི་པར་གཞི་གཞན་ཞིག་སྤྱོད་པ"
+
+#: ../jockey/ui.py:342
+msgid "This driver is not activated."
+msgstr "སྒུལ་གཏོང་འདི་སྒུལ་སློང་བྱས་མི་འདུག"
+
+#: ../jockey/ui.py:362
+msgid "Check for newly used or usable drivers and notify the user."
+msgstr ""
+"བེད་སྤྱོད་གསར་བའམ་ཡོངས་ཀྱིས་སྤྱོད་པའི་སྒུལ་གཏོང་དང་བརྡ་ཐོ་བེད་སྤྱོད་མཁན་འཚོལ་"
+"བ"
+
+#: ../jockey/ui.py:365
+msgid "Query driver databases for newly available or updated drivers."
+msgstr ""
+"སྒུལ་གཏོང་གྲངས་མཛོད་བཤེར་འཚོལ་བྱས་ནས་བེད་སྤྱོད་གསར་བའམ་དེ་ལས་གསར་བའི་སྒུལ་གཏོ"
+"ང་འཚོལ་བ།"
+
+#: ../jockey/ui.py:368
+msgid "List available drivers and their status."
+msgstr "སྤྱོད་རུང་བའི་སྒུལ་ཆས་དང་དེ་དག་གི་གནས་སྟངས་ཐོ་འགོད་བྱེད་པ"
+
+#: ../jockey/ui.py:371
+msgid "Enable drivers that can be automatically installed."
+msgstr "རང་འགུལ་གྱིས་སྒྲིག་འཇུག་རུང་བའི་སྒུལ་ཆས་ནུས་ཡོད་བཟོ་བ"
+
+#: ../jockey/ui.py:374
+msgid "List hardware identifiers from this system."
+msgstr "མ་ལག་འདིའི་སྲ་ལྷུ་མཚོན་རྟགས་ཕྱིར་ལེན་པ"
+
+#: ../jockey/ui.py:377
+msgid "Enable a driver"
+msgstr "སྒུལ་གཏོང་ཞིག་བེད་སྤྱོད་པ"
+
+#: ../jockey/ui.py:380
+msgid "Disable a driver"
+msgstr "སྒུལ་གཏོང་ཞིག་མཚམས་འཇོག་པ"
+
+#: ../jockey/ui.py:383
+msgid "Ask for confirmation for --enable/--disable"
+msgstr "--enable/--disable ཡང་དག་རྩ་གཅོད་"
+
+#: ../jockey/ui.py:386
+msgid ""
+"Check if there is a graphics driver available that supports composite and "
+"offer to enable it"
+msgstr ""
+"Check if there is a graphics driver available that supports composite and "
+"offer to enable it"
+
+#: ../jockey/ui.py:391
+msgid ""
+"Only manage free/nonfree drivers. By default, all available drivers with any "
+"license are presented."
+msgstr ""
+"རིན་མི་དགོས་པ་དང་རིན་དགོས་པའི་སྒུལ་ཆས་ཁོ་ན་དོ་དམ་བྱེད་པ། "
+"སྔོན་སྒྲིག་ལ་དཔང་ཡིག་འདྲ་མིན་སྣ་ཚོགས་ཀྱི་སྤྱོད་རུང་བའི་སྒུལ་ཆས་ཡིན"
+
+#: ../jockey/ui.py:395
+msgid "Run as session D-BUS server."
+msgstr "D-BUSཞབས་ཞུ་བ་འཁོར་སྤྱོད་བྱེད་པ。"
+
+#: ../jockey/ui.py:397
+msgid ""
+"Do not use D-BUS for communicating with the backend. Needs root privileges."
+msgstr ""
+"རྒྱབ་སྣེ་དང་འབྲེལ་འདྲིས་བྱེད་པར D-BUSབེད་མི་སྤྱོད་པ། "
+"རྩ་བའི་བརྒྱུད་ལམ་གྱི་ཆོག་འཆན་དགོས་པ"
+
+#: ../jockey/ui.py:399
+msgid ""
+"Use a different target kernel version than the currently running one. This "
+"is only relevant with --no-dbus."
+msgstr ""
+"Use a different target kernel version than the currently running one. This "
+"is only relevant with --no-dbus."
+
+#: ../jockey/ui.py:539 ../jockey/ui.py:1022
+msgid "Restricted drivers available"
+msgstr "སྒུལ་གཏོང་བེད་སྤྱོད་ཚོད་ལེན་པ"
+
+#: ../jockey/ui.py:540
+msgid ""
+"In order to use your hardware more efficiently, you can enable drivers which "
+"are not free software."
+msgstr ""
+"ཕན་ནུས་ཆ་ཚང་བའི་སྒོ་ནས་སྲ་ཆས་སྤྱོད་དགོས་པའི་ཆེད་དུ་ཁྱོད་ཀྱིས་རིན་དགོས་པའི་སྒུ"
+"ལ་ཆས་ཀྱང་ནུས་ཡོད་བཟོ་རུང་བ"
+
+#: ../jockey/ui.py:543
+msgid "New drivers available"
+msgstr "སྒུལ་གཏོང་བེད་སྤྱོད་གསར་བ"
+
+#: ../jockey/ui.py:544
+msgid "There are new or updated drivers available for your hardware."
+msgstr "ཁྱོད་ཀྱི་སྲ་ཆས་ལ་གསར་བའམ་རིམ་སྤར་གྱི་སྒུལ་གཏོང་འདུག"
+
+#: ../jockey/ui.py:548
+msgid "New restricted drivers in use"
+msgstr "བེད་སྤྱོད་ནང་ཚོད་གསར་བ་ཐེབས་པའི་སྒུལ་གཏོང"
+
+#. %(os)s stands for the OS name. Prefix it or suffix it,
+#. but do not replace it.
+#: ../jockey/ui.py:551
+#, python-format
+msgid ""
+"In order for this computer to function properly, %(os)s is using driver "
+"software that cannot be supported by %(os)s."
+msgstr ""
+"རྩིས་འཁོར་གྱིས་རྒྱུན་ལྡན་ངང་ལས་ཀ་བྱེད་ཐུབ་པའི་ཆེད，%(os)s ་ད་ལྟ་ "
+"%(os)sརོགས་འདེགས་མེད་པའི་བྱ་རིམ་བེད་སྤྱོད་བཞིན་པ"
+
+#: ../jockey/ui.py:577
+msgid ""
+"There is no available graphics driver for your system which supports the "
+"composite extension, or the current one already supports it."
+msgstr ""
+"ཁྱོད་ཀྱི་རྩིས་འཁོར་ཐོག་སྤྱོད་རུང་པར་རིས་འོས་མཐུན་རྒྱ་སྐྱེད་རོགས་འདེགས་མི་འདུག"
+"  ཡང་ན་མིག་སྔའི་སྒུལ་གཏོང་རྒྱབ་སྐྱོར་བྱས་ཟིན་པ"
+
+#: ../jockey/ui.py:583
+msgid "Downloading and installing driver..."
+msgstr "སྒུལ་གཏོང་ལེན་འཇུག་ཞོར་སྒྲིག་འཇུག་བྱེད་པ..."
+
+#: ../jockey/ui.py:591
+msgid "Removing driver..."
+msgstr "སྒུལ་གཏོང་སུབ་འདོར..."
+
+#: ../jockey/ui.py:599
+msgid "Downloading and updating package indexes..."
+msgstr "ད་ལྟ་ལེན་འཇུག་དང་མཉེན་ཆས་ཁུག་མའི་དཀར་ཆག་ཀློག་བཞིན་པ..."
+
+#: ../jockey/ui.py:621
+msgid "Use --list to see available drivers"
+msgstr "--listསྤྱད་ནས་སྤྱོད་རུང་སྒུལ་གཏོང་ལ་ལྟ་བ"
+
+#: ../jockey/ui.py:638
+msgid "Cannot change driver"
+msgstr "སྒུལ་གཏོང་བརྗེ་བཟོ་བྱེད་མི་ཐུབ་པ"
+
+#: ../jockey/ui.py:651
+msgid "Enable driver?"
+msgstr "སྒུལ་གཏོང་བེད་སྤྱོད་པ？"
+
+#: ../jockey/ui.py:654
+msgid "Disable driver?"
+msgstr "སྒུལ་གཏོང་མཚམས་འཇོག་པ？"
+
+#: ../jockey/ui.py:683
+msgid "Sorry, the Jockey backend crashed. Please file a bug at:"
+msgstr ""
+"དགོངས་པ་མ་ཚོམས，Jockey གཞུག་སྣེ་འཐོར་འདུག། "
+"ཁྱོད་ཀྱིས་ནོར་འཁྲུལ་ཁང་ལ་ཡར་ཞུ་བྱེད་རོགས："
+
+#: ../jockey/ui.py:684
+msgid "Trying to recover by restarting backend."
+msgstr ""
+"ད་ལྟ་འགོ་སྐྱར་འཛུགས་བརྒྱུད་ནས་གཞུག་སྣེ་སླར་གསོ་བྱེད་པ་ལ་ཆོད་ལྡན་བྱེད་བཞིན་པ"
+
+#: ../jockey/ui.py:694
+msgid "Sorry, installation of this driver failed."
+msgstr "དགོངས་པ་མ་ཚོམས་，སྒུལ་གཏོང་འདིའི་སྒྲིག་འཇུག་ལེགས་འགྲུབ་བྱུང་མི་འདུག。"
+
+#: ../jockey/ui.py:695
+msgid "Please have a look at the log file for details"
+msgstr "ཉིན་ཐོའི་ཡིག་ཆར་ཆ་འཕྲིན་མང་པོ་ཐོབ་པ་ལ་ལྟ་ཀློག་བྱེད་པ"
+
+#: ../jockey/ui.py:733
+msgid "Download error"
+msgstr "ནོར་འཁྲུལ་ལེན་འཇུག"
+
+#: ../jockey/ui.py:860
+msgid ""
+"Downloading package indexes failed, please check your network status. Most "
+"drivers will not be available."
+msgstr ""
+"མཉེན་ཆས་ཁུག་མའི་དཀར་ཆག་ལེན་འཇུག་ལེགས་འགྲུབ་མ་བྱུང་བས，ཁྱོད་ཀྱི་དྲ་བའི་གནས་སྟངས"
+"་ལ་བརྟག་དཔྱད་བྱེད་པ。སྒུལ་གཏོང་མང་ཆེ་བའི་བྱ་རིམ་བེད་མེད་དུ་འགྱུར་"
+
+#: ../jockey/ui.py:930
+#, python-format
+msgid "Searching driver for %s..."
+msgstr "%sཡི་ཁྱེད་དུ་སྒུལ་གཏོང་བཤེར་འཚོལ.."
+
+#: ../kde/jockey-kde.desktop.in.h:2 ../gtk/jockey-gtk.desktop.in.h:2
+msgid "Configure third-party and proprietary drivers"
+msgstr "ཕྱོགས་གསུམ་པ་དང་གཅིག་དབང་སྒུལ་གཏོང་མཐུན་སྒྲིག་བྱེད་པ"
+
+#: ../examples/handlers/madwifi.py:22 ../data/handlers/madwifi.py:22
+msgid "Alternate Atheros \"madwifi\" driver"
+msgstr "འདེམས་རུང་བའིAtheros \"madwifi\" སྒུལ་གཏོང"
+
+#: ../examples/handlers/madwifi.py:23 ../data/handlers/madwifi.py:23
+msgid "Alternate \"madwifi\" driver for Atheros wireless LAN cards."
+msgstr ""
+"Atheros སྐུད་མེད་ཅུས་འམ་དྲ་བྱང་གིས་འདེམས་རུང་བའི་ \"madwifi\" སྒུལ་གཏོང"
+
+#: ../examples/handlers/madwifi.py:24 ../data/handlers/madwifi.py:24
+msgid ""
+"Only activate this driver if you have problems with your wireless LAN "
+"connection.\n"
+"\n"
+"The free \"ath5k\" driver should work with most Atheros cards nowadays, but "
+"on some computers this alternate (but proprietary) driver still works "
+"better, or at all."
+msgstr ""
+"ཁྱོད་ཀྱི་སྐུད་མེད་ཅུས་སམ་དྲ་བ་སྦྲེལ་མཐུད་ལ་གནད་དོན་ཡོད་སྐབས་ཙམ་ལ་སྒུལ་གཏོང་འད"
+"ི་བེད་སྤྱོད་པ\n"
+"\n"
+"རང་མོས་མཉེན་ཆས \"ath5k\" སྒུལ་གཏོང་གིས་ད་ལྟ་ནུས་པའི་གྲངསAtheros "
+"དྲ་བྱང་དང་མཉམ་དུ་བེད་སྤྱོད་པ། "
+"ཡིན་ཡང་འདེམས་རུང་བའི་སྒུལ་གཏོང་རྩིས་འཁོར་ཁ་ཤས་ཀྱི་ཐོག་སྤྱོད་ཚེ་འབྲས་བཟང་ཐོབ་པ"
+"འམསྔོན་མ་ལས་ཁྱད་དུ་འཕགས་ (ཡིན་ཡང་དེ་མཉེན་ཆས་གཅིག་པོ་ལ་དབང)"
+
+#: ../examples/handlers/madwifi.py:38 ../data/handlers/madwifi.py:38
+#, python-format
+msgid "You removed the configuration file %s"
+msgstr "ཁྱོད་ཀྱིས་མཐུན་སྒྲིག་ཡིག་ཆ་སུབ་འདོར་བྱས་འདུག %s"
+
+#. translators: %s is the path to xorg.conf
+#: ../jockey/xorg_driver.py:99
+#, python-format
+msgid "Reconfiguring X.org video drivers is not possible: %s is invalid."
+msgstr ""
+"X.org སྒུལ་གཏོང་པར་རིས་：%s ཕན་མེད་རེད། བསྐྱར་དུ་སྒྲིག་འགོད་བྱེད་མི་ཐུབ་པ"
+
+#: ../examples/handlers/fglrx.py:17
+msgid "AMD proprietary FGLRX graphics driver"
+msgstr ""
+
+#: ../examples/handlers/fglrx.py:18
+msgid "3D-accelerated proprietary graphics driver for AMD (ATI) cards."
+msgstr ""
+
+#: ../examples/handlers/fglrx.py:20
+msgid ""
+"This driver is required to fully utilise the 3D potential of some AMD (ATI) "
+"graphics cards, as well as provide 2D acceleration of newer cards."
+msgstr ""
+
+#: ../examples/handlers/sl_modem.py:15 ../data/handlers/sl_modem.py:15
+msgid "Software modem"
+msgstr "མཉེན་ཆས་བརྡ་འཕྲིན་བསྒྱུར་ཆས"
+
+#: ../examples/handlers/sl_modem.py:17 ../data/handlers/sl_modem.py:17
+msgid ""
+"This driver enables the usage of many software modems, as commonly found in "
+"laptops.\n"
+"\n"
+"If this driver is not enabled, you will not be able to use your modem."
+msgstr ""
+"This driver enables the usage of many software modems, as commonly found in "
+"laptops.\n"
+"\n"
+"If this driver is not enabled, you will not be able to use your modem."
+
+#: ../examples/handlers/vmware-client.py:17
+#: ../data/handlers/vmware-client.py:17
+msgid "VMWare Client Tools"
+msgstr "VMWare མཛད་སྤྱོད་མཁན་གྱི་ལག་ཆ"
+
+#: ../examples/handlers/vmware-client.py:18
+#: ../data/handlers/vmware-client.py:18
+msgid "Install VMWare client drivers and tools"
+msgstr "VMWare མཛད་སྤྱོད་མཁན་གྱི་སྒུལ་ཆས་དང་ལག་ཆ་སྒྲིག་འཇུག་བྱེད་པ"
+
+#: ../examples/handlers/vmware-client.py:19
+#: ../data/handlers/vmware-client.py:19
+msgid ""
+"Install the VMWare client drivers and tools for your VMWare based Ubuntu "
+"installation.\n"
+"\n"
+"This should help you use Ubuntu in your VM."
+msgstr ""
+
+#: ../backend/jockey-backend.py:32
+msgid "Enable debugging messages."
+msgstr "སྐྱོན་གསོ་བྱེད་ཀྱི་བརྡ་འཕྲིན་ནུས་ཡོད་བཟོ་བ"
+
+#: ../backend/jockey-backend.py:35
+msgid "Write logging messages to a file instead to stderr."
+msgstr "Write logging messages to a file instead to stderr."
+
+#: ../backend/jockey-backend.py:38
+msgid "Timeout for D-BUS service (default: 600, 0: run forever)"
+msgstr ""
+"D-BUS ཞབས་ཞུ་ཡི་དུས་ཡོལ་ཚད(སྔོན་སྒྲིག: 600, 0: དུས་བརྟག་ཏུ་འཁོར་སྐྱོད་བྱེད་པ)"
+
+#: ../backend/jockey-backend.py:41
+msgid "Add a custom handler directory."
+msgstr "རང་བཟོས་ལག་ལེན་ཆས་ཀྱི་འཇུག་ཐོ་ཞིག་ཁ་སྣོན"
+
+#: ../backend/jockey-backend.py:44
+msgid "Run on session D-BUS (only for testing)"
+msgstr "ལེ་ཚན་D-BUSཐོག་ཏུ་འཁོར་སྤྱོད་བྱེད (ཚོད་ལྟ་ཁོ་ནར་ཡིན་པ)"
+
+#: ../backend/jockey-backend.py:46
+msgid "Use a different target kernel version than the currently running one."
+msgstr ""
+"ད་ལྟ་འཁོར་སྐྱོད་བཞིན་པ་མིན་པའི་དམིགས་འཛུགས་ཀྱི་དབུས་སྙིང་གཞན་ཞིག་སྤྱོད་པ"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:1
+msgid "Get information about local device drivers"
+msgstr "གནས་ཡུལ་སྒྲིག་འགོད་སྒུལ་གཏོང་གི་ཆ་འཕྲིན་རེག་པ"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:2
+msgid "To query the device drivers, you need to authenticate."
+msgstr ""
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:3
+msgid ""
+"Check for newly available drivers for, and used drivers on this system"
+msgstr "མ་ལག་འདིའི་བེད་སྤྱོད་དང་སྤྱོད་བཞིན་པའི་སྒུལ་གཏོང་་བརྟག་དཔྱད་བྱེད་པ"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:4
+msgid "To check the driver status, you need to authenticate."
+msgstr ""
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:5
+msgid ""
+"Query local and remote driver databases for updated drivers for the system"
+msgstr ""
+"Query local and remote driver databases for updated drivers for the system"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:6
+msgid "To query the driver databases for updates, you need to authenticate."
+msgstr ""
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:7
+msgid "Install or remove device drivers"
+msgstr "སྒྲིག་འཇུག་གམ་སྒྲིག་འགོད་སྒུལ་གཏོང་ཕྱིར་འདོར་བྱེད་པ"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:8
+msgid "To install or remove device drivers, you need to authenticate."
+msgstr ""
+
+#: ../examples/handlers/nvidia.py:26 ../data/handlers/nvidia.py:28
+msgid "NVIDIA accelerated graphics driver"
+msgstr "NVIDIA སྒུལ་གཏོང་འགྲོས་སྣོན་པར་རིས"
+
+#: ../examples/handlers/nvidia.py:27
+msgid "3D-accelerated proprietary graphics driver for NVIDIA cards."
+msgstr ""
+"NVIDIA ་མངོན་འཆར་བྱང་བུར་གཅིག་དབང་གི་3Dའགྲོས་སྣོན་རིས་དབྱིབས་སྒུལ་གཏོང"
+
+#: ../examples/handlers/nvidia.py:29
+msgid ""
+"This driver is required to fully utilise the 3D potential of NVIDIA graphics "
+"cards, as well as provide 2D acceleration of newer cards.\n"
+"\n"
+"If you wish to enable desktop effects, this driver is required.\n"
+"\n"
+"If this driver is not enabled, you will not be able to enable desktop "
+"effects and will not be able to run software that requires 3D acceleration, "
+"such as some games."
+msgstr ""
+"བདེ་འཇགས་ངང་ NVIDIA བྱང་བུའི་ 3D "
+"བྱེད་ནུས་འདོན་སྤེལ་བྱེད་ཆེད་དམབཟོ་དབྱིབས་གསར་བའི་ 2D "
+"འགྲོས་སྣོན་འདོན་སྤྲོད་བྱེད་ཆེད་སྒུལ་གཏོང་འདི་སྤྱོད་དགོས\n"
+"\n"
+"གལ་སྲིད་ཁྱོད་ཀྱིས་གཙོ་ངོས་ཀྱི་ཁྱད་ནུས་ཁ་ཕྱེ་འདོད་ན། "
+"སྒུལ་གཏོང་འདི་བེད་སྤྱོད་པ\n"
+"\n"
+"སྒུལ་གཏོང་འདི་འགོ་འཛུགས་མ་བྱས་ཚེ，ཁྱོད་ཀྱིས་གཙོ་ངོས་ཀྱི་ཁྱད་ནུས་ཁ་ཕྱེ་མིཐུབ，ཡང"
+"་ན 3D ཁ་སྣོན་མཉེན་ཆསའཁོར་སྐྱོད་བྱེད་མི་ཐུབ（དཔེར་ན་རྩེད་མོ་ཁ་ཤས་བཞིན）"
+
+#~ msgid "ATI/AMD proprietary FGLRX graphics driver"
+#~ msgstr "ATI/AMD གཅིག་པོ་ལ་དབང་བའི FGLRX རིས་དབྱིབས་སྒུལ་གཏོང"
+
+#~ msgid "3D-accelerated proprietary graphics driver for ATI cards."
+#~ msgstr "ATIའཆར་བྱང་གཅིག་པོ་ལ་དབང་བའི་3Dའགྲོས་་སྣོན་རིས་དབྱིབས་སྒུལ་གཏོང"
+
+#~ msgid ""
+#~ "This driver is required to fully utilise the 3D potential of some ATI "
+#~ "graphics cards, as well as provide 2D acceleration of newer cards."
+#~ msgstr ""
+#~ "སྒུལ་གཏོང་འདི་བེད་སྤྱོད་འདང་ངེས་བྱས་ཆོག ATI འཆར་བྱང 3D "
+#~ "ནུས་པ，་དུས་མཚུངས་སུ་འཆར་འདོན་སྤེལ 2Dའགྲོས་སྣོན་གསར་འདོན་བྱེད"
+
+#~ msgid "Cannot connect to D-BUS"
+#~ msgstr "D-BUSལ་སྦྲེལ་མཐུད་བྱེད་མི་ཐུབ་པ"
+
+#~ msgid "System policy prevents checking driver status"
+#~ msgstr "མ་ལག་སྒྲིག་ལམ་གྱིས་སྒུལ་གཏོང་གནས་སྟངས་ཀྱི་བརྟག་དཔྱད་ལ་བཀག་འགོག་བྱས་པ"
+
+#~ msgid "System policy prevents installation/removal of device drivers"
+#~ msgstr ""
+#~ "མ་ལག་སྒྲིག་ལམ་ཀྱིས་སྒྲིག་འགོད་སྒུལ་གཏོང་གི་སྒྲིག་འཇུག་དང་སུབ་འདོར་ལ་བཀག་འགོག་"
+#~ "བྱས་པ"
+
+#~ msgid "System policy prevents querying device drivers"
+#~ msgstr "མ་ལག་སྒྲིག་ལམ་གྱིས་སྒྲིག་འགོད་སྒུལ་གཏོང་བརྟག་དཔྱད་ལ་བཀག་འགོག་བྱས་པ"
+
+#~ msgid "System policy prevents querying driver databases for updates"
+#~ msgstr ""
+#~ "མ་ལག་སྒྲིག་ལམ་གྱིས་སྒུལ་གཏོང་གྲངས་མཛོད་རིམ་སྤར་བརྟག་དཔྱད་བཀག་འགོག་བྱས་པ"
+
+#~ msgid "Hardware Drivers"
+#~ msgstr "སྲ་སྡེར་སྒུལ་གཏོང"

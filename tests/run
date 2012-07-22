@@ -1,0 +1,83 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+'''Run self tests.'''
+
+# (c) 2007 Canonical Ltd.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+import unittest, os.path, sys, logging, os
+
+if len(sys.argv) > 1 and sys.argv[1] == 'coverage':
+    import coverage
+    coverage.erase()
+    coverage.exclude('raise NotImplementedError')
+    coverage.start()
+    use_coverage = True
+    sys.argv = sys.argv[0:1] + sys.argv[2:]
+else:
+    use_coverage = False
+
+if len(sys.argv) > 1:
+    tests = sys.argv[1:]
+else:
+    tests = [t[:-3] for t in os.listdir(os.path.dirname(__file__))
+             if t.endswith('.py')]
+    tests.sort()
+
+# prefer Python 2 module here, as in Python 2 io.StringIO is broken
+try:
+    from cStringIO import StringIO
+except ImportError:
+    from io import StringIO
+
+from glob import glob
+
+# prefer modules in the local tree
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+
+from jockey.oslib import OSLib
+
+import sandbox
+
+if __name__ == '__main__':
+    os.environ['LC_ALL'] = 'C'
+    try:
+        del os.environ['LANGUAGE']
+    except KeyError:
+        pass
+
+    # set the global OSLib instance for all tests
+    OSLib.inst = sandbox.TestOSLib()
+
+    # suppress log output to terminal for the test suite
+    sandbox.log = StringIO()
+    logging.basicConfig(stream=sandbox.log, level=logging.DEBUG)
+
+    # run all tests
+    suite = unittest.TestLoader().loadTestsFromNames(tests)
+    res = unittest.TextTestRunner(verbosity=2).run(suite)
+
+    if use_coverage:
+        coverage.stop()
+        coverage.report(glob('jockey/*.py'))
+        coverage.report(glob('examples/handlers/*.py') + glob('tests/*.py'))
+        coverage.erase()
+
+    if res.errors or res.failures:
+        open('jockey-debug.log', 'w').write(sandbox.log.getvalue())
+        print >> sys.stderr, 'See jockey-debug.log for the debug output'
+        sys.exit(1)

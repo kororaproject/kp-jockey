@@ -1,0 +1,8 @@
+alias pci:* wl bcmwl-kernel-source
+alias pci:* nvidia_current nvidia-current
+alias pci:* nvidia_current_updates nvidia-current-updates
+alias pci:* nvidia_173 nvidia-173
+alias pci:* nvidia_173_updates nvidia-173-updates
+alias pci:* fglrx fglrx
+alias pci:* fglrx_updates fglrx-updates
+

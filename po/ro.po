@@ -1,0 +1,653 @@
+# Romanian translation for restricted-manager
+# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
+# This file is distributed under the same license as the restricted-manager package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: restricted-manager\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-05 06:47+0100\n"
+"PO-Revision-Date: 2009-02-24 10:45+0000\n"
+"Last-Translator: Doru Horișco <DoruHushHush@gmail.com>\n"
+"Language-Team: Romanian <ro@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-03-06 04:37+0000\n"
+"X-Generator: Launchpad (build 14900)\n"
+"Language: ro\n"
+"100 > 19) || ((n % 100 == 0) && (n != 0))) ? 2: 1))\n"
+
+#: ../text/jockey-text.py:72
+msgid "Please enter 'y' or 'n' and press Enter"
+msgstr ""
+
+#: ../text/jockey-text.py:74
+msgid "y\n"
+msgstr ""
+
+#: ../text/jockey-text.py:76
+msgid "n\n"
+msgstr ""
+
+#: ../kde/autostart/jockey-kde.desktop.in.h:1
+#: ../gtk/autostart/jockey-gtk.desktop.in.h:1
+msgid "Check for new hardware drivers"
+msgstr "Caută noi drivere pentru hardware"
+
+#: ../kde/autostart/jockey-kde.desktop.in.h:2
+#: ../gtk/autostart/jockey-gtk.desktop.in.h:2
+msgid "Notify about new hardware drivers available for the system"
+msgstr "Atenționează despre drivere hardware noi disponibile pentru sistem"
+
+#: ../jockey/ui.py:121
+msgid ""
+"Cannot connect to D-BUS, please use the --no-dbus option as root to use "
+"jockey without it."
+msgstr ""
+"Nu se poate realiza conexiunea la D-BUS, utilizați ca root opțiunea --no-"
+"dbus pentru a utiliza programul jockey fără D-BUS."
+
+#: ../jockey/ui.py:132 ../jockey/ui.py:145
+msgid "Searching for available drivers..."
+msgstr "Se căută drivere disponibile..."
+
+#: ../jockey/ui.py:170
+msgid "Component"
+msgstr "Componentă"
+
+#: ../jockey/ui.py:171
+msgid "_Enable"
+msgstr "Activ_ează"
+
+#: ../jockey/ui.py:172
+msgid "_Disable"
+msgstr "_Dezactivează"
+
+#: ../jockey/ui.py:173
+msgid "Enabled"
+msgstr "Activat"
+
+#: ../jockey/ui.py:174
+msgid "Disabled"
+msgstr "Inactiv"
+
+#: ../jockey/ui.py:175
+msgid "Status"
+msgstr "Stare"
+
+#: ../jockey/ui.py:176
+msgid "Needs computer restart"
+msgstr "Necesită repornirea calculatorului"
+
+#: ../jockey/ui.py:177
+msgid "In use"
+msgstr "Folosit"
+
+#: ../jockey/ui.py:178
+msgid "Not in use"
+msgstr "Nefolosit"
+
+#: ../jockey/ui.py:179
+msgid "License:"
+msgstr "Licență:"
+
+#: ../jockey/ui.py:180
+msgid "details"
+msgstr "detalii"
+
+#. this is used in the GUI and in --list output to denote free/restricted drivers
+#: ../jockey/ui.py:182
+msgid "Free"
+msgstr "Gratuit/Liber"
+
+#. this is used in the GUI and in --list output to denote free/restricted drivers
+#: ../jockey/ui.py:184
+msgid "Proprietary"
+msgstr "Proprietar"
+
+#: ../jockey/ui.py:185
+msgid "Download in progress"
+msgstr "Descărcare în curs"
+
+#: ../jockey/ui.py:186
+msgid "Unknown driver"
+msgstr "Driver necunoscut"
+
+#: ../jockey/ui.py:187
+msgid "You are not authorized to perform this action."
+msgstr "Nu sunteți autorizat să efectuați această operațiune"
+
+#. %s is the name of the operating system
+#: ../jockey/ui.py:189
+#, python-format
+msgid "Tested by the %s developers"
+msgstr "Testat de către dezvoltatorii %s"
+
+#. %s is the name of the operating system
+#: ../jockey/ui.py:191
+#, python-format
+msgid "Not tested by the %s developers"
+msgstr "Netestat de către dezvoltatorii %s"
+
+#. this is used when one version of a driver is recommended over others
+#: ../jockey/ui.py:193
+msgid "Recommended"
+msgstr "Recomandat"
+
+#: ../jockey/ui.py:194
+msgid "License Text for Device Driver"
+msgstr "Textul licenței pentru driverul dispozitivului"
+
+#: ../jockey/ui.py:195
+msgid "Install Drivers"
+msgstr ""
+
+#: ../jockey/ui.py:204
+msgid "Restricted Additional Drivers"
+msgstr ""
+
+#: ../kde/jockey-kde.desktop.in.h:1 ../jockey/ui.py:206 ../jockey/ui.py:582
+#: ../jockey/ui.py:590 ../jockey/ui.py:598 ../jockey/ui.py:802
+#: ../gtk/jockey-gtk.desktop.in.h:1
+msgid "Additional Drivers"
+msgstr ""
+
+#: ../jockey/ui.py:216
+msgid "Driver search results"
+msgstr "Rezultate căutare drivere"
+
+#: ../jockey/ui.py:232
+msgid ""
+"Proprietary drivers are being used to make this computer work properly."
+msgstr ""
+"Pentru buna funcționare a acestui calculator sunt folosite drivere "
+"proprietare."
+
+#: ../jockey/ui.py:235
+msgid "No proprietary drivers are in use on this system."
+msgstr "Nu există drivere proprietare în funcțiune în acest sistem"
+
+#. %(os)s stands for the OS name. Prefix it or suffix it,
+#. but do not replace it.
+#: ../jockey/ui.py:241
+#, python-format
+msgid ""
+"Proprietary drivers do not have public source code that %(os)s developers "
+"are free to modify. Security updates and corrections depend solely on the "
+"responsiveness of the manufacturer. %(os)s cannot fix or improve these "
+"drivers."
+msgstr ""
+
+#: ../jockey/ui.py:254
+msgid "Graphics driver"
+msgstr "Driver placă grafică"
+
+#: ../jockey/ui.py:256
+msgid "Firmware"
+msgstr "Firmware"
+
+#: ../jockey/ui.py:258
+msgid "Device driver"
+msgstr "Driver dispozitiv"
+
+#: ../jockey/ui.py:268
+#, python-format
+msgid "version %s"
+msgstr "versiunea %s"
+
+#: ../jockey/ui.py:322
+msgid "_Remove"
+msgstr ""
+
+#: ../jockey/ui.py:324
+msgid "_Deactivate"
+msgstr "_Dezactivează"
+
+#: ../jockey/ui.py:326
+msgid "This driver is activated and currently in use."
+msgstr "Acest driver este activat și este folosit de sistem."
+
+#: ../jockey/ui.py:330
+msgid "You need to restart the computer to activate this driver."
+msgstr "Trebuie să reporniți calculatorul pentru a activa acest driver."
+
+#: ../jockey/ui.py:332
+msgid "This driver is activated but not currently in use."
+msgstr "Acest driver este activat dar nu este folosit de sistem."
+
+#: ../jockey/ui.py:334
+msgid "_Activate"
+msgstr "_Activează"
+
+#: ../jockey/ui.py:338
+msgid "This driver was just disabled, but is still in use."
+msgstr ""
+"Acest driver tocmai a fost dezactivat, dar încă este folosit de sistem."
+
+#: ../jockey/ui.py:340
+msgid "A different version of this driver is in use."
+msgstr "Sistemul folosește o altă versiune a acestui driver."
+
+#: ../jockey/ui.py:342
+msgid "This driver is not activated."
+msgstr "Acest driver nu este activat."
+
+#: ../jockey/ui.py:362
+msgid "Check for newly used or usable drivers and notify the user."
+msgstr ""
+"Verifică noile drivere aflate în uz sau care pot fi folosite și informează "
+"utilizatorul."
+
+#: ../jockey/ui.py:365
+msgid "Query driver databases for newly available or updated drivers."
+msgstr ""
+"Caută în baza de date a driverelor după drivere noi sau care pot fi "
+"actualizate."
+
+#: ../jockey/ui.py:368
+msgid "List available drivers and their status."
+msgstr "Afișează toate driverele disponibile și starea lor."
+
+#: ../jockey/ui.py:371
+msgid "Enable drivers that can be automatically installed."
+msgstr ""
+
+#: ../jockey/ui.py:374
+msgid "List hardware identifiers from this system."
+msgstr "Afișează codurile de identificare hardware de pe acest sistem."
+
+#: ../jockey/ui.py:377
+msgid "Enable a driver"
+msgstr "Activează un driver"
+
+#: ../jockey/ui.py:380
+msgid "Disable a driver"
+msgstr "Dezactivează un driver"
+
+#: ../jockey/ui.py:383
+msgid "Ask for confirmation for --enable/--disable"
+msgstr "Cere confirmarea pentru --enable/--disable"
+
+#: ../jockey/ui.py:386
+msgid ""
+"Check if there is a graphics driver available that supports composite and "
+"offer to enable it"
+msgstr ""
+"Verifică existența unui driver pentru o placă grafică ce suportă extensia "
+"composite și întreabă de activare"
+
+#: ../jockey/ui.py:391
+msgid ""
+"Only manage free/nonfree drivers. By default, all available drivers with any "
+"license are presented."
+msgstr ""
+"Gestioneză numai drivere gratuite/proprietare. Implicit sunt prezentate "
+"toate driverele indiferent de licență."
+
+#: ../jockey/ui.py:395
+msgid "Run as session D-BUS server."
+msgstr "Rulare ca server D-BUS al sesiunii."
+
+#: ../jockey/ui.py:397
+msgid ""
+"Do not use D-BUS for communicating with the backend. Needs root privileges."
+msgstr ""
+"Nu utilizați D-BUS pentru comunicarea cu programul de bază. Necesită "
+"privilegii de administrare."
+
+#: ../jockey/ui.py:399
+msgid ""
+"Use a different target kernel version than the currently running one. This "
+"is only relevant with --no-dbus."
+msgstr ""
+"Folosește o altă versiune de kernel față de cea pornită curent. Această "
+"opțiune este relevantă doar pentru --no-dbus."
+
+#: ../jockey/ui.py:539 ../jockey/ui.py:1022
+msgid "Restricted drivers available"
+msgstr "Drivere restricționate disponibile"
+
+#: ../jockey/ui.py:540
+msgid ""
+"In order to use your hardware more efficiently, you can enable drivers which "
+"are not free software."
+msgstr ""
+"Pentru a utiliza hardware-ul mai eficient, puteți activa drivere care nu "
+"sunt software liber."
+
+#: ../jockey/ui.py:543
+msgid "New drivers available"
+msgstr "Sunt disponibile drivere noi"
+
+#: ../jockey/ui.py:544
+msgid "There are new or updated drivers available for your hardware."
+msgstr ""
+"Există drivere noi sau actualizate pentru dispozitivele dumneavoastră."
+
+#: ../jockey/ui.py:548
+msgid "New restricted drivers in use"
+msgstr "În folosire driver restrâns nou"
+
+#. %(os)s stands for the OS name. Prefix it or suffix it,
+#. but do not replace it.
+#: ../jockey/ui.py:551
+#, python-format
+msgid ""
+"In order for this computer to function properly, %(os)s is using driver "
+"software that cannot be supported by %(os)s."
+msgstr ""
+"Pentru funcționarea corespunzătoare a acestui calculator, %(os)s folosește "
+"drivere ce nu pot fi suportate de %(os)s."
+
+#: ../jockey/ui.py:577
+msgid ""
+"There is no available graphics driver for your system which supports the "
+"composite extension, or the current one already supports it."
+msgstr ""
+"Nu este disponibil un driver pentru placa grafică folosită în sistem care să "
+"suporte extensia „compozit” sau driverul curent o suportă deja."
+
+#: ../jockey/ui.py:583
+msgid "Downloading and installing driver..."
+msgstr "Se descarcă și se instalează driver..."
+
+#: ../jockey/ui.py:591
+msgid "Removing driver..."
+msgstr "Se dezinstalează driver..."
+
+#: ../jockey/ui.py:599
+msgid "Downloading and updating package indexes..."
+msgstr ""
+
+#: ../jockey/ui.py:621
+msgid "Use --list to see available drivers"
+msgstr "Utilizați opțiunea --list pentru a vedea driverele disponibile"
+
+#: ../jockey/ui.py:638
+msgid "Cannot change driver"
+msgstr "Driverul nu poate fi schimbat"
+
+#: ../jockey/ui.py:651
+msgid "Enable driver?"
+msgstr "Activați driver?"
+
+#: ../jockey/ui.py:654
+msgid "Disable driver?"
+msgstr "Dezactivați driver?"
+
+#: ../jockey/ui.py:683
+msgid "Sorry, the Jockey backend crashed. Please file a bug at:"
+msgstr ""
+
+#: ../jockey/ui.py:684
+msgid "Trying to recover by restarting backend."
+msgstr ""
+
+#: ../jockey/ui.py:694
+msgid "Sorry, installation of this driver failed."
+msgstr ""
+
+#: ../jockey/ui.py:695
+msgid "Please have a look at the log file for details"
+msgstr ""
+
+#: ../jockey/ui.py:733
+msgid "Download error"
+msgstr "Eroare la descărcare"
+
+#: ../jockey/ui.py:860
+msgid ""
+"Downloading package indexes failed, please check your network status. Most "
+"drivers will not be available."
+msgstr ""
+
+#: ../jockey/ui.py:930
+#, python-format
+msgid "Searching driver for %s..."
+msgstr "Se căută driver pentru %s..."
+
+#: ../kde/jockey-kde.desktop.in.h:2 ../gtk/jockey-gtk.desktop.in.h:2
+msgid "Configure third-party and proprietary drivers"
+msgstr "Configurează driverele din surse terțe sau proprietare"
+
+#: ../examples/handlers/madwifi.py:22 ../data/handlers/madwifi.py:22
+msgid "Alternate Atheros \"madwifi\" driver"
+msgstr ""
+
+#: ../examples/handlers/madwifi.py:23 ../data/handlers/madwifi.py:23
+msgid "Alternate \"madwifi\" driver for Atheros wireless LAN cards."
+msgstr ""
+
+#: ../examples/handlers/madwifi.py:24 ../data/handlers/madwifi.py:24
+msgid ""
+"Only activate this driver if you have problems with your wireless LAN "
+"connection.\n"
+"\n"
+"The free \"ath5k\" driver should work with most Atheros cards nowadays, but "
+"on some computers this alternate (but proprietary) driver still works "
+"better, or at all."
+msgstr ""
+
+#: ../examples/handlers/madwifi.py:38 ../data/handlers/madwifi.py:38
+#, python-format
+msgid "You removed the configuration file %s"
+msgstr ""
+
+#. translators: %s is the path to xorg.conf
+#: ../jockey/xorg_driver.py:99
+#, python-format
+msgid "Reconfiguring X.org video drivers is not possible: %s is invalid."
+msgstr ""
+"Reconfigurarea driverelor video X.org nu este posibilă: %s nu este valid."
+
+#: ../examples/handlers/fglrx.py:17
+msgid "AMD proprietary FGLRX graphics driver"
+msgstr "Driver video proprietar FGLRX de la AMD"
+
+#: ../examples/handlers/fglrx.py:18
+msgid "3D-accelerated proprietary graphics driver for AMD (ATI) cards."
+msgstr "Driver video proprietar cu accelerare 3D pentru plăcile AMD (ATI)"
+
+#: ../examples/handlers/fglrx.py:20
+msgid ""
+"This driver is required to fully utilise the 3D potential of some AMD (ATI) "
+"graphics cards, as well as provide 2D acceleration of newer cards."
+msgstr ""
+"Acest driver este necesar pentru utilizarea întregului potențial 3D pentru "
+"unele din plăcile video produse de AMD (ATI), precum și pentru asigurarea "
+"accelerării 2D pentru plăcile mai noi."
+
+#: ../examples/handlers/sl_modem.py:15 ../data/handlers/sl_modem.py:15
+msgid "Software modem"
+msgstr "Modem software"
+
+#: ../examples/handlers/sl_modem.py:17 ../data/handlers/sl_modem.py:17
+msgid ""
+"This driver enables the usage of many software modems, as commonly found in "
+"laptops.\n"
+"\n"
+"If this driver is not enabled, you will not be able to use your modem."
+msgstr ""
+"Acest driver activează folosirea multor modemuri software, precum cele "
+"folosite în laptop-uri.\n"
+"\n"
+"Dacă nu este activat acest driver, nu veți putea să folosiți modemul "
+"dumneavoastră."
+
+#: ../examples/handlers/vmware-client.py:17
+#: ../data/handlers/vmware-client.py:17
+msgid "VMWare Client Tools"
+msgstr "Unelte pentru clientul VMWare"
+
+#: ../examples/handlers/vmware-client.py:18
+#: ../data/handlers/vmware-client.py:18
+msgid "Install VMWare client drivers and tools"
+msgstr "Instalați unelte și drivere pentru clientul VMWare"
+
+#: ../examples/handlers/vmware-client.py:19
+#: ../data/handlers/vmware-client.py:19
+msgid ""
+"Install the VMWare client drivers and tools for your VMWare based Ubuntu "
+"installation.\n"
+"\n"
+"This should help you use Ubuntu in your VM."
+msgstr ""
+"Instalați driverele și utilitarele pentru clientul VMWare, în vederea "
+"instalării Ubuntu în VMWare.\n"
+"\n"
+"Acest lucru vă ajută să utilizați Ubuntu în mașina virtuală."
+
+#: ../backend/jockey-backend.py:32
+msgid "Enable debugging messages."
+msgstr ""
+
+#: ../backend/jockey-backend.py:35
+msgid "Write logging messages to a file instead to stderr."
+msgstr ""
+
+#: ../backend/jockey-backend.py:38
+msgid "Timeout for D-BUS service (default: 600, 0: run forever)"
+msgstr ""
+"Limită de timp pentru serviciul D-Bus (implicit: 600, 0: rulează încontinuu)"
+
+#: ../backend/jockey-backend.py:41
+msgid "Add a custom handler directory."
+msgstr ""
+
+#: ../backend/jockey-backend.py:44
+msgid "Run on session D-BUS (only for testing)"
+msgstr ""
+
+#: ../backend/jockey-backend.py:46
+msgid "Use a different target kernel version than the currently running one."
+msgstr "Folosește o altă versiune de kernel față de cea pornită curent."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:1
+msgid "Get information about local device drivers"
+msgstr "Obține informații despre driverele dispozitivelor locale"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:2
+msgid "To query the device drivers, you need to authenticate."
+msgstr ""
+"Pentru a afișa driverele pentru dispozitive, trebuie să vă autentificați."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:3
+msgid ""
+"Check for newly available drivers for, and used drivers on this system"
+msgstr ""
+"Verifică drivere noi disponibile pentru sistem și drivere deja folosite de "
+"sistem"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:4
+msgid "To check the driver status, you need to authenticate."
+msgstr "Pentru a verifica statutul driverelor, trebuie să vă autentificați."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:5
+msgid ""
+"Query local and remote driver databases for updated drivers for the system"
+msgstr ""
+"Verifică bazele de date de drivere, locale sau de pe Internet, după versiuni "
+"actualizate ale driverelor sistemului."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:6
+msgid "To query the driver databases for updates, you need to authenticate."
+msgstr ""
+"Pentru a verifica baza de date a driverelor pentru actualizări, trebuie să "
+"vă autentificați."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:7
+msgid "Install or remove device drivers"
+msgstr "Instalează sau dezinstalează drivere pentru dispozitive"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:8
+msgid "To install or remove device drivers, you need to authenticate."
+msgstr ""
+"Pentru a instala sau șterge drivere pentru dispozitive, trebuie să vă "
+"autentificați."
+
+#: ../examples/handlers/nvidia.py:26 ../data/handlers/nvidia.py:28
+msgid "NVIDIA accelerated graphics driver"
+msgstr "Driver grafic NVIDIA accelerat"
+
+#: ../examples/handlers/nvidia.py:27
+msgid "3D-accelerated proprietary graphics driver for NVIDIA cards."
+msgstr ""
+"Driver video proprietar pentru plăci grafice NVIDIA cu accelerare 3D."
+
+#: ../examples/handlers/nvidia.py:29
+msgid ""
+"This driver is required to fully utilise the 3D potential of NVIDIA graphics "
+"cards, as well as provide 2D acceleration of newer cards.\n"
+"\n"
+"If you wish to enable desktop effects, this driver is required.\n"
+"\n"
+"If this driver is not enabled, you will not be able to enable desktop "
+"effects and will not be able to run software that requires 3D acceleration, "
+"such as some games."
+msgstr ""
+"Acest driver este necesar pentru a putea folosi întreaga capacitate 3D a "
+"plăcii grafice NVIDIA, precum și a oferi accelerare 2D pentru plăcile noi.\n"
+"\n"
+"În cazul în care doriți activarea efectelor grafice, este necesară folosirea "
+"acestui driver.\n"
+"\n"
+"În cazul în care acest driver nu este activat, nu veți putea activa efectele "
+"grafice și nu veți putea rula programe ce necesită accelerare 3D, cum ar fi "
+"jocurile."
+
+#~ msgid "Cannot connect to D-BUS"
+#~ msgstr "Nu s-a putut realiza conectarea la D-BUS"
+
+#~ msgid "Restricted Hardware Drivers"
+#~ msgstr "Drivere hardware restricționate"
+
+#~ msgid "Hardware Drivers"
+#~ msgstr "Drivere hardware"
+
+#, python-format
+#~ msgid ""
+#~ "Proprietary drivers do not have public source code that %(os)s developers "
+#~ "are free to modify. They represent a risk to you because they are only "
+#~ "available on the types of computer chosen by the manufacturer, and security "
+#~ "updates to them depend solely on the responsiveness of the manufacturer. "
+#~ "%(os)s cannot fix or improve these drivers."
+#~ msgstr ""
+#~ "Driverele proprietare nu au codul sursă public pe care dezvoltatorii %(os)s "
+#~ "sunt liberi să îl modifice. Aceste drivere reprezintă un risc datorită "
+#~ "faptului că sunt disponibil doar pe un tip de calculator ales de "
+#~ "producătorul componentei. Actualizările de securitatea depind de timpul de "
+#~ "răspuns al producătorului componentei. Dezvoltatorii %(os)s nu pot repara "
+#~ "sau îmbunătății aceste drivere."
+
+#~ msgid "System policy prevents checking driver status"
+#~ msgstr "Regulile stabilite în sistem nu permit verificarea stării driverului"
+
+#~ msgid "System policy prevents installation/removal of device drivers"
+#~ msgstr ""
+#~ "Regulile stabilite în sistem nu permit instalarea/dezinstalarea driverelor "
+#~ "dispozitivelor"
+
+#~ msgid "System policy prevents querying device drivers"
+#~ msgstr ""
+#~ "Regulile stabilite în sistem nu permit căutarea de drivere pentru dispozitive"
+
+#~ msgid "System policy prevents querying driver databases for updates"
+#~ msgstr ""
+#~ "Regulile stabilite în sistem nu permit căutarea în daza de date a driverelor "
+#~ "după actualizări"
+
+#~ msgid "ATI/AMD proprietary FGLRX graphics driver"
+#~ msgstr "Driver video proprietar FGLRX pentru plăci grafice ATI/AMD"
+
+#~ msgid "3D-accelerated proprietary graphics driver for ATI cards."
+#~ msgstr "Driver video proprietar pentru plăci grafice ATI cu accelerare 3D."
+
+#~ msgid ""
+#~ "This driver is required to fully utilise the 3D potential of some ATI "
+#~ "graphics cards, as well as provide 2D acceleration of newer cards."
+#~ msgstr ""
+#~ "Acest driver este necesar pentru utilizarea la maxim a  potențialului de "
+#~ "accelerare 3D pentru unele plăci grafice ATI, precum și pentru asigurarea "
+#~ "accelerării 2D pentru plăcile mai noi."

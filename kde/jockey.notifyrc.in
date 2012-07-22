@@ -1,0 +1,7 @@
+[Global]
+IconName=jockey-kde
+_Name=Additional Drivers
+
+[Event/Drivers]
+_Name=Additional Drivers
+Action=Popup

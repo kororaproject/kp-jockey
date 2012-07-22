@@ -1,0 +1,671 @@
+# Greek, Modern (1453-) translation for restricted-manager
+# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
+# This file is distributed under the same license as the restricted-manager package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: restricted-manager\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-05 06:47+0100\n"
+"PO-Revision-Date: 2011-12-14 21:02+0000\n"
+"Last-Translator: Christos Spyroglou <Unknown>\n"
+"Language-Team: Greek, Modern (1453-) <el@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-03-06 04:37+0000\n"
+"X-Generator: Launchpad (build 14900)\n"
+"Language: \n"
+
+#: ../text/jockey-text.py:72
+msgid "Please enter 'y' or 'n' and press Enter"
+msgstr "Εισάγετε 'y' ή 'n' και πατήστε Enter"
+
+#: ../text/jockey-text.py:74
+msgid "y\n"
+msgstr "y\n"
+
+#: ../text/jockey-text.py:76
+msgid "n\n"
+msgstr "n\n"
+
+#: ../kde/autostart/jockey-kde.desktop.in.h:1
+#: ../gtk/autostart/jockey-gtk.desktop.in.h:1
+msgid "Check for new hardware drivers"
+msgstr "Έλεγχος για νέους οδηγούς υλικού"
+
+#: ../kde/autostart/jockey-kde.desktop.in.h:2
+#: ../gtk/autostart/jockey-gtk.desktop.in.h:2
+msgid "Notify about new hardware drivers available for the system"
+msgstr "Ειδοποίηση για νέους διαθέσιμους οδηγούς υλικού για το σύστημα"
+
+#: ../jockey/ui.py:121
+msgid ""
+"Cannot connect to D-BUS, please use the --no-dbus option as root to use "
+"jockey without it."
+msgstr ""
+"Αδύνατη η σύνδεση με D-BUS· παρακαλώ χρησιμοποιήστε την επιλογή «--no-dbus» "
+"ως root από τη γραμμή εντολών για να εκτελέσετε το jocket χωρίς D-BUS."
+
+#: ../jockey/ui.py:132 ../jockey/ui.py:145
+msgid "Searching for available drivers..."
+msgstr "Αναζήτηση διαθέσιμων οδηγών"
+
+#: ../jockey/ui.py:170
+msgid "Component"
+msgstr "Συστατικό στοιχείο"
+
+#: ../jockey/ui.py:171
+msgid "_Enable"
+msgstr "_Ενεργοποίηση οδηγού"
+
+#: ../jockey/ui.py:172
+msgid "_Disable"
+msgstr "Απενεργοποίηση ο_δηγού"
+
+#: ../jockey/ui.py:173
+msgid "Enabled"
+msgstr "Ενεργοποιημένο"
+
+#: ../jockey/ui.py:174
+msgid "Disabled"
+msgstr "Απενεργοποιημένο"
+
+#: ../jockey/ui.py:175
+msgid "Status"
+msgstr "Κατάσταση"
+
+#: ../jockey/ui.py:176
+msgid "Needs computer restart"
+msgstr "Απαιτείται επανεκκίνηση του υπολογιστή"
+
+#: ../jockey/ui.py:177
+msgid "In use"
+msgstr "Σε χρήση"
+
+#: ../jockey/ui.py:178
+msgid "Not in use"
+msgstr "Δεν είναι σε χρήση"
+
+#: ../jockey/ui.py:179
+msgid "License:"
+msgstr "Άδεια χρήσης:"
+
+#: ../jockey/ui.py:180
+msgid "details"
+msgstr "λεπτομέρειες"
+
+#. this is used in the GUI and in --list output to denote free/restricted drivers
+#: ../jockey/ui.py:182
+msgid "Free"
+msgstr "Ελεύθερος"
+
+#. this is used in the GUI and in --list output to denote free/restricted drivers
+#: ../jockey/ui.py:184
+msgid "Proprietary"
+msgstr "Ιδιοταγής"
+
+#: ../jockey/ui.py:185
+msgid "Download in progress"
+msgstr "Μεταφόρτωση σε εξέλιξη"
+
+#: ../jockey/ui.py:186
+msgid "Unknown driver"
+msgstr "Άγνωστος οδηγός"
+
+#: ../jockey/ui.py:187
+msgid "You are not authorized to perform this action."
+msgstr "Δεν είστε εξουσιοδοτημένος να εκτελέσετε αυτή την ενέργεια."
+
+#. %s is the name of the operating system
+#: ../jockey/ui.py:189
+#, python-format
+msgid "Tested by the %s developers"
+msgstr "Έχει ελεγχθεί από τους προγραμματιστές του %s"
+
+#. %s is the name of the operating system
+#: ../jockey/ui.py:191
+#, python-format
+msgid "Not tested by the %s developers"
+msgstr "Δεν έχει ελεγχθεί από τους προγραμματιστές του %s"
+
+#. this is used when one version of a driver is recommended over others
+#: ../jockey/ui.py:193
+msgid "Recommended"
+msgstr "Συνιστώμενο"
+
+#: ../jockey/ui.py:194
+msgid "License Text for Device Driver"
+msgstr "Κείμενο άδειας χρήσης του οδηγού συσκευής"
+
+#: ../jockey/ui.py:195
+msgid "Install Drivers"
+msgstr "Εγκατάσταση οδηγών"
+
+#: ../jockey/ui.py:204
+msgid "Restricted Additional Drivers"
+msgstr "Πρόσθετοι οδηγοί υλικού με περιορισμούς"
+
+#: ../kde/jockey-kde.desktop.in.h:1 ../jockey/ui.py:206 ../jockey/ui.py:582
+#: ../jockey/ui.py:590 ../jockey/ui.py:598 ../jockey/ui.py:802
+#: ../gtk/jockey-gtk.desktop.in.h:1
+msgid "Additional Drivers"
+msgstr "Πρόσθετοι οδηγοί υλικού"
+
+#: ../jockey/ui.py:216
+msgid "Driver search results"
+msgstr "Αποτελέσματα αναζήτητησης οδηγών"
+
+#: ../jockey/ui.py:232
+msgid ""
+"Proprietary drivers are being used to make this computer work properly."
+msgstr ""
+"Ιδιοταγείς-κλειστοί οδηγοί υλικού χρησιμοποιούνται σ' αυτόν τον υπολογιστή "
+"για να λειτουργεί σωστά."
+
+#: ../jockey/ui.py:235
+msgid "No proprietary drivers are in use on this system."
+msgstr "Δε χρησιμοποιούνται ιδιοταγείς-κλειστοί οδηγοί σ' αυτό το σύστημα."
+
+#. %(os)s stands for the OS name. Prefix it or suffix it,
+#. but do not replace it.
+#: ../jockey/ui.py:241
+#, python-format
+msgid ""
+"Proprietary drivers do not have public source code that %(os)s developers "
+"are free to modify. Security updates and corrections depend solely on the "
+"responsiveness of the manufacturer. %(os)s cannot fix or improve these "
+"drivers."
+msgstr ""
+"Οι ιδιοταγείς-κλειστοί (proprietary) οδηγοί δεν έχουν ανοικτό πηγαίο κώδικα "
+"ώστε να μπορούν να τον τροποποιήσουν οι προγραμματιστές του %(os)s. "
+"Ενημερώσεις ασφαλείας και διορθώσεις εξαρτώνται μόνο από την ανταπόκριση του "
+"κατασκευαστή.  Το %(os)s δε μπορεί να διορθώσει ή να βελτιώσει αυτούς τους "
+"οδηγούς."
+
+#: ../jockey/ui.py:254
+msgid "Graphics driver"
+msgstr "Οδηγός κάρτας γραφικών"
+
+#: ../jockey/ui.py:256
+msgid "Firmware"
+msgstr "Υλικολογισμικό (Firmware)"
+
+#: ../jockey/ui.py:258
+msgid "Device driver"
+msgstr "Οδηγός συσκευής"
+
+#: ../jockey/ui.py:268
+#, python-format
+msgid "version %s"
+msgstr "έκδοση %s"
+
+#: ../jockey/ui.py:322
+msgid "_Remove"
+msgstr "Α_φαίρεση"
+
+#: ../jockey/ui.py:324
+msgid "_Deactivate"
+msgstr "Α_πενεργοποίηση"
+
+#: ../jockey/ui.py:326
+msgid "This driver is activated and currently in use."
+msgstr "Ο οδηγός αυτός είναι ενεργοποιημένος και χρησιμοποιείται."
+
+#: ../jockey/ui.py:330
+msgid "You need to restart the computer to activate this driver."
+msgstr "Χρειάζεται να κάνετε επανεκκίνηση για να ενεργοποιήσετε τον οδηγό."
+
+#: ../jockey/ui.py:332
+msgid "This driver is activated but not currently in use."
+msgstr "Ο οδηγός αυτός είναι ενεργοποιημένος, αλλά δεν χρησιμοποιείται."
+
+#: ../jockey/ui.py:334
+msgid "_Activate"
+msgstr "_Ενεργοποίηση"
+
+#: ../jockey/ui.py:338
+msgid "This driver was just disabled, but is still in use."
+msgstr "Ο οδηγός αυτός μόλις απενεργοποιήθηκε, αλλά χρησιμοποιείται ακόμη."
+
+#: ../jockey/ui.py:340
+msgid "A different version of this driver is in use."
+msgstr "Χρησιμοποιείται μια διαφορετική έκδοση του οδηγού."
+
+#: ../jockey/ui.py:342
+msgid "This driver is not activated."
+msgstr "Ο οδηγός αυτός δεν είναι ενεργοποιημένος."
+
+#: ../jockey/ui.py:362
+msgid "Check for newly used or usable drivers and notify the user."
+msgstr ""
+"Έλεγχος για χρησιμοποιούμενους ή χρησιμοποιήσιμους οδηγούς και ειδοποίηση "
+"του χρήστη."
+
+#: ../jockey/ui.py:365
+msgid "Query driver databases for newly available or updated drivers."
+msgstr ""
+"Αναζητήστε στις βάσεις δεδομένων των οδηγών για νέους ή ενημερωμένους "
+"οδηγούς."
+
+#: ../jockey/ui.py:368
+msgid "List available drivers and their status."
+msgstr "Οι διαθέσιμοι οδηγοί και η κατάσταση τους."
+
+#: ../jockey/ui.py:371
+msgid "Enable drivers that can be automatically installed."
+msgstr "Ενεργοποίηση οδηγών υλικού με δυνατότητα αυτόματης εγκατάστασης."
+
+#: ../jockey/ui.py:374
+msgid "List hardware identifiers from this system."
+msgstr "Λίστα αναγνωριστικών υλικού από αυτό το σύστημα."
+
+#: ../jockey/ui.py:377
+msgid "Enable a driver"
+msgstr "Ενεργοποίηση οδηγού"
+
+#: ../jockey/ui.py:380
+msgid "Disable a driver"
+msgstr "Απενεργοποίηση οδηγού"
+
+#: ../jockey/ui.py:383
+msgid "Ask for confirmation for --enable/--disable"
+msgstr "Ζητήστε επιβεβαίωση για ενεργοποίηση ή απενεργοποίηση"
+
+#: ../jockey/ui.py:386
+msgid ""
+"Check if there is a graphics driver available that supports composite and "
+"offer to enable it"
+msgstr ""
+"Ελέγξτε εάν υπάρχει διαθέσιμος οδηγός υλικού της κάρτας γραφικών που να "
+"υποστηρίζει composite και ενεργοποιήστε τον"
+
+#: ../jockey/ui.py:391
+msgid ""
+"Only manage free/nonfree drivers. By default, all available drivers with any "
+"license are presented."
+msgstr ""
+"Διαχείριση μόνο ελεύθερων ή ιδοταγών-κλειστών οδηγών. Εξ' ορισμού, "
+"παρουσιάζονται όλοι οι διαθέσιμοι οδηγοί με οποιαδήποτε άδεια."
+
+#: ../jockey/ui.py:395
+msgid "Run as session D-BUS server."
+msgstr "Εκτέλεση ως συνεδρία ενός εξυπηρετητή D-BUS."
+
+#: ../jockey/ui.py:397
+msgid ""
+"Do not use D-BUS for communicating with the backend. Needs root privileges."
+msgstr ""
+"Μην χρησιμοποιείτε το D-Bus για την επικοινωνία με το backend. Απαιτεί "
+"δικαιώματα διαχειριστή."
+
+#: ../jockey/ui.py:399
+msgid ""
+"Use a different target kernel version than the currently running one. This "
+"is only relevant with --no-dbus."
+msgstr ""
+"Χρήση διαφορετικής έκδοσης πυρήνα από τον τρέχων που είναι σε λειτουργία. Η "
+"επιλογή έχει σημασία μόνο με --no-dbus."
+
+#: ../jockey/ui.py:539 ../jockey/ui.py:1022
+msgid "Restricted drivers available"
+msgstr "Ιδιοταγείς-κλειστοί οδηγοί είναι διαθέσιμοι"
+
+#: ../jockey/ui.py:540
+msgid ""
+"In order to use your hardware more efficiently, you can enable drivers which "
+"are not free software."
+msgstr ""
+"Για την αποτελεσματικότερη χρήση του υλικού του υπολογιστή σας, μπορείτε να "
+"χρησιμοποιήσετε οδηγούς υλικού που είναι μη-ελεύθερο λογισμικό."
+
+#: ../jockey/ui.py:543
+msgid "New drivers available"
+msgstr "Νέοι οδηγοί είναι διαθέσιμοι"
+
+#: ../jockey/ui.py:544
+msgid "There are new or updated drivers available for your hardware."
+msgstr ""
+"Δεν υπάρχουν νέοι ή ενημερωμένοι οδηγοί διαθέσιμοι για το σύστημα σας."
+
+#: ../jockey/ui.py:548
+msgid "New restricted drivers in use"
+msgstr "Νέοι οδηγοί με περιορισμούς σε χρήση"
+
+#. %(os)s stands for the OS name. Prefix it or suffix it,
+#. but do not replace it.
+#: ../jockey/ui.py:551
+#, python-format
+msgid ""
+"In order for this computer to function properly, %(os)s is using driver "
+"software that cannot be supported by %(os)s."
+msgstr ""
+"Για να λειτουργήσει αυτός ο ηλεκτρονικός υπολογιστής σωστά, %(os)s αυτό το "
+"λειτουργικό χρησιμοποιεί λογισμικό οδηγών υλικού οι οποίοι δεν "
+"υποστηρίζονται από το %(os)s."
+
+#: ../jockey/ui.py:577
+msgid ""
+"There is no available graphics driver for your system which supports the "
+"composite extension, or the current one already supports it."
+msgstr ""
+"Δεν υπάρχει διαθέσιμος οδηγός γραφικών για το σύστημα σας, που να "
+"υποστηρίζει τρισδιάστατα γραφικά ή αυτός που χρησιμοποιείτε τα υποστηρίζει "
+"ήδη."
+
+#: ../jockey/ui.py:583
+msgid "Downloading and installing driver..."
+msgstr "Μεταφόρτωση και εγκατάσταση οδηγού..."
+
+#: ../jockey/ui.py:591
+msgid "Removing driver..."
+msgstr "Απεγκατάσταση οδηγού..."
+
+#: ../jockey/ui.py:599
+msgid "Downloading and updating package indexes..."
+msgstr "Λήψη και ενημέρωση ευρετηρίων πακέτων..."
+
+#: ../jockey/ui.py:621
+msgid "Use --list to see available drivers"
+msgstr ""
+"Χρησιμοποιείστε την παράμετρο --list για να δείτε τους διαθέσιμους οδηγούς"
+
+#: ../jockey/ui.py:638
+msgid "Cannot change driver"
+msgstr "Δεν είναι δυνατή η αλλαγή του οδηγού"
+
+#: ../jockey/ui.py:651
+msgid "Enable driver?"
+msgstr "Ενεργοποίηση οδηγού;"
+
+#: ../jockey/ui.py:654
+msgid "Disable driver?"
+msgstr "Απενεργοποίηση οδηγού;"
+
+#: ../jockey/ui.py:683
+msgid "Sorry, the Jockey backend crashed. Please file a bug at:"
+msgstr ""
+"Συγνώμη, αλλά το σύστημα υποστήριξης του Jockey κατέρρευσε. Παρακαλούμε "
+"αναφέρετε το σφάλμα στο:"
+
+#: ../jockey/ui.py:684
+msgid "Trying to recover by restarting backend."
+msgstr ""
+"Προσπάθεια επίλυσης του προβλήματος μέσω επανεκκίνησης του συστήματος "
+"υποστήριξης."
+
+#: ../jockey/ui.py:694
+msgid "Sorry, installation of this driver failed."
+msgstr "Δυστυχώς η εγκατάσταση του οδηγού απέτυχε."
+
+#: ../jockey/ui.py:695
+msgid "Please have a look at the log file for details"
+msgstr "Παρακαλώ ελέγξτε το αρχείο καταγραφής για λεπτομέρειες."
+
+#: ../jockey/ui.py:733
+msgid "Download error"
+msgstr "Σφάλμα μεταφόρτωσης"
+
+#: ../jockey/ui.py:860
+msgid ""
+"Downloading package indexes failed, please check your network status. Most "
+"drivers will not be available."
+msgstr ""
+"Η λήψη των ευρετηρίων πακέτων απέτυχε, παρακαλούμε ελέγξτε την κατάσταση του "
+"δικτύου σας. Οι περισσότεροι οδηγοί δε θα είναι διαθέσιμοι."
+
+#: ../jockey/ui.py:930
+#, python-format
+msgid "Searching driver for %s..."
+msgstr "Αναζήτηση οδηγού για %s..."
+
+#: ../kde/jockey-kde.desktop.in.h:2 ../gtk/jockey-gtk.desktop.in.h:2
+msgid "Configure third-party and proprietary drivers"
+msgstr "Ρύθμιση ιδιοταγών-κλειστών οδηγών και οδηγών διαφορετικής προέλευσης"
+
+#: ../examples/handlers/madwifi.py:22 ../data/handlers/madwifi.py:22
+msgid "Alternate Atheros \"madwifi\" driver"
+msgstr "Εναλλακτικός οδηγός Atheros \"madwifi\""
+
+#: ../examples/handlers/madwifi.py:23 ../data/handlers/madwifi.py:23
+msgid "Alternate \"madwifi\" driver for Atheros wireless LAN cards."
+msgstr ""
+"Εναλλακτικός οδηγός \"madwifi\" για κάρτες ασύρματου δικτύου Atheros."
+
+#: ../examples/handlers/madwifi.py:24 ../data/handlers/madwifi.py:24
+msgid ""
+"Only activate this driver if you have problems with your wireless LAN "
+"connection.\n"
+"\n"
+"The free \"ath5k\" driver should work with most Atheros cards nowadays, but "
+"on some computers this alternate (but proprietary) driver still works "
+"better, or at all."
+msgstr ""
+"Ενεργοποιήστε αυτό τον οδηγό μόνο εάν αντιμετωπίζετε προβλήματα με την "
+"σύνδεση ασύρματου δικτύου σας.\n"
+"\n"
+"Ο ελεύθερος οδηγός \"ath5k\" πρέπει να δουλεύει με τις περισσότερες κάρτες "
+"Atheros αυτή την στιγμή, αλλά σε μερικούς υπολογιστές ο εναλλακτικός (αλλά "
+"κλειστός) οδηγός δουλεύει καλύτερα ή είναι ο μόνος που δουλεύει."
+
+#: ../examples/handlers/madwifi.py:38 ../data/handlers/madwifi.py:38
+#, python-format
+msgid "You removed the configuration file %s"
+msgstr "Αφαιρέσατε το αρχείο ρύθμισης %s"
+
+#. translators: %s is the path to xorg.conf
+#: ../jockey/xorg_driver.py:99
+#, python-format
+msgid "Reconfiguring X.org video drivers is not possible: %s is invalid."
+msgstr "Δεν είναι δυνατή η ρύθμιση των οδηγών του X.org: το %s δεν έγκυρο."
+
+#: ../examples/handlers/fglrx.py:17
+msgid "AMD proprietary FGLRX graphics driver"
+msgstr "Ιδιοταγής-κλειστός οδηγός γραφικών FGLRX της AMD"
+
+#: ../examples/handlers/fglrx.py:18
+msgid "3D-accelerated proprietary graphics driver for AMD (ATI) cards."
+msgstr "Ιδιοταγής-κλειστός οδηγός γραφικών AMD (ATI) με επιτάχυνση υλικού 3D"
+
+#: ../examples/handlers/fglrx.py:20
+msgid ""
+"This driver is required to fully utilise the 3D potential of some AMD (ATI) "
+"graphics cards, as well as provide 2D acceleration of newer cards."
+msgstr ""
+"Αυτός ο οδηγός είναι απαραίτητος για την πλήρη αξιοποίηση των δυνατοτήτων "
+"τρισδιάστατης γραφικής απεικόνισης (3D) κάποιων καρτών της AMD (ATI), καθώς "
+"και για την επιτάχυνση δισδιάστατων γραφικών (2D) με πιο πρόσφατες κάρτες."
+
+#: ../examples/handlers/sl_modem.py:15 ../data/handlers/sl_modem.py:15
+msgid "Software modem"
+msgstr "Μόντεμ λογισμικού"
+
+#: ../examples/handlers/sl_modem.py:17 ../data/handlers/sl_modem.py:17
+msgid ""
+"This driver enables the usage of many software modems, as commonly found in "
+"laptops.\n"
+"\n"
+"If this driver is not enabled, you will not be able to use your modem."
+msgstr ""
+"Ο οδηγός αυτός ενεργοποιεί την λειτουργία πολλών μόντεμ λογισμικού, που "
+"συνήθως βρίσκονται στους φορητούς υπολογιστές.\n"
+"\n"
+"Αν ο οδηγός αυτός δεν ενεργοποιηθεί, δεν θα μπορείτε να χρησιμοποιήσετε το "
+"μόντεμ σας."
+
+#: ../examples/handlers/vmware-client.py:17
+#: ../data/handlers/vmware-client.py:17
+msgid "VMWare Client Tools"
+msgstr "Εργαλεία για VMWare"
+
+#: ../examples/handlers/vmware-client.py:18
+#: ../data/handlers/vmware-client.py:18
+msgid "Install VMWare client drivers and tools"
+msgstr "Εγκατάσταση οδηγών και εργαλείων για VMWare"
+
+#: ../examples/handlers/vmware-client.py:19
+#: ../data/handlers/vmware-client.py:19
+msgid ""
+"Install the VMWare client drivers and tools for your VMWare based Ubuntu "
+"installation.\n"
+"\n"
+"This should help you use Ubuntu in your VM."
+msgstr ""
+"Εγκαταστήστε τους οδηγούς του VMWare και τα εργαλεία για το VMWare σας "
+"βασισμένο στην εγκατάσταση Ubuntu.\n"
+"\n"
+"Αυτό θα σας βοηθήσει να χρησιμοποιήσετε το Ubuntu στο VM σας."
+
+#: ../backend/jockey-backend.py:32
+msgid "Enable debugging messages."
+msgstr "Ενεργοποίηση μηνυμάτων αποσφαλμάτωσης"
+
+#: ../backend/jockey-backend.py:35
+msgid "Write logging messages to a file instead to stderr."
+msgstr "Εγγραφή μηνυμάτων καταγραφής σε αρχείο αντί για το stderr."
+
+#: ../backend/jockey-backend.py:38
+msgid "Timeout for D-BUS service (default: 600, 0: run forever)"
+msgstr ""
+"Υπέρβαση χρονικού ορίου για την υπηρεσία D-BUS (προκαθορισμένο: 600, 0: "
+"συνεχής εκτέλεση)"
+
+#: ../backend/jockey-backend.py:41
+msgid "Add a custom handler directory."
+msgstr "Προσθήκη προσαρμοσμένου κατάλογου χειρισμού."
+
+#: ../backend/jockey-backend.py:44
+msgid "Run on session D-BUS (only for testing)"
+msgstr "Εκτέλεση σε συνεδρία D-BUS (μόνο για δοκιμές)"
+
+#: ../backend/jockey-backend.py:46
+msgid "Use a different target kernel version than the currently running one."
+msgstr ""
+"Χρήση διαφορετικής έκδοσης πυρήνα από τον τρέχων που είναι σε λειτουργία."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:1
+msgid "Get information about local device drivers"
+msgstr "Λήψη πληροφοριών για τοπικούς οδηγούς συκευών"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:2
+msgid "To query the device drivers, you need to authenticate."
+msgstr "Για να ζητήσετε οδηγούς συσκευής, πρέπει να επιβεβαιώσετε."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:3
+msgid ""
+"Check for newly available drivers for, and used drivers on this system"
+msgstr ""
+"Έλεγχος για πρόσφατα διαθέσιμους και ήδη χρησιμοποιούμενους οδηγούς στο "
+"σύστημα"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:4
+msgid "To check the driver status, you need to authenticate."
+msgstr "Για να ελέγξετε την κατάσταση του οδηγού, πρέπει να επιβεβαιώσετε."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:5
+msgid ""
+"Query local and remote driver databases for updated drivers for the system"
+msgstr ""
+"Αναζήτηση σε τοπικές και απομακρυσμένες βάσεις δεδομένων για ενημερωμένους "
+"οδηγούς για το σύστημα"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:6
+msgid "To query the driver databases for updates, you need to authenticate."
+msgstr ""
+"Για να κάνετε αίτηση στη βάση δεδομένων των οδηγών για ενημερώσεις, πρέπει "
+"να επιβεβαιώσετε."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:7
+msgid "Install or remove device drivers"
+msgstr "Εγκατάσταση ή απεγκατάσταση οδηγών συσκευών"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:8
+msgid "To install or remove device drivers, you need to authenticate."
+msgstr ""
+"Για να εγκαταστήσετε ή να αφαιρέσετε οδηγούς συσκευής, πρέπει να "
+"επιβεβαιώσετε."
+
+#: ../examples/handlers/nvidia.py:26 ../data/handlers/nvidia.py:28
+msgid "NVIDIA accelerated graphics driver"
+msgstr "Οδηγός γραφικών της NVIDIA"
+
+#: ../examples/handlers/nvidia.py:27
+msgid "3D-accelerated proprietary graphics driver for NVIDIA cards."
+msgstr "Ιδιοταγής-κλειστός οδηγός γραφικών NVIDIA με επιτάχυνση υλικού 3D"
+
+#: ../examples/handlers/nvidia.py:29
+msgid ""
+"This driver is required to fully utilise the 3D potential of NVIDIA graphics "
+"cards, as well as provide 2D acceleration of newer cards.\n"
+"\n"
+"If you wish to enable desktop effects, this driver is required.\n"
+"\n"
+"If this driver is not enabled, you will not be able to enable desktop "
+"effects and will not be able to run software that requires 3D acceleration, "
+"such as some games."
+msgstr ""
+"Ο οδηγός αυτός απαιτείται για την πλήρη αξιοποίηση των δυνατοτήτων 3D καρτών "
+"γραφικών NVIDIA, καθώς και για την παροχή γραφικών 2D με επιτάχυνση σε "
+"νεότερες κάρτες.\n"
+"\n"
+"Ο οδηγός είναι απαραίτητος για τα εφέ επιφάνειας εργασίας.\n"
+"\n"
+"Εάν ο οδηγός αυτός δεν ενεργοποιηθεί δεν θα μπορείτε να έχετε εφέ επιφάνειας "
+"εργασίας και να χρησιμοποιείτε λογισμικό που απαιτεί 3D επιτάχυνση (όπως "
+"διάφορα παιχνίδια)."
+
+#~ msgid "Cannot connect to D-BUS"
+#~ msgstr "Δεν μπορεί να γίνει σύνδεση στο D-BUS"
+
+#~ msgid "Restricted Hardware Drivers"
+#~ msgstr "Οδηγοί υλικού κλειστού κώδικα"
+
+#~ msgid "Hardware Drivers"
+#~ msgstr "Οδηγοί υλικού"
+
+#, python-format
+#~ msgid ""
+#~ "Proprietary drivers do not have public source code that %(os)s developers "
+#~ "are free to modify. They represent a risk to you because they are only "
+#~ "available on the types of computer chosen by the manufacturer, and security "
+#~ "updates to them depend solely on the responsiveness of the manufacturer. "
+#~ "%(os)s cannot fix or improve these drivers."
+#~ msgstr ""
+#~ "Οι ιδιωτικοί οδηγοί συσκευών δεν έχουν δημόσιο πηγαίο κώδικα, τον οποίο οι "
+#~ "προγραμματιστές του %(os)s να είναι ελεύθεροι να τροποποιήσουν. Αποτελούν "
+#~ "ρίσκο για εσάς καθώς είναι διαθέσιμοι μόνο για τον τύπο υπολογιστή που "
+#~ "επιλέγει ο κατασκευαστής και οι ενημερώσεις ασφαλείας τους εξαρτώνται "
+#~ "αποκλειστικά από την απόκριση του κατασκευαστή. To %(os)s δεν μπορεί να "
+#~ "διορθώσει ή να βελτιώσει τους συγκεκριμένους οδηγούς."
+
+#~ msgid "System policy prevents checking driver status"
+#~ msgstr ""
+#~ "Η πολιτική του συστήματος αποτρέπει τον έλεγχο της κατάστασης του οδηγού"
+
+#~ msgid "System policy prevents installation/removal of device drivers"
+#~ msgstr ""
+#~ "Η πολιτική του συστήματος αποτρέπει την εγκατάσταση και την απεγκατάσταση "
+#~ "οδηγών συσκευών"
+
+#~ msgid "System policy prevents querying device drivers"
+#~ msgstr "Η πολιτική του συστήματος αποτρέπει την αναζήτηση οδηγών συσκευών"
+
+#~ msgid "System policy prevents querying driver databases for updates"
+#~ msgstr ""
+#~ "Η πολιτική του συστήματος αποτρέπει την αναζήτηση ενημερώσεων των οδηγών "
+#~ "συσκευών"
+
+#~ msgid ""
+#~ "This driver is required to fully utilise the 3D potential of some ATI "
+#~ "graphics cards, as well as provide 2D acceleration of newer cards."
+#~ msgstr ""
+#~ "Ο οδηγός αυτός χρειάζεται για να αξιοποιήσετε πλήρως της δυνατότητες "
+#~ "τρισδιάστατων γραφικών ορισμένων καρτών γραφικών ATI, αλλά και για να "
+#~ "παρέχετε δισδιάστατη επιτάχυνση σε νεότερες κάρτες."
+
+#~ msgid "ATI/AMD proprietary FGLRX graphics driver"
+#~ msgstr "Ιδιοταγής-κλειστός οδηγός γραφικών ATI (FGLRX)"
+
+#~ msgid "3D-accelerated proprietary graphics driver for ATI cards."
+#~ msgstr "Ιδιοταγής-κλειστός οδηγός γραφικών ATI με επιτάχυνση υλικού 3D"

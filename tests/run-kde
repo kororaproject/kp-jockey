@@ -1,0 +1,234 @@
+#!/usr/bin/python
+
+'''Run self tests of the KDE4 implementation.'''
+
+# (c) 2008 Canonical Ltd.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+import sys, imp, os.path, unittest, time, os, signal, atexit
+
+from PyKDE4.kdecore import *
+from PyKDE4.kdeui import *
+from PyQt4.Qt import QTimer
+from PyQt4.QtCore import SIGNAL
+from PyQt4.QtGui import *
+
+root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+
+# prefer modules in the local tree
+sys.path.insert(0, root_dir)
+# modules in build/ aren't recognized even when we put them into PYTHONPATH, so
+# hack around
+if not os.path.exists(os.path.join(root_dir, 'jockey', 'kdeui')):
+    os.symlink(os.path.join('..', 'build', 'kdeui', 'jockey', 'kdeui'),
+            os.path.join(root_dir, 'jockey', 'kdeui'))
+    atexit.register(os.unlink, os.path.join(root_dir, 'jockey', 'kdeui'))
+
+from jockey.oslib import OSLib
+import jockey.backend
+import sandbox
+
+
+class QtUITest(unittest.TestCase):
+    def setUp(self):
+        sys.argv = ['ui-test']
+        self.ui = KDEUI()
+        self.ui._dbus_iface = jockey.backend.Backend.create_dbus_client(session_bus=True)
+        self.ui.ui_init()
+        self.ui.have_ui = True
+        self.ui.backend().detect(timeout=90)
+    
+    def test_convert_keybindings(self):
+        '''convert_keybindings()'''
+
+        self.assertEqual(self.ui.convert_keybindings('Foo'), 'Foo')
+        self.assertEqual(self.ui.convert_keybindings('_Foo'), '&Foo')
+        self.assertEqual(self.ui.convert_keybindings('F_oo'), 'F&oo')
+        self.assertEqual(self.ui.convert_keybindings('F_oo__bar'), 'F&oo__bar')
+    
+    def test_progress(self):
+        '''progress dialog'''
+
+        cur = 0
+        total = 10000
+        self.ui.ui_progress_start('Test', 'Running complete progress', total)
+        self.ui.ui_idle()
+        while cur < total:
+            cur += 4096
+            if cur > total:
+                cur = total
+            # not finished yet
+            self.assertEqual(self.ui.ui_progress_update(cur, total), False)
+            self.ui.ui_idle()
+            time.sleep(0.2)
+        self.ui.ui_progress_finish()
+
+    def test_progress_indefinite(self):
+        '''indefinite progress dialog'''
+
+        timeout = 15
+        self.ui.ui_progress_start('Test', 'Running indefinite progress', -1)
+        self.ui.ui_idle()
+        while timeout > 0:
+            timeout -= 1
+            self.assertEqual(self.ui.ui_progress_update(-1, -1), False)
+            self.ui.ui_idle()
+            time.sleep(0.2)
+        self.ui.ui_progress_finish()
+
+    def test_progress_cancel(self):
+        '''progress dialog, cancelling'''
+
+        cur = 0
+        total = 300000
+        self.ui.ui_progress_start('Test', 'This gets auto-cancelled', total)
+        self.ui.ui_idle()
+        while cur < total:
+            cur += 4096
+            if cur > 20000:
+                self.ui.progress_ui.buttonCancel.emit(SIGNAL("clicked()"))
+                self.assertEqual(self.ui.ui_progress_update(cur, total), True)
+                break
+            else:
+                self.assertEqual(self.ui.ui_progress_update(cur, total), False)
+            self.ui.ui_idle()
+            time.sleep(0.2)
+        self.ui.ui_progress_finish()
+        self.assert_(cur < total)
+
+    def test_main_window(self):
+        '''Main window and quitting'''
+
+        QTimer.singleShot(5000, self.ui.on_buttonBox_rejected)
+        self.ui.run()
+
+    def test_show_main_idempotency(self):
+        '''ui_show_main() idempotency'''
+
+        self.ui.ui_show_main()
+        orig_columns = self.ui.mw.treeview_drivers.columnCount()
+        self.ui.ui_show_main()
+        self.ui.ui_show_main()
+        self.ui.ui_show_main()
+        self.assertEqual(self.ui.mw.treeview_drivers.columnCount(), orig_columns)
+        QTimer.singleShot(5000, self.ui.on_buttonBox_rejected)
+        self.ui.run()
+
+    def test_main_window_nohandlers(self):
+        '''Main window and quitting without any handlers'''
+
+        self.ui._dbus_iface = jockey.backend.Backend()
+        self.ui._dbus_iface.handlers = {}
+        QTimer.singleShot(5000, self.ui.on_buttonBox_rejected)
+        self.ui.run()
+
+    def test_0_ui_notification(self):
+        '''ui_notification()'''
+
+        self.ui.ui_notification('NotificationTitle', 'NotificationText')
+        QTimer.singleShot(4000, self.ui.on_buttonBox_rejected)
+        self.ui.ui_idle()
+    
+    def _help_button_visible(self, buttonbox):
+        '''
+        See whether the help button is visible.
+        
+        If the help button is not visible
+        it won't show up in the list returned by
+        buttons(), therefore all this method does
+        is check the existence of the help button.
+        '''
+        
+        for myButton in buttonbox.buttons():
+            # if it is a help button
+            if buttonbox.buttonRole(myButton) == 4:
+                return True
+        return False
+    
+    def test_help_notavail(self):
+        '''help button absent when help is not available'''
+
+        QTimer.singleShot(5000, self.ui.on_buttonBox_rejected)
+        self.ui.run()
+        visible = self._help_button_visible(self.ui.mw.buttonBox)
+        self.failIf(visible == True)
+
+
+    def test_help_avail(self):
+        '''help button present when help is available'''
+
+        try:
+            OSLib.inst.help_available = True
+
+            QTimer.singleShot(5000, self.ui.on_buttonBox_rejected)
+            self.ui.run()
+            
+            self.failIf(OSLib.inst.help_called)
+            
+            visible = self._help_button_visible(self.ui.mw.buttonBox)
+            self.assert_(visible)
+            
+            self.ui.mw.buttonBox.emit(SIGNAL("helpRequested()"))
+            self.ui.ui_idle()
+            self.assert_(OSLib.inst.help_called)
+        finally:
+            OSLib.inst.help_available = False
+
+if __name__ == '__main__':
+    # set the global OSLib instance for all tests
+    OSLib.inst = sandbox.TestOSLib()
+
+    #grab KAboutData object from jockey-kde
+    kabout = getattr(imp.load_source('mod_gtk_impl', os.path.join(root_dir,
+				      'kde', 'jockey-kde')), 'aboutData')
+
+    # pass a copy, to not destroy sys.argv for unittest; also, do not pass
+    # options to KDE, they are for unittest
+    KCmdLineArgs.init(sys.argv[0:1] + [], kabout)
+
+    # get KDEUI
+    kapp = KApplication()
+
+    try:
+        KDEUI = getattr(imp.load_source('mod_gtk_impl', os.path.join(root_dir,
+                        'kde', 'jockey-kde')), 'KDEUI')
+
+        # start backend 
+        env = os.environ
+        env.update({'PYTHONPATH': root_dir})
+        svr_pid = os.spawnle(os.P_NOWAIT, os.path.join(root_dir, 'backend',
+            'jockey-backend'), 'jockey-backend', '--test', env)
+
+        # wait until backend comes online
+        while True:
+            try:
+                jockey.backend.Backend.create_dbus_client(session_bus=True)
+                break
+            except Exception, e:
+                if hasattr(e, '_dbus_error_name') and e._dbus_error_name == \
+                        'org.freedesktop.DBus.Error.ServiceUnknown':
+                    time.sleep(0.2)
+                    pass
+
+        # run tests
+        unittest.main()
+    finally:
+        # clean up pyc
+        os.unlink(os.path.join(root_dir, 'kde', 'jockey-kdec'))
+        os.kill(svr_pid, signal.SIGTERM)
+        (p, st) = os.waitpid(svr_pid, 0)
+        assert p == svr_pid
+        assert os.WEXITSTATUS(st) == 0

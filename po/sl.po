@@ -1,0 +1,618 @@
+# Slovenian translation for restricted-manager
+# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
+# This file is distributed under the same license as the restricted-manager package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: restricted-manager\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-05 06:47+0100\n"
+"PO-Revision-Date: 2011-12-08 13:41+0000\n"
+"Last-Translator: Andrej Znidarsic <andrej.znidarsic@gmail.com>\n"
+"Language-Team: Slovenian <sl@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-03-06 04:37+0000\n"
+"X-Generator: Launchpad (build 14900)\n"
+"Language: sl\n"
+
+#: ../text/jockey-text.py:72
+msgid "Please enter 'y' or 'n' and press Enter"
+msgstr "Prosimo vnesite 'd' (da) ali 'n' (ne) in pritisnite Enter"
+
+#: ../text/jockey-text.py:74
+msgid "y\n"
+msgstr "d\n"
+
+#: ../text/jockey-text.py:76
+msgid "n\n"
+msgstr "n\n"
+
+#: ../kde/autostart/jockey-kde.desktop.in.h:1
+#: ../gtk/autostart/jockey-gtk.desktop.in.h:1
+msgid "Check for new hardware drivers"
+msgstr "Preveri za nove gonilnike strojne opreme"
+
+#: ../kde/autostart/jockey-kde.desktop.in.h:2
+#: ../gtk/autostart/jockey-gtk.desktop.in.h:2
+msgid "Notify about new hardware drivers available for the system"
+msgstr "Obvesti me o novih gonilnikih strojne opreme za sistem"
+
+#: ../jockey/ui.py:121
+msgid ""
+"Cannot connect to D-BUS, please use the --no-dbus option as root to use "
+"jockey without it."
+msgstr ""
+"Ni se mogoče povezati z D-BUS. Uporabi možnost --no-dbus kot skrbnik za "
+"uporabo jockey-ja brez D-BUS-a."
+
+#: ../jockey/ui.py:132 ../jockey/ui.py:145
+msgid "Searching for available drivers..."
+msgstr "Iskanje razpoložljivih gonilnikov ..."
+
+#: ../jockey/ui.py:170
+msgid "Component"
+msgstr "Komponenta"
+
+#: ../jockey/ui.py:171
+msgid "_Enable"
+msgstr "_Omogoči"
+
+#: ../jockey/ui.py:172
+msgid "_Disable"
+msgstr "O_nemogoči"
+
+#: ../jockey/ui.py:173
+msgid "Enabled"
+msgstr "Omogočeno"
+
+#: ../jockey/ui.py:174
+msgid "Disabled"
+msgstr "Onemogočeno"
+
+#: ../jockey/ui.py:175
+msgid "Status"
+msgstr "Stanje"
+
+#: ../jockey/ui.py:176
+msgid "Needs computer restart"
+msgstr "Potreben je ponoven zagon računalnika"
+
+#: ../jockey/ui.py:177
+msgid "In use"
+msgstr "V uporabi"
+
+#: ../jockey/ui.py:178
+msgid "Not in use"
+msgstr "Ni v uporabi"
+
+#: ../jockey/ui.py:179
+msgid "License:"
+msgstr "Licenca:"
+
+#: ../jockey/ui.py:180
+msgid "details"
+msgstr "podrobnosti"
+
+#. this is used in the GUI and in --list output to denote free/restricted drivers
+#: ../jockey/ui.py:182
+msgid "Free"
+msgstr "Prosto"
+
+#. this is used in the GUI and in --list output to denote free/restricted drivers
+#: ../jockey/ui.py:184
+msgid "Proprietary"
+msgstr "Lastniško"
+
+#: ../jockey/ui.py:185
+msgid "Download in progress"
+msgstr "Prejemanje poteka"
+
+#: ../jockey/ui.py:186
+msgid "Unknown driver"
+msgstr "Neznan gonilnik"
+
+#: ../jockey/ui.py:187
+msgid "You are not authorized to perform this action."
+msgstr "Niste pooblaščeni za izvedbo tega dejanja."
+
+#. %s is the name of the operating system
+#: ../jockey/ui.py:189
+#, python-format
+msgid "Tested by the %s developers"
+msgstr "Preizkušeno s strani razvijalcev %s"
+
+#. %s is the name of the operating system
+#: ../jockey/ui.py:191
+#, python-format
+msgid "Not tested by the %s developers"
+msgstr "Ni preizkušeno s strani razvijalcev %s"
+
+#. this is used when one version of a driver is recommended over others
+#: ../jockey/ui.py:193
+msgid "Recommended"
+msgstr "Priporočeno"
+
+#: ../jockey/ui.py:194
+msgid "License Text for Device Driver"
+msgstr "Besedilo licence za gonilnik naprave"
+
+#: ../jockey/ui.py:195
+msgid "Install Drivers"
+msgstr "Namesti gonilnike"
+
+#: ../jockey/ui.py:204
+msgid "Restricted Additional Drivers"
+msgstr "Dodatni omejeni gonilniki"
+
+#: ../kde/jockey-kde.desktop.in.h:1 ../jockey/ui.py:206 ../jockey/ui.py:582
+#: ../jockey/ui.py:590 ../jockey/ui.py:598 ../jockey/ui.py:802
+#: ../gtk/jockey-gtk.desktop.in.h:1
+msgid "Additional Drivers"
+msgstr "Dodatni gonilniki"
+
+#: ../jockey/ui.py:216
+msgid "Driver search results"
+msgstr "Rezultati iskanja gonilnika"
+
+#: ../jockey/ui.py:232
+msgid ""
+"Proprietary drivers are being used to make this computer work properly."
+msgstr ""
+"Za pravilno delovanje tega računalnika so v uporabi omejeni gonilniki."
+
+#: ../jockey/ui.py:235
+msgid "No proprietary drivers are in use on this system."
+msgstr "Na tem sistemu lastniški gonilniki niso v uporabi."
+
+#. %(os)s stands for the OS name. Prefix it or suffix it,
+#. but do not replace it.
+#: ../jockey/ui.py:241
+#, python-format
+msgid ""
+"Proprietary drivers do not have public source code that %(os)s developers "
+"are free to modify. Security updates and corrections depend solely on the "
+"responsiveness of the manufacturer. %(os)s cannot fix or improve these "
+"drivers."
+msgstr ""
+"Lastniški gonilniki nimajo javne izvorne kode, ki bi jo lahko razvijalci "
+"operacijskega sistema %(os)s prosto spreminjali. Varnostne posodobitve in "
+"popravki so odvisni izključno od odzivnosti proizvajalca. %(os)s teh "
+"gonilnikov ne more popravljati ali izboljšati."
+
+#: ../jockey/ui.py:254
+msgid "Graphics driver"
+msgstr "Grafični gonilnik"
+
+#: ../jockey/ui.py:256
+msgid "Firmware"
+msgstr "Strojna programska oprema"
+
+#: ../jockey/ui.py:258
+msgid "Device driver"
+msgstr "Gonilnik naprave"
+
+#: ../jockey/ui.py:268
+#, python-format
+msgid "version %s"
+msgstr "različica %s"
+
+#: ../jockey/ui.py:322
+msgid "_Remove"
+msgstr "_Odstrani"
+
+#: ../jockey/ui.py:324
+msgid "_Deactivate"
+msgstr "O_nemogoči"
+
+#: ../jockey/ui.py:326
+msgid "This driver is activated and currently in use."
+msgstr "Ta gonilnik je vključen in trenutno v uporabi"
+
+#: ../jockey/ui.py:330
+msgid "You need to restart the computer to activate this driver."
+msgstr "Za omogočenje gonilnika morate računalnik znova zagnati."
+
+#: ../jockey/ui.py:332
+msgid "This driver is activated but not currently in use."
+msgstr "Ta gonilnik je omogočen, vendar trenutno ni v uporabi."
+
+#: ../jockey/ui.py:334
+msgid "_Activate"
+msgstr "_Omogoči"
+
+#: ../jockey/ui.py:338
+msgid "This driver was just disabled, but is still in use."
+msgstr "Ta gonilnik je bil pravkar onemogočen, vendar je še vedno v uporabi."
+
+#: ../jockey/ui.py:340
+msgid "A different version of this driver is in use."
+msgstr "V uporabi je druga različica gonilnika."
+
+#: ../jockey/ui.py:342
+msgid "This driver is not activated."
+msgstr "Ta gonilnik ni omogočen."
+
+#: ../jockey/ui.py:362
+msgid "Check for newly used or usable drivers and notify the user."
+msgstr ""
+"Preveri za najnovejše uporabljene ali uporabne gonilnike in obvesti "
+"uporabnika."
+
+#: ../jockey/ui.py:365
+msgid "Query driver databases for newly available or updated drivers."
+msgstr ""
+"Opravi poizvedbo v podatkovnih zbirkah gonilnikov o najnovejših "
+"razpoložljivih ali posodobljenih gonilnikih."
+
+#: ../jockey/ui.py:368
+msgid "List available drivers and their status."
+msgstr "Izpiše razpoložljive gonilnike in njihovo stanje."
+
+#: ../jockey/ui.py:371
+msgid "Enable drivers that can be automatically installed."
+msgstr "Omogoči gonilnike, ki jih je mogoče samodejno namestiti."
+
+#: ../jockey/ui.py:374
+msgid "List hardware identifiers from this system."
+msgstr "Naštej določila strojne opreme s tega sistema."
+
+#: ../jockey/ui.py:377
+msgid "Enable a driver"
+msgstr "Omogoči gonilnik"
+
+#: ../jockey/ui.py:380
+msgid "Disable a driver"
+msgstr "Onemogoči gonilnik"
+
+#: ../jockey/ui.py:383
+msgid "Ask for confirmation for --enable/--disable"
+msgstr "Vprašaj za potrditev za --enable/--disable"
+
+#: ../jockey/ui.py:386
+msgid ""
+"Check if there is a graphics driver available that supports composite and "
+"offer to enable it"
+msgstr ""
+"Poglej, če je na razpolago grafični gonilnik, ki podpira sestavljanje, in "
+"ponudi njegovo omogočenje"
+
+#: ../jockey/ui.py:391
+msgid ""
+"Only manage free/nonfree drivers. By default, all available drivers with any "
+"license are presented."
+msgstr ""
+"Upravljaj samo proste/ne-proste gonilnike. Privzeto so prisotni vsi "
+"razpoložljivi gonilniki s katerokoli licenco."
+
+#: ../jockey/ui.py:395
+msgid "Run as session D-BUS server."
+msgstr "Zaženi kot sejo strežnika D-BUS."
+
+#: ../jockey/ui.py:397
+msgid ""
+"Do not use D-BUS for communicating with the backend. Needs root privileges."
+msgstr ""
+"Za sporočanje z zaledjem ne uporabi D-Bus. Zahteva skrbniške pravice."
+
+#: ../jockey/ui.py:399
+msgid ""
+"Use a different target kernel version than the currently running one. This "
+"is only relevant with --no-dbus."
+msgstr ""
+"Uporabi drugačno različico jedra kot trenutno teče. To je pomembno le z --no-"
+"dbus."
+
+#: ../jockey/ui.py:539 ../jockey/ui.py:1022
+msgid "Restricted drivers available"
+msgstr "Na voljo so omejeni gonilniki"
+
+#: ../jockey/ui.py:540
+msgid ""
+"In order to use your hardware more efficiently, you can enable drivers which "
+"are not free software."
+msgstr ""
+"Za boljšo uporabo svoje strojne opreme lahko omogočite gonilnike, ki niso "
+"prosti."
+
+#: ../jockey/ui.py:543
+msgid "New drivers available"
+msgstr "Na voljo so novi gonilniki"
+
+#: ../jockey/ui.py:544
+msgid "There are new or updated drivers available for your hardware."
+msgstr "Za vašo strojno opremo so na voljo novi ali posodobljeni gonilniki."
+
+#: ../jockey/ui.py:548
+msgid "New restricted drivers in use"
+msgstr "Novi omejeni gonilniki v uporabi"
+
+#. %(os)s stands for the OS name. Prefix it or suffix it,
+#. but do not replace it.
+#: ../jockey/ui.py:551
+#, python-format
+msgid ""
+"In order for this computer to function properly, %(os)s is using driver "
+"software that cannot be supported by %(os)s."
+msgstr ""
+"Za učinkovito delovanje tega računalnika se v sistemu %(os)s uporablja "
+"gonilnik, za katerega %(os)s ne more nuditi podpore."
+
+#: ../jockey/ui.py:577
+msgid ""
+"There is no available graphics driver for your system which supports the "
+"composite extension, or the current one already supports it."
+msgstr ""
+"Za vaš sistem ni na voljo gonilnika, ki podpira razširitev 3D grafičnih "
+"učinkov, ali pa jo trenutni gonilnik že podpira."
+
+#: ../jockey/ui.py:583
+msgid "Downloading and installing driver..."
+msgstr "Prejemanje in nameščanje gonilnika ..."
+
+#: ../jockey/ui.py:591
+msgid "Removing driver..."
+msgstr "Odstranjevanje gonilnika ..."
+
+#: ../jockey/ui.py:599
+msgid "Downloading and updating package indexes..."
+msgstr "Prejemanje in posodabljanje kazal paketov ..."
+
+#: ../jockey/ui.py:621
+msgid "Use --list to see available drivers"
+msgstr "Uporabite --list za ogled razpoložljivih gonilnikov"
+
+#: ../jockey/ui.py:638
+msgid "Cannot change driver"
+msgstr "Gonilnika ni mogoče spremeniti"
+
+#: ../jockey/ui.py:651
+msgid "Enable driver?"
+msgstr "Ali naj se gonilnik omogoči?"
+
+#: ../jockey/ui.py:654
+msgid "Disable driver?"
+msgstr "Ali naj se gonilnik oneomogoči?"
+
+#: ../jockey/ui.py:683
+msgid "Sorry, the Jockey backend crashed. Please file a bug at:"
+msgstr "Oprostite, zaledje Jockey se je sesulo. Prijavite hrošč na:"
+
+#: ../jockey/ui.py:684
+msgid "Trying to recover by restarting backend."
+msgstr "Poskus obnovitve delovanja s ponovnim zagonom zaledja."
+
+#: ../jockey/ui.py:694
+msgid "Sorry, installation of this driver failed."
+msgstr "Oprostite, namestitev tega gonilnika je spodletela."
+
+#: ../jockey/ui.py:695
+msgid "Please have a look at the log file for details"
+msgstr "Oglejte si dnevniško datoteko za podrobnosti"
+
+#: ../jockey/ui.py:733
+msgid "Download error"
+msgstr "Napaka prejema"
+
+#: ../jockey/ui.py:860
+msgid ""
+"Downloading package indexes failed, please check your network status. Most "
+"drivers will not be available."
+msgstr ""
+"Prejemanje kazal paketov ni uspelo, preverite stanje svojega omrežja. Večina "
+"gonilnikov ne bo na voljo."
+
+#: ../jockey/ui.py:930
+#, python-format
+msgid "Searching driver for %s..."
+msgstr "Iskanje gonilnika za %s ..."
+
+#: ../kde/jockey-kde.desktop.in.h:2 ../gtk/jockey-gtk.desktop.in.h:2
+msgid "Configure third-party and proprietary drivers"
+msgstr "Nastavite lastniške gonilnike in gonilnike tretjih oseb"
+
+#: ../examples/handlers/madwifi.py:22 ../data/handlers/madwifi.py:22
+msgid "Alternate Atheros \"madwifi\" driver"
+msgstr "Nadomestni Atheros gonilnik \"madwifi\""
+
+#: ../examples/handlers/madwifi.py:23 ../data/handlers/madwifi.py:23
+msgid "Alternate \"madwifi\" driver for Atheros wireless LAN cards."
+msgstr ""
+"Nadomestni gonilnik \"madwifi\" za brezžično omrežno kartico Atheros."
+
+#: ../examples/handlers/madwifi.py:24 ../data/handlers/madwifi.py:24
+msgid ""
+"Only activate this driver if you have problems with your wireless LAN "
+"connection.\n"
+"\n"
+"The free \"ath5k\" driver should work with most Atheros cards nowadays, but "
+"on some computers this alternate (but proprietary) driver still works "
+"better, or at all."
+msgstr ""
+"Ta gonilnik vključite le, če imate težave s svojo brezžično omrežno "
+"povezavo.\n"
+"Prosti \"ath5k\" gonilnik bi moral delati z večino današnjih kartic Atheros, "
+"vendar na nekaterih računalnikih nadomestni (a lastniški) gonilnik še vedno "
+"deluje bolje."
+
+#: ../examples/handlers/madwifi.py:38 ../data/handlers/madwifi.py:38
+#, python-format
+msgid "You removed the configuration file %s"
+msgstr "Odstranili ste nastavitveno datoteko %s"
+
+#. translators: %s is the path to xorg.conf
+#: ../jockey/xorg_driver.py:99
+#, python-format
+msgid "Reconfiguring X.org video drivers is not possible: %s is invalid."
+msgstr ""
+"Ponovna nastavitev video gonilnikov X.org ni mogoča: %s je neveljaven."
+
+#: ../examples/handlers/fglrx.py:17
+msgid "AMD proprietary FGLRX graphics driver"
+msgstr "Lastniški grafični gonilnik FGLRX AMD"
+
+#: ../examples/handlers/fglrx.py:18
+msgid "3D-accelerated proprietary graphics driver for AMD (ATI) cards."
+msgstr "3D-pospešeni lastniški grafični gonilnik za kartice AMD (ATI)."
+
+#: ../examples/handlers/fglrx.py:20
+msgid ""
+"This driver is required to fully utilise the 3D potential of some AMD (ATI) "
+"graphics cards, as well as provide 2D acceleration of newer cards."
+msgstr ""
+"Ta gonilnik je zahtevan za polno uporabo 3D potenciala nekaterih grafičnih "
+"kartic AMD (ATI) in za zagotavljanje 2D pospeševanja novejših kartic."
+
+#: ../examples/handlers/sl_modem.py:15 ../data/handlers/sl_modem.py:15
+msgid "Software modem"
+msgstr "Programski modem"
+
+#: ../examples/handlers/sl_modem.py:17 ../data/handlers/sl_modem.py:17
+msgid ""
+"This driver enables the usage of many software modems, as commonly found in "
+"laptops.\n"
+"\n"
+"If this driver is not enabled, you will not be able to use your modem."
+msgstr ""
+"Ta gonilnik omogoča uporabo številnih programskih modemov, ki so pogosto v "
+"prenosnikih.\n"
+"Če ta gonilnik ni omogočen, ne bo mogoče uporabljati vašega modema."
+
+#: ../examples/handlers/vmware-client.py:17
+#: ../data/handlers/vmware-client.py:17
+msgid "VMWare Client Tools"
+msgstr "Orodja odjemalca WMWare"
+
+#: ../examples/handlers/vmware-client.py:18
+#: ../data/handlers/vmware-client.py:18
+msgid "Install VMWare client drivers and tools"
+msgstr "Namesti gonilnike in orodja odjemalca VMWare"
+
+#: ../examples/handlers/vmware-client.py:19
+#: ../data/handlers/vmware-client.py:19
+msgid ""
+"Install the VMWare client drivers and tools for your VMWare based Ubuntu "
+"installation.\n"
+"\n"
+"This should help you use Ubuntu in your VM."
+msgstr ""
+"Namestite gonilnike in odjemalca VMWare in orodja za svojo na VMWare "
+"osnovano namestitev Ubuntu.\n"
+"\n"
+"To bi moralo pomagati pri uporabi Ubuntuja v navideznem stroju."
+
+#: ../backend/jockey-backend.py:32
+msgid "Enable debugging messages."
+msgstr "Omogoči sporočila razhroščevanja."
+
+#: ../backend/jockey-backend.py:35
+msgid "Write logging messages to a file instead to stderr."
+msgstr "Zapiše sporočila beleženja v datoteko namesto v stderr."
+
+#: ../backend/jockey-backend.py:38
+msgid "Timeout for D-BUS service (default: 600, 0: run forever)"
+msgstr "Zakasnitev za storitev D-BUS (privzeto: 600, 0: teci večno)"
+
+#: ../backend/jockey-backend.py:41
+msgid "Add a custom handler directory."
+msgstr "Dodaj mapo ročnika po meri."
+
+#: ../backend/jockey-backend.py:44
+msgid "Run on session D-BUS (only for testing)"
+msgstr "Poženi na seji D-Bus (le za preizkušanje)"
+
+#: ../backend/jockey-backend.py:46
+msgid "Use a different target kernel version than the currently running one."
+msgstr "Uporabi drugačno različico jedra kot trenutno teče."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:1
+msgid "Get information about local device drivers"
+msgstr "Dobi podatke o krajevnih gonilnikih naprav"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:2
+msgid "To query the device drivers, you need to authenticate."
+msgstr "Za poizvedbo o gonilnikih naprav se morate overiti."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:3
+msgid ""
+"Check for newly available drivers for, and used drivers on this system"
+msgstr ""
+"Preveri za novo razpoložljive gonilnike in za gonilnike uporabljene na tem "
+"sistemu"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:4
+msgid "To check the driver status, you need to authenticate."
+msgstr "Za preverjanje stanj gonilnikov se morate overiti."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:5
+msgid ""
+"Query local and remote driver databases for updated drivers for the system"
+msgstr ""
+"Napravi poizvedbo v krajevnih in oddaljenih podatkovnih zbirkah o "
+"posodobljenih gonilnikih za sistem"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:6
+msgid "To query the driver databases for updates, you need to authenticate."
+msgstr ""
+"Za poizvedbo v podatkovnih zbirkah gonilnikov za posodobitve se morate "
+"overiti."
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:7
+msgid "Install or remove device drivers"
+msgstr "Namesti ali odstrani gonilnike naprav"
+
+#: ../backend/com.ubuntu.devicedriver.policy.in.h:8
+msgid "To install or remove device drivers, you need to authenticate."
+msgstr "Za namestitev ali odstranitev gonilnikov naprav se morate overiti."
+
+#: ../examples/handlers/nvidia.py:26 ../data/handlers/nvidia.py:28
+msgid "NVIDIA accelerated graphics driver"
+msgstr "NVIDIA pospešeni grafični gonilnik"
+
+#: ../examples/handlers/nvidia.py:27
+msgid "3D-accelerated proprietary graphics driver for NVIDIA cards."
+msgstr "3D pospešen lastniški grafični gonilnik za kartice NVIDIA."
+
+#: ../examples/handlers/nvidia.py:29
+msgid ""
+"This driver is required to fully utilise the 3D potential of NVIDIA graphics "
+"cards, as well as provide 2D acceleration of newer cards.\n"
+"\n"
+"If you wish to enable desktop effects, this driver is required.\n"
+"\n"
+"If this driver is not enabled, you will not be able to enable desktop "
+"effects and will not be able to run software that requires 3D acceleration, "
+"such as some games."
+msgstr ""
+"Ta gonilnik je zahtevan za popoln izkoristek 3D potenciala grafičnih kartic "
+"NVIDIA ter nudi 2D pospešek pri novejših karticah.\n"
+"\n"
+"Ta gonilnik je zahtevan, če želite omogočiti učinke namizja.\n"
+"\n"
+"Če ne omogočite tega gonilnika, učinki namizja ne bodo mogoči in ne bo "
+"mogoče uporabljati programov, ki zahtevajo pospešene 3D učinke, kot so "
+"nekatere igre."
+
+#, python-format
+#~ msgid ""
+#~ "Proprietary drivers do not have public source code that %(os)s developers "
+#~ "are free to modify. They represent a risk to you because they are only "
+#~ "available on the types of computer chosen by the manufacturer, and security "
+#~ "updates to them depend solely on the responsiveness of the manufacturer. "
+#~ "%(os)s cannot fix or improve these drivers."
+#~ msgstr ""
+#~ "Za lastniške gonilnike ni na razpolago izvorna koda, ki bi jo lahko "
+#~ "razvijalci %(os)s prosto spreminjali. Za vas predstavljajo riziko, saj so na "
+#~ "razpolago le za tip računalnika, ki ga določi proizvajalec. Morebitno "
+#~ "varnostno posodabljanje in izpopolnjevanje je odvisno samo od hitrosti "
+#~ "odgovora proizvajalca. %(os)s ne more popraviti ali izboljšati teh "
+#~ "gonilnikov."
+
+#~ msgid ""
+#~ "This driver is required to fully utilise the 3D potential of some ATI "
+#~ "graphics cards, as well as provide 2D acceleration of newer cards."
+#~ msgstr ""
+#~ "Ta gonilnik je zahtevan za polno uporabo 3D zmožnosti nekaterih grafičnih "
+#~ "kartic ATI in za 2D pospeševanje novejših kartic."

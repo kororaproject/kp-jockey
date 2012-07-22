@@ -1,0 +1,11 @@
+[Desktop Entry]
+_Name=Check for new hardware drivers
+_Comment=Notify about new hardware drivers available for the system
+Icon=jockey-kde
+Exec=sh -c "test -e /var/cache/jockey/check || exec jockey-kde --check 60"
+Terminal=false
+Type=Application
+Categories=Qt;KDE;System;
+OnlyShowIn=KDE;
+X-KDE-autostart-phase=2
+X-Ubuntu-Gettext-Domain=jockey
