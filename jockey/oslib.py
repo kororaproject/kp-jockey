@@ -72,10 +72,10 @@ class OSLib:
         self.module_blacklist_file = '/etc/modprobe.d/blacklist-local.conf'
 
         # path to modinfo binary
-        self.modinfo_path = '/sbin/modinfo'
+        self.modinfo_path = '/usr/sbin/modinfo'
 
         # path to modprobe binary
-        self.modprobe_path = '/sbin/modprobe'
+        self.modprobe_path = '/usr/sbin/modprobe'
 
         # path to kernel's list of loaded modules
         self.proc_modules = '/proc/modules'
