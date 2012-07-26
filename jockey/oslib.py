@@ -129,15 +129,15 @@ class OSLib:
         # This is used for downloading GPG key fingerprints for
         # openprinting.org driver packages.
         self.ssl_cert_file_paths = [
-                # Debian/Ubuntu use the ca-certificates package:
-                '/etc/ssl/certs/ca-certificates.crt'
+                # Fedora uses the ca-certificates package:
+                '/etc/pki/tls/certs/ca-bundle.trust.crt'
                 ]
 
         # default GPG key server
         # this is the generally recommended DNS round-robin, but usually very
         # slow:
-        #self.gpg_key_server = 'keys.gnupg.net'
-        self.gpg_key_server = 'hkp://keyserver.ubuntu.com:80'
+        self.gpg_key_server = 'keys.gnupg.net'
+        #self.gpg_key_server = 'hkp://keyserver.ubuntu.com:80'
 
         # Package which provides include files for the currently running
         # kernel.  If the system ensures that kernel headers are always
