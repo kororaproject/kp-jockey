@@ -1,5 +1,6 @@
 # -*- coding: UTF-8 -*-
 # (c) 2007 Canonical Ltd.
+# (c) 2011 Chris Smart <chris@kororaa.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,8 +21,7 @@
 import fcntl, os, subprocess, sys, logging, re, tempfile, time, shutil
 from glob import glob
 
-# global variables
-akmods_enabled = False
+import yum
 
 class OSLib:
     '''Encapsulation of operating system/Linux distribution specific operations.'''
@@ -29,13 +29,9 @@ class OSLib:
     # global default instance
     inst = None
 
-    global akmods_enabled
-    #logging.debug('class akmod status: %s', akmods_enabled)
-    print("class akmod status: %s" % akmods_enabled)
-
     def __init__(self, client_only=False, target_kernel=None):
         '''Set default paths and load the module blacklist.
-
+        
         Distributors might want to override some default paths.
         If client_only is True, this only initializes functionality which is
         needed by clients, and which can be done without special privileges.
@@ -44,17 +40,12 @@ class OSLib:
         os.uname()[2]. This is primarily useful for distribution installers
         where the target system kernel differs from the installer kernel.
         '''
-
-        global akmods_enabled
-        logging.debug('init akmod status pre-config: %s', akmods_enabled)
-
-        self.remove_pkg_queue = set()
-
+        
+        # create an instance of yum
+        self._yum = yum.YumBase()
+        
         # relevant stuff for clients and backend
         self._get_os_version()
-
-        # location of config file
-        self.config_file = '/etc/jockey.conf'
 
         # /sys/ path; the main purpose of changing this is for test
         # suites, but some vendors might have /sys in a nonstandard place
@@ -69,13 +60,13 @@ class OSLib:
 
         # path to a modprobe.d configuration file where kernel modules are
         # enabled and disabled with blacklisting
-        self.module_blacklist_file = '/etc/modprobe.d/blacklist-local.conf'
+        self.module_blacklist_file = '/etc/modprobe.d/blacklist.conf'
 
         # path to modinfo binary
-        self.modinfo_path = '/usr/sbin/modinfo'
+        self.modinfo_path = '/sbin/modinfo'
 
         # path to modprobe binary
-        self.modprobe_path = '/usr/sbin/modprobe'
+        self.modprobe_path = '/sbin/modprobe'
 
         # path to kernel's list of loaded modules
         self.proc_modules = '/proc/modules'
@@ -83,35 +74,11 @@ class OSLib:
         # default path to custom handlers
         self.handler_dir = '/usr/share/jockey/handlers'
 
-        if target_kernel:
-            self.target_kernel = target_kernel
-        else:
-            self.target_kernel = os.uname()[2]
-
         # default paths to modalias files (directory entries will consider all
         # files in them)
-
-        # set akmod support to disabled by default, enabled below after reading config file
-        #self.akmods_enabled = False
-
-        # Enable akmods if set in config, else check PAE, fallback to kmod
-        conf_file = open(self.config_file)
-
-        for line in conf_file:
-            if "akmods=true" in line.lower():
-                alias_dir = '-akmods'
-                akmods_enabled = True
-            elif re.search('.*PAE.*', self.target_kernel):
-                alias_dir = '-PAE'
-            else:
-                alias_dir = ''
-
-        conf_file.close()
-
-        logging.debug('init akmod status post-config: %s', akmods_enabled)
-
         self.modaliases = [
-            '/usr/share/jockey/modaliases%s/' % alias_dir,
+        #    '/lib/modules/%s/modules.alias' % os.uname()[2],
+            '/usr/share/jockey/modaliases/',
         ]
 
         # path to X.org configuration file
@@ -129,15 +96,20 @@ class OSLib:
         # This is used for downloading GPG key fingerprints for
         # openprinting.org driver packages.
         self.ssl_cert_file_paths = [
-                # Fedora uses the ca-certificates package:
-                '/etc/pki/tls/certs/ca-bundle.trust.crt'
+                # Fedora use the ca-certificates package:
+                '/etc/ssl/certs/ca-bundle.crt'
                 ]
 
         # default GPG key server
         # this is the generally recommended DNS round-robin, but usually very
         # slow:
-        self.gpg_key_server = 'keys.gnupg.net'
-        #self.gpg_key_server = 'hkp://keyserver.ubuntu.com:80'
+        #self.gpg_key_server = 'keys.gnupg.net'
+        self.gpg_key_server = 'hkp://subkeys.pgp.net'
+
+        if target_kernel:
+            self.target_kernel = target_kernel
+        else:
+            self.target_kernel = os.uname()[2]
 
         # Package which provides include files for the currently running
         # kernel.  If the system ensures that kernel headers are always
@@ -146,121 +118,46 @@ class OSLib:
         # use self.target_kernel instead of os.uname()[2].
         self.kernel_header_package = None
 
-    #
-    # The following functions are Fedora specific
-    #
-
-    def build_kmod(self, progress_cb, phase):
-        '''Build kmod package.'''
-
-        phase = phase
-        err = ''
-
-        progress_cb(phase, -1, -1)
-
-        logging.debug('\n\n\nbuild_kmod\n\n\n')
-        time.sleep(30)
-
-        kernel_version = os.uname()[2]
-        akmods = subprocess.Popen(['/usr/sbin/akmods', '--kernels', kernel_version],
-            stdin=subprocess.PIPE, stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE)
-
-        err += akmods.stderr.read()
-
-        if akmods.wait() != 0:
-            logging.error('Failed to build kmod: %s' % (err))
-        else:
-            logging.debug('Successfully built kmod for kernel %s' % kernel_version)
-
-
-    def rebuild_initramfs(self, progress_cb, phase):
-        '''Rebuild the initramfs.'''
-
-        phase = phase
-        err = ''
-
-        if progress_cb and phase == "remove":
-            progress_cb(-1, -1)
-        else:
-            progress_cb(phase, -1, -1)
-
-        logging.debug('\n\n\nbuild_initramfs\n\n\n')
-        time.sleep(30)
-
-        dracut = subprocess.Popen(['/sbin/dracut', '--force', '-v'],
-            stdin=subprocess.PIPE, stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE)
-
-        err += dracut.stderr.read()
-
-        if dracut.wait() != 0:
-            logging.error('Failed to rebuild initramfs: %s' % (err))
-        else:
-            logging.debug('Successfully rebuilt initramfs')
-
-    #
-    # The following package related functions use PackageKit; if that does not
+    # 
+    # The following package related functions use Yum; if that does not
     # work for your distribution, they must be reimplemented
     #
 
     def is_package_free(self, package):
         '''Return if given package is free software.'''
 
-        pkcon = subprocess.Popen(['pkcon', '--filter=newest',
-            'get-details', package], stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        # we send an "1" to select package if several versions
-        # are available (--filter is broken in at least Fedora 10)
-        out = pkcon.communicate('1\n')[0]
-        m = re.search("^\s*license:\s*'?(.*)'?$", out, re.M)
-        if m:
-            # TODO: check more licenses here
-            return m.group(1).lower().startswith('gpl') or \
-                m.group(1).lower() in ('free', 'bsd', 'mpl')
+        pkg = self._yum.pkgSack.returnNewestByName(package)[0]
+        license = pkg.returnSimple('license')
+        if license:
+            license.lower().startswith('gpl') or \
+                license.lower() in ('free', 'bsd', 'mpl')
         else:
             raise ValueError('package %s does not exist' % package)
 
     def package_installed(self, package):
         '''Return if the given package is installed.'''
-
-        pkcon = subprocess.Popen(['pkcon', 'resolve', package],
-            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        out = pkcon.communicate()[0]
-        return pkcon.returncode == 0 and '\ninstalled ' in out.lower()
+        return self._yum.isPackageInstalled(package)
 
     def package_description(self, package):
         '''Return a tuple (short_description, long_description) for a package.
-
+        
         This should raise a ValueError if the package is not available.
         '''
-        pkcon = subprocess.Popen(['pkcon', '--filter=newest',
-            'get-details', package], stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        # we send an "1" to select package if several versions
-        # are available (--filter is broken in at least Fedora 10)
-        out = pkcon.communicate('1\n')[0]
-        m = re.search("^\s*description:\s*'?(.*?)'?^\s+", out, re.M | re.S)
-        if m:
-            # TODO: short description (not accessible with pkcon)
-            return (package, m.group(1).replace('\n', ''))
-        else:
+        try:
+            pkg = self._yum.pkgSack.returnNewestByName(package)[0]
+            return (pkg.returnSimple('summary'), pkg.returnSimple('description'))
+        except yum.Errors.PackageSackError:
             raise ValueError('package %s does not exist' % package)
 
     def package_files(self, package):
         '''Return a list of files shipped by a package.
-
+        
         This should raise a ValueError if the package is not installed.
         '''
-        pkcon = subprocess.Popen(['pkcon', '--filter=installed',
-            'get-files', package], stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        # we send an "1" to select package if several versions
-        # are available (--filter is broken in at least Fedora 10)
-        out = pkcon.communicate('1\n')[0]
-        if pkcon.returncode == 0 and '\n  ' in out:
-            return [l.strip() for l in out.splitlines() if l.startswith('  ')]
-        else:
+        try:
+            pkg = self._yum.rpmdb.returnNewestByName(package)[0]
+            return pkg.filelist
+        except yum.Errors.PackageSackError:
             raise ValueError('package %s is not installed' % package)
 
     def install_package(self, package, progress_cb, repository=None,
@@ -288,65 +185,22 @@ class OSLib:
         that the repository is signed with that key.
 
         An unknown package should raise a ValueError. Any installation failure
-        due to bad packages should be logged, but not raise an exception, as
-        this would just crash the backend.
+        should be raised as a SystemError.
         '''
-
-        global akmods_enabled
-        logging.debug('install_package akmod status: %s', akmods_enabled)
-        print("install_package akmod status: %s" % akmods_enabled)
-
         if repository or fingerprint:
-            raise NotImplementedError('PackageKit default implementation does not currently support repositories or fingerprints')
+            raise NotImplementedError('Yum default implementation does not currently support repositories or fingerprints')
 
         # this will check if the package exists
         self.package_description(package)
-
-        pkcon = subprocess.Popen(['pkcon', 'install', '--plain', '-y', package],
-            stdin=subprocess.PIPE, stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE)
-
-        # we send an "1" to select package if several versions
-        # are available
-        print >>pkcon.stdin, "1\n"
-
-        re_progress = re.compile('Percentage:\t(\d+)')
-
-        phase = None
-        err = line = ''
-        fail = False
-        while pkcon.poll() == None or line != '':
-            line = pkcon.stdout.readline()
-            if fail:
-                err += line
-            if 'Downloading packages' in line:
-                phase = 'download'
-            elif 'Testing changes' in line or 'Installing packages' in line:
-                phase = 'install'
-            elif progress_cb and 'Percentage' in line:
-                m = re_progress.search(line)
-                if m and phase:
-                    progress_cb(phase, int(m.group(1)), 100)
-                else:
-                    progress_cb(phase or 'download', -1, -1)
-            elif 'WARNING' in line:
-                fail = True
-            elif 'transaction-error' in line or 'failed:' in line:
-                err += line
-
-        err += pkcon.stderr.read()
-        if pkcon.wait() != 0 or not self.package_installed(package):
-            logging.error('package %s failed to install: %s' % (package, err))
-
-
-        if akmods_enabled:
-          self.build_kmod(progress_cb, phase)
-
-        self.rebuild_initramfs(progress_cb, phase)
-
-    def queue_packages_for_removal(self, packages):
-        self.remove_pkg_queue.update(packages)
-
+        
+        try:
+            pkg = self._yum.pkgSack.returnNewestByName(package)[0]
+            self._yum.install(pkg)
+            self._yum.buildTransaction()
+            self._yum.processTransaction()
+        except Exception, error:
+            raise SystemError('package %s failed to install: %s' % (package, error))
+            
     def remove_package(self, package, progress_cb):
         '''Uninstall the given package.
 
@@ -360,92 +214,13 @@ class OSLib:
 
         Any removal failure should be raised as a SystemError.
         '''
-        progress_cb(0, 100)
-        pkcon = subprocess.Popen(['pkcon', '--plain', '--filter=installed',
-                                  'search', 'name', package],
-            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
-        re_packages = re.compile("Installed\s+([\w:.-]+)-([\w:.]+)-([\w:.]+)")
-
-        driver_packages = { package }
-        driver_packages.update(self.remove_pkg_queue)
-        self.remove_pkg_queue.clear()
-
-        err = line = ''
-        fail = False
-        while pkcon.poll() == None or line != '':
-            line = pkcon.stdout.readline()
-            if fail:
-                err += line
-            if 'Installed' in line:
-                m = re_packages.search(line)
-                if m:
-                    driver_packages.add(m.group(1))
-                else:
-                    logging.error('Cannot extract the package name from %s' % line)
-            elif 'WARNING' in line:
-                fail = True
-            elif 'transaction-error' in line or 'failed:' in line:
-                err += line
-
-        err += pkcon.stderr.read()
-        pkcon.wait()
-
-        progress_start = 100
-        progress_total = 100 + 100 * len(driver_packages)
-
-        logging.debug('Removing packages: %s' % driver_packages)
-        for pkg in driver_packages:
-            progress_cb(progress_start, progress_total)
-            self.remove_single_package(pkg, progress_cb, progress_start,
-                progress_total)
-            progress_start += 100
-
-        if self.package_installed(package):
-            raise SystemError('package %s failed to remove: %s' % (package, err))
-
-        self.rebuild_initramfs(progress_cb, "remove")
-
-    def remove_single_package(self, package, progress_cb, progress_start,
-                              progress_total):
-        '''Uninstall the given package.
-
-        As this is called in the backend, this must happen noninteractively.
-        For progress reporting, progress_cb(current, total) is called
-        regularly. Passes progress_start for current and/or progress_total
-        for total if time cannot be determined.
-
-        If this succeeds, subsequent package_installed(package) calls must
-        return False.
-
-        Any removal failure should be raised as a SystemError.
-        '''
-        pkcon = subprocess.Popen(['pkcon', 'remove', '--plain', '-y', package],
-            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
-        re_progress = re.compile('Percentage:\t(\d+)')
-
-        err = line = ''
-        fail = False
-        while pkcon.poll() == None or line != '':
-            line = pkcon.stdout.readline()
-            if fail:
-                err += line
-            elif progress_cb and 'Percentage' in line:
-                m = re_progress.search(line)
-                if m:
-                    progress_cb(progress_start + int(m.group(1)), progress_total)
-                else:
-                    progress_cb(progress_start, progress_total)
-            elif 'WARNING' in line:
-                fail = True
-            elif 'transaction-error' in line or 'failed:' in line:
-                err += line
-
-        err += pkcon.stderr.read()
-        pkcon.wait()
-        if self.package_installed(package):
-            raise SystemError('package %s failed to remove: %s' % (package, err))
+        try:
+            pkg = self._yum.rpmdb.returnNewestByName(package)[0]
+            self._yum.remove(pkg)
+            self._yum.buildTransaction()
+            self._yum.processTransaction()
+        except Exception, error:
+            raise SystemError('package %s failed to remove: %s' % (package, error))
 
     def has_repositories(self):
         '''Check if package repositories are available.
@@ -453,12 +228,7 @@ class OSLib:
         This might not be the case after a fresh installation, when package
         indexes haven't been downloaded yet.
         '''
-        pkcon = subprocess.Popen(['pkcon', 'get-details', 'bash'],
-                stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        out = pkcon.communicate()[0]
-        # PK can't detect package sizes without repositories
-        m = re.search("^\s*size:\s*0 bytes$", out, re.M)
-        return m == None
+        return bool(self._yum.repos.listEnabled())
 
     def update_repository_indexes(self, progress_cb):
         '''Download package repository indexes.
@@ -470,26 +240,24 @@ class OSLib:
         regularly. Passes '-1' for current and/or total if time cannot be
         determined.
         '''
-        pkcon = subprocess.Popen(['pkcon', 'refresh'],
-            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
-        while pkcon.poll() == None:
-            time.sleep(0.3)
-            if progress_cb:
-                progress_cb(-1, -1)
-        pkcon.wait()
-        return self.has_repositories()
+        result = False
+        try:
+            self._yum.repos.populateSack('all', 'metadata')
+            result = self.has_repositories()
+        except Errors.RepoError:
+            pass
+        return result
 
     def packaging_system(self):
         '''Return packaging system.
 
         Currently defined values: apt, yum
         '''
-        if os.path.exists('/etc/apt/sources.list') or os.path.exists(
-            '/etc/apt/sources.list.d'):
-            return 'apt'
-        elif os.path.exists('/etc/yum.conf'):
+        if os.path.exists('/etc/yum.conf'):
             return 'yum'
+        elif os.path.exists('/etc/apt/sources.list') or \
+            os.path.exists('/etc/apt/sources.list.d'):
+            return 'apt'
 
         raise NotImplementedError('local packaging system is unknown')
 
@@ -514,9 +282,9 @@ class OSLib:
             # the fingerprint
             gpg = subprocess.Popen(['gpg', '--homedir', gpghome,
                 '--no-default-keyring', '--primary-keyring', default_keyring,
-                '--keyserver', self.gpg_key_server, '--recv-key', keyid],
-                stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                env={'PATH': os.environ.get('PATH', ''),
+                '--keyserver', self.gpg_key_server, '--recv-key', keyid], 
+                stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
+                env={'PATH': os.environ.get('PATH', ''), 
                      'http_proxy': os.environ.get('http_proxy', '')})
             (out, err) = gpg.communicate()
 
@@ -529,7 +297,7 @@ class OSLib:
             # allow that; fortunately key ID conflicts are very rare.
             gpg = subprocess.Popen(['gpg', '--homedir', gpghome,
                 '--no-default-keyring', '--primary-keyring', keyring,
-                '--import', default_keyring],
+                '--import', default_keyring], 
                 stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                 env={'PATH': os.environ.get('PATH', '')})
             (out, err) = gpg.communicate()
@@ -570,7 +338,7 @@ class OSLib:
         finally:
             shutil.rmtree(gpghome)
 
-    #
+    # 
     # The following functions MUST be implemented by distributors
     # Note that apt and yum PackageKit backends currently do not implement
     # RepoSetData(), so those need to remain package system specific
@@ -578,8 +346,7 @@ class OSLib:
 
     def repository_enabled(self, repository):
         '''Check if given repository is enabled.'''
-
-        raise NotImplementedError('subclasses need to implement this')
+        return repository in [repo.id for repo in self._yum.repos.listEnabled()]
 
     def ui_help_available(self, ui):
         '''Return if help is available.
@@ -598,14 +365,14 @@ class OSLib:
         '''
         pass
 
-    #
+    # 
     # The following functions have a reasonable default implementation for
     # Linux, but can be tweaked by distributors
     #
 
     def set_backup_dir(self):
         '''Setup self.backup_dir, directory where backup files are stored.
-
+        
         This is used for old xorg.conf, DriverDB caches, etc.
         '''
         self.backup_dir = '/var/cache/jockey'
@@ -626,7 +393,7 @@ class OSLib:
         program.  Since this will include the large majority of existing kernel
         modules, implementing this is also important for speed reasons; without
         it, detecting existing modules will take quite long.
-
+        
         Note that modules which are ignored here, but covered by a custom
         handler will still be considered.
         '''
@@ -640,7 +407,7 @@ class OSLib:
 
     def blacklist_module(self, module, blacklist):
         '''Add or remove a kernel module from the modprobe blacklist.
-
+        
         If blacklist is True, the module is blacklisted, otherwise it is
         removed from the blacklist.
         '''
@@ -705,36 +472,26 @@ class OSLib:
         if not os.path.exists(d):
             os.makedirs(d)
 
-        f = None
+        f = open(self.module_blacklist_file, 'w')
         try:
-            f = open(self.module_blacklist_file, 'w')
             fcntl.flock(f.fileno(), fcntl.LOCK_EX)
             for module in sorted(self._module_blacklist):
                 print >> f, 'blacklist', module
-        except IOError as e:
-            logging.error('Failed to write to module blacklist: ' + str(e))
         finally:
-            if f:
-                f.close()
+            f.close()
 
     def _get_os_version(self):
         '''Initialize self.os_vendor and self.os_version.
+
+        This defaults to reading the values from lsb_release.
         '''
-        re_distinfo = re.compile('(\w+) release ([\d.]+) \((\w+)\)')
-        release_file = open('/etc/system-release')
-        dinfo_line = release_file.readline()
-        distinfo = re_distinfo.search(dinfo_line)
-        if distinfo:
-            self.os_vendor = distinfo.group(1)
-            self.os_version = distinfo.group(2)
-        else:
-            p = subprocess.Popen(['lsb_release', '-si'], stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE, close_fds=True)
-            self.os_vendor = p.communicate()[0].strip()
-            p = subprocess.Popen(['lsb_release', '-sr'], stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE, close_fds=True)
-            self.os_version = p.communicate()[0].strip()
-            assert p.returncode == 0
+        p = subprocess.Popen(['lsb_release', '-si'], stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, close_fds=True)
+        self.os_vendor = p.communicate()[0].strip()
+        p = subprocess.Popen(['lsb_release', '-sr'], stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, close_fds=True)
+        self.os_version = p.communicate()[0].strip()
+        assert p.returncode == 0
 
     def get_system_vendor_product(self):
         '''Return (vendor, product) of the system hardware.
@@ -781,7 +538,7 @@ class OSLib:
 
     def ssl_cert_file(self):
         '''Get file with trusted SSL certificates.
-
+        
         This is used for downloading GPG key fingerprints for
         openprinting.org driver packages.
 
@@ -820,7 +577,7 @@ class OSLib:
         method returns the currently expected video driver ABI from the X
         server. If it is not None, it must match video_driver_abi() of a driver
         package for this driver to be offered for installation.
-
+        
         If this returns None, ABI checking is disabled.
         '''
         return None
@@ -833,7 +590,7 @@ class OSLib:
         method returns the video ABI for a driver package. If it is not None,
         it must match current_xorg_video_abi() for this driver to be offered
         for installation.
-
+        
         If this returns None, ABI checking is disabled.
         '''
         return None
