@@ -3,17 +3,16 @@
 
 Name:           jockey
 Version:        0.9.7
-Release:        2%{?dist}.3
+Release:        3%{?dist}
 Summary:        Jockey driver manager
 
 License:        GPLv2+
 URL:            https://launchpad.net/jockey
-Source0:        http://launchpad.net/jockey/trunk/%{version}/+download/%{name}-%{version}.tar.gz
-Source1:        fedora-%{name}-%{version}.tar.bz2
+Source0:        %{name}-%{version}.tar.gz
 Patch0:         jockey-0.9.3-gtkwidthfix.patch
 
 BuildArch:      noarch
-BuildRequires:  python2-devel python-distutils-extra gettext intltool
+BuildRequires:  python2-devel python-distutils-extra gettext intltool sed
 Requires:       dbus-python polkit PackageKit python-xkit jockey-modaliases
 
 %description
@@ -70,13 +69,12 @@ can be run in enforcing mode.
 %patch0 -p1 -b .gtkwidthfix
 sed -i.nocert "s|'repository' not in|'repository' in|" jockey/ui.py
 sed -i.noblacklist "s|do_blacklist=True|do_blacklist=False|" jockey/handlers.py
-cp fedora-%{name}-%{version}/%{name}/* %{name}/
 
 %build
 %{__python} setup.py build
 
 # building SELinux module
-cd fedora-%{name}-%{version}/selinux
+cd %{name}-%{version}/selinux
 for selinuxvariant in %{selinux_variants}
 do
   make NAME=${selinuxvariant} -f /usr/share/selinux/devel/Makefile
@@ -92,7 +90,7 @@ mkdir -p %{buildroot}%{_var}/cache/%{name}
 
 # Install config file
 mkdir -p %{buildroot}%{_sysconfdir}
-install -p -m 644 fedora-%{name}-%{version}/config/%{name}.conf \
+install -p -m 644 %{name}-%{version}/config/%{name}.conf \
       %{buildroot}%{_sysconfdir}/
 
 # Move autostart files to the new place
@@ -100,19 +98,17 @@ mkdir -p %{buildroot}%{_sysconfdir}/xdg/autostart/
 mv %{buildroot}%{_datadir}/autostart/* %{buildroot}%{_sysconfdir}/xdg/autostart/
 rmdir %{buildroot}%{_datadir}/autostart/
 
-# install fedora extra files
-cp -a fedora-%{name}-%{version}/handlers \
-      %{buildroot}%{_datadir}/%{name}
-
 # install the selinux module
 for selinuxvariant in %{selinux_variants}
 do
   install -d %{buildroot}%{_datadir}/selinux/${selinuxvariant}
   install -p -m 644 \
-    fedora-%{name}-%{version}/selinux/%{name}_custom.pp.${selinuxvariant} \
+    %{name}-%{version}/selinux/%{name}_custom.pp.${selinuxvariant} \
     %{buildroot}%{_datadir}/selinux/${selinuxvariant}/%{name}_custom.pp
 done
 /usr/sbin/hardlink -cv %{buildroot}%{_datadir}/selinux
+
+sed -i s/X-GNOME-Settings-Panel\;//g %{buildroot}%{_datadir}/applications/jockey-gtk.desktop
 
 # validate desktop files
 desktop-file-validate %{buildroot}%{_datadir}/applications/jockey-gtk.desktop
@@ -183,10 +179,13 @@ fi
 %{_datadir}/kde4/apps/jockey/jockey.notifyrc
 
 %files selinux
-%doc fedora-%{name}-%{version}/selinux/*te
+%doc %{name}-%{version}/selinux/*te
 %{_datadir}/selinux/*/%{name}_custom.pp
 
 %changelog
+* Mon Aug 13 2012 Chris Smart <chris@kororaa.org> - 0.9.7-3
+- Package provides user feedback when building akmods and initramfs. Also removes shortcut from GNOME's control center as package cannot be run from there.
+
 * Wed Jun 27 2012 Chris Smart <chris@kororaa.org> - 0.9.7-2
 - Updated SELinux policy to be compatible with selinux-policy 3.10.0-132 which includes Jockey module.
 - Improved akmod support, which is now the default.
