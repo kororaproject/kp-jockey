@@ -276,11 +276,11 @@ class OSLib:
 
         if package.startswith('akmod'):
             if self.akmods_enabled:
-                self.build_kmod(progress_cb, phase)
+                self.rebuild_akmods(progress_cb)
         else:
             logging.debug('Not building akmods until reboot.')
 
-        self.rebuild_initramfs(progress_cb, phase)
+        self.rebuild_initramfs(progress_cb)
 
     def queue_packages_for_removal(self, packages):
         self.remove_pkg_queue.update(packages)
@@ -342,7 +342,7 @@ class OSLib:
         if self.package_installed(package):
             raise SystemError('package %s failed to remove: %s' % (package, err))
 
-        self.rebuild_initramfs(progress_cb, "remove")
+        self.rebuild_initramfs(progress_cb)
 
     def remove_single_package(self, package, progress_cb, progress_start,
                               progress_total):
@@ -780,10 +780,10 @@ class OSLib:
     # The following functions are Fedora specific
     #
 
-    def build_kmod(self, progress_cb, phase):
-        '''Build kmod package.'''
+    def rebuild_akmods(self, progress_cb):
+        '''Rebuild akmod packages.'''
 
-        phase = phase
+        phase = 'akmods'
         err = ''
 
         progress_cb(phase, -1, -1)
@@ -796,7 +796,6 @@ class OSLib:
             stdin=subprocess.PIPE, stdout=subprocess.PIPE,
             stderr=subprocess.PIPE)
 
-        phase = None
         err = line = ''
         fail = False
         while akmods.poll() == None or line != '':
@@ -805,16 +804,12 @@ class OSLib:
             if fail:
                 err += line
             if 'prep' in line:
-                phase = 'akmod_prep'
                 progress_cb(phase, 25, 100)
             elif 'build' in line:
-                phase = 'akmod_build'
                 progress_cb(phase, 50, 100)
             elif 'install' in line:
-                phase = 'akmod_install'
                 progress_cb(phase, 75, 100)
             elif 'clean' in line:
-                phase = 'akmod_clean'
                 progress_cb(phase, 100, 100)
             elif 'WARNING' in line:
                 fail = True
@@ -830,16 +825,14 @@ class OSLib:
             logging.debug('Successfully built kmod for kernel %s' % kernel_version)
 
 
-    def rebuild_initramfs(self, progress_cb, phase):
+    def rebuild_initramfs(self, progress_cb):
         '''Rebuild the initramfs.'''
 
-        phase = phase or 'rebuild_initramfs'
+        phase = 'initramfs'
 
         progress_cb(phase, -1, -1)
 
-        # collect initramfs modules for dracut
-        # building map of progress
-
+        # collect initramfs modules for dracut and build a progress map
         modules_path = '/usr/lib/dracut/modules.d'
         modules = [ name for name in os.listdir(modules_path) if os.path.isdir(os.path.join(modules_path, name)) ]
         module_pattern = re.compile('(\d+)(.*)')
@@ -857,9 +850,7 @@ class OSLib:
             stderr=subprocess.PIPE)
 
         err = line = ''
-        fail = False
         dracut_pattern = re.compile('.*:\s([^\s]+)')
-
         while dracut.poll() == None or line != '':
             line = dracut.stderr.readline()
 
