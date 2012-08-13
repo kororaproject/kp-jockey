@@ -65,7 +65,7 @@ You should install this package if you are using SELinux, so that Jockey
 can be run in enforcing mode.
 
 %prep
-%setup -q -a 1
+%setup -q
 %patch0 -p1 -b .gtkwidthfix
 sed -i.nocert "s|'repository' not in|'repository' in|" jockey/ui.py
 sed -i.noblacklist "s|do_blacklist=True|do_blacklist=False|" jockey/handlers.py
@@ -74,7 +74,7 @@ sed -i.noblacklist "s|do_blacklist=True|do_blacklist=False|" jockey/handlers.py
 %{__python} setup.py build
 
 # building SELinux module
-cd %{name}-%{version}/selinux
+cd selinux
 for selinuxvariant in %{selinux_variants}
 do
   make NAME=${selinuxvariant} -f /usr/share/selinux/devel/Makefile
@@ -90,7 +90,7 @@ mkdir -p %{buildroot}%{_var}/cache/%{name}
 
 # Install config file
 mkdir -p %{buildroot}%{_sysconfdir}
-install -p -m 644 %{name}-%{version}/config/%{name}.conf \
+install -p -m 644 config/%{name}.conf \
       %{buildroot}%{_sysconfdir}/
 
 # Move autostart files to the new place
@@ -103,7 +103,7 @@ for selinuxvariant in %{selinux_variants}
 do
   install -d %{buildroot}%{_datadir}/selinux/${selinuxvariant}
   install -p -m 644 \
-    %{name}-%{version}/selinux/%{name}_custom.pp.${selinuxvariant} \
+    selinux/%{name}_custom.pp.${selinuxvariant} \
     %{buildroot}%{_datadir}/selinux/${selinuxvariant}/%{name}_custom.pp
 done
 /usr/sbin/hardlink -cv %{buildroot}%{_datadir}/selinux
@@ -149,7 +149,7 @@ fi
 /usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 %files -f %{name}.lang
-%doc AUTHORS ChangeLog COPYING README.txt
+%doc AUTHORS COPYING README.txt
 %config %{_sysconfdir}/%{name}.conf
 %{_bindir}/jockey-text
 %{python_sitelib}/*
@@ -179,7 +179,7 @@ fi
 %{_datadir}/kde4/apps/jockey/jockey.notifyrc
 
 %files selinux
-%doc %{name}-%{version}/selinux/*te
+%doc selinux/*te
 %{_datadir}/selinux/*/%{name}_custom.pp
 
 %changelog
