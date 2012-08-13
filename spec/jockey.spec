@@ -9,7 +9,6 @@ Summary:        Jockey driver manager
 License:        GPLv2+
 URL:            https://launchpad.net/jockey
 Source0:        %{name}-%{version}.tar.gz
-Patch0:         jockey-0.9.3-gtkwidthfix.patch
 
 BuildArch:      noarch
 BuildRequires:  python2-devel python-distutils-extra gettext intltool sed
@@ -66,7 +65,6 @@ can be run in enforcing mode.
 
 %prep
 %setup -q
-%patch0 -p1 -b .gtkwidthfix
 sed -i.nocert "s|'repository' not in|'repository' in|" jockey/ui.py
 sed -i.noblacklist "s|do_blacklist=True|do_blacklist=False|" jockey/handlers.py
 
