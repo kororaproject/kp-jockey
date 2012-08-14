@@ -201,7 +201,7 @@ class Backend(dbus.service.Object):
         connection_keyword='conn')
     def available(self, mode='any', sender=None, conn=None):
         '''List available driver IDs.
-        
+
         Mode can be "any" (default) to return all available drivers, or
         "free"/"nonfree" to select by license.
         '''
@@ -370,7 +370,7 @@ class Backend(dbus.service.Object):
         connection_keyword='conn')
     def new_used_available(self, mode='any', sender=None, conn=None):
         '''Check for newly used or available drivers since last call.
-        
+
         Return (new_used, new_avail) with lists of new drivers which are in
         use, and new drivers which got available but are disabled.
         Mode can be "any" (default) to return all available drivers, or
@@ -426,7 +426,7 @@ class Backend(dbus.service.Object):
                 logging.debug('handler %s previously unused', h_id)
 
         # write back cache
-        logging.debug('writing back check cache %s', 
+        logging.debug('writing back check cache %s',
             OSLib.inst.check_cache)
         seen.update(new_avail)
         used.update(new_used)
@@ -591,7 +591,7 @@ class Backend(dbus.service.Object):
         connection_keyword='conn')
     def update_repository_indexes(self, sender=None, conn=None):
         '''Update package respository indexes
-        
+
         Return True on success, False on failure.'''
 
         self._reset_timeout()
@@ -630,7 +630,7 @@ class Backend(dbus.service.Object):
 
         # only pass D-BUS signal callback if we are called as a D-BUS backend
         self._package_operation_in_progress = True
-        OSLib.inst.install_package(package, 
+        OSLib.inst.install_package(package,
             hasattr(self, '_locations') and self.install_progress or None,
             repository, fingerprint)
         if OSLib.inst.package_installed(package):
@@ -688,8 +688,8 @@ class Backend(dbus.service.Object):
         '''Return a D-BUS server backend instance.
 
         Normally this connects to the system bus. Set session_bus to True to
-        connect to the session bus (for testing). 
-        
+        connect to the session bus (for testing).
+
         The created backend does not yet have hardware and drivers detected,
         thus clients need to call detect().
         '''
@@ -726,7 +726,7 @@ class Backend(dbus.service.Object):
 
     def _update_installed_packages(self, add, remove):
         '''Update backup_dir/installed_packages list of driver packages.
-        
+
         This keeps a log of all packages that jockey installed for supporting
         drivers, so that distribution installers on live CDs can push them into
         the installed system as well.
@@ -741,9 +741,9 @@ class Backend(dbus.service.Object):
                 line = line.strip()
                 if line:
                     current.add(line)
-    
+
         current = current.union(add).difference(remove)
-        
+
         if current:
             # write it back
             f = open(path, 'w')
@@ -757,7 +757,7 @@ class Backend(dbus.service.Object):
 
     def _detect_handlers(self):
         '''Detect available handlers and their state.
-        
+
         This initializes self.handlers as id → Handler map.'''
 
         self.handlers = {}
@@ -802,7 +802,7 @@ class Backend(dbus.service.Object):
             self.dbus_info = dbus.Interface(conn.get_object('org.freedesktop.DBus',
                 '/org/freedesktop/DBus/Bus', False), 'org.freedesktop.DBus')
         pid = self.dbus_info.GetConnectionUnixProcessID(sender)
-        
+
         # query PolicyKit
         if self.polkit is None:
             self.polkit = dbus.Interface(dbus.SystemBus().get_object(
@@ -813,7 +813,7 @@ class Backend(dbus.service.Object):
             # we don't need is_challenge return here, since we call with AllowUserInteraction
             (is_auth, _, details) = self.polkit.CheckAuthorization(
                     ('unix-process', {'pid': dbus.UInt32(pid, variant_level=1),
-                        'start-time': dbus.UInt64(0, variant_level=1)}), 
+                        'start-time': dbus.UInt64(0, variant_level=1)}),
                     privilege, {'': ''}, dbus.UInt32(1), '', timeout=600)
         except dbus.DBusException as e:
             if e._dbus_error_name == 'org.freedesktop.DBus.Error.ServiceUnknown':

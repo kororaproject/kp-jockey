@@ -342,7 +342,7 @@ class OSLib:
         if self.package_installed(package):
             raise SystemError('package %s failed to remove: %s' % (package, err))
 
-        self.rebuild_initramfs(progress_cb)
+        self.rebuild_initramfs(progress_cb, False)
 
     def remove_single_package(self, package, progress_cb, progress_start,
                               progress_total):
@@ -825,12 +825,15 @@ class OSLib:
             logging.debug('Successfully built kmod for kernel %s' % kernel_version)
 
 
-    def rebuild_initramfs(self, progress_cb):
+    def rebuild_initramfs(self, progress_cb, enabling=True):
         '''Rebuild the initramfs.'''
 
         phase = 'initramfs'
 
-        progress_cb(phase, -1, -1)
+        if enabling:
+            progress_cb(phase, -1, -1)
+        else:
+            progress_cb(-1, -1)
 
         # collect initramfs modules for dracut and build a progress map
         modules_path = '/usr/lib/dracut/modules.d'
@@ -856,7 +859,10 @@ class OSLib:
 
             m = dracut_pattern.match(line)
             if m and m.group(1) in modules_progress_map:
-                progress_cb(phase or 'rebuild_initramfs', modules_progress_map[m.group(1)], 100)
+                if enabling:
+                    progress_cb(phase, modules_progress_map[m.group(1)], 100)
+                else:
+                    progress_cb(modules_progress_map[m.group(1)], 100)
 
 
         #err += dracut.stderr.read()
@@ -864,6 +870,9 @@ class OSLib:
         if dracut.wait() != 0:
             logging.error('Failed to rebuild initramfs: %s' % (err))
         else:
-            progress_cb(phase, 100, 100)
+            if enabling:
+                progress_cb(phase, 100, 100)
+            else:
+                progress_cb(100, 100)
             logging.debug('Successfully rebuilt initramfs')
 

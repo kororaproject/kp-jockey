@@ -71,7 +71,7 @@ class AbstractUI(dbus.service.Object):
     '''
     def __init__(self):
         '''Initialize system.
-        
+
         This parses command line arguments, detects available hardware,
         and already installed drivers and handlers.
         '''
@@ -130,7 +130,7 @@ class AbstractUI(dbus.service.Object):
             self._check_repositories()
             self._call_progress_dialog(
                 self._('Searching for available drivers...'),
-                self.search_only and self._dbus_iface.db_init or self._dbus_iface.detect, 
+                self.search_only and self._dbus_iface.db_init or self._dbus_iface.detect,
                 timeout=600)
         else:
             # handle backend timeouts
@@ -143,14 +143,14 @@ class AbstractUI(dbus.service.Object):
                     self._check_repositories()
                     self._call_progress_dialog(
                         self._('Searching for available drivers...'),
-                        self.search_only and self._dbus_iface.db_init or self._dbus_iface.detect, 
+                        self.search_only and self._dbus_iface.db_init or self._dbus_iface.detect,
                         timeout=600)
 
         return self._dbus_iface
 
     def _(self, str, convert_keybindings=False):
         '''Keyboard accelerator aware gettext() wrapper.
-        
+
         This optionally converts keyboard accelerators to the appropriate
         format for the frontend.
 
@@ -259,7 +259,7 @@ class AbstractUI(dbus.service.Object):
 
     def get_ui_driver_name(self, handler_info):
         '''Return handler name, as it should be presented in the UI.
-        
+
         This cares about translation, as well as tagging recommended drivers.
         '''
         result = handler_info['name']
@@ -273,11 +273,11 @@ class AbstractUI(dbus.service.Object):
     # TODO: this desperately needs test cases
     def get_ui_driver_info(self, handler_id):
         '''Get strings and icon types for displaying driver information.
-        
+
         If handler_id is None, this returns empty strings, suitable for
         displaying if no driver is selected, and "None" for the bool values,
         (UIs should disable the corresponding UI element then).
-        
+
         This returns a mapping with the following keys: name (string),
         description (string), certified (bool, for icon), certification_label
         (label string), free (bool, for icon), license_label
@@ -286,7 +286,7 @@ class AbstractUI(dbus.service.Object):
         status_label (label string), button_toggle_label (string)'''
 
         if not handler_id:
-            return { 'name': '', 'description': '', 'free': None, 
+            return { 'name': '', 'description': '', 'free': None,
                 'enabled': None, 'used': None, 'license_text': '',
                 'status_label': '', 'license_label': '', 'certified': None,
                 'certification_label': '', 'button_toggle_label': None,
@@ -311,10 +311,10 @@ class AbstractUI(dbus.service.Object):
 
         # TODO: support distro certification of third party drivers
         if 'repository' not in info:
-            result['certified'] = True 
+            result['certified'] = True
             result['certification_label'] = self.string_support_certified
         else:
-            result['certified'] = False 
+            result['certified'] = False
             result['certification_label'] = self.string_support_uncertified
 
         if result['enabled']:
@@ -410,7 +410,7 @@ class AbstractUI(dbus.service.Object):
         '''Evaluate command line arguments and do the appropriate action.
 
         If no argument was specified, this starts the interactive UI.
-        
+
         This returns the exit code of the program.
         '''
         # first, modes without GUI
@@ -490,7 +490,7 @@ class AbstractUI(dbus.service.Object):
 
     def check(self):
         '''Notify the user about newly used or available drivers since last check().
-        
+
         Return True if any new driver is available which is not yet enabled.
         '''
         # if the user is running Jockey with package installation or another
@@ -549,7 +549,7 @@ class AbstractUI(dbus.service.Object):
                 # %(os)s stands for the OS name. Prefix it or suffix it,
                 # but do not replace it.
                 self._('In order for this computer to function properly, %(os)s is '
-                'using driver software that cannot be supported by %(os)s.') % 
+                'using driver software that cannot be supported by %(os)s.') %
                     {'os': OSLib.inst.os_vendor})
             notified = True
 
@@ -578,16 +578,23 @@ class AbstractUI(dbus.service.Object):
         return False
 
     def _install_progress_handler(self, phase, cur, total):
+        if phase == 'akmods':
+          message = self._('Rebuilding kernel modules...')
+        elif phase == 'initramfs':
+          message = self._('Rebuilding initramfs...')
+        else:
+          message = self._('Downloading and installing driver...')
+
         if not self._install_progress_shown:
-            self.ui_progress_start(self._('Additional Drivers'), 
-                self._('Downloading and installing driver...'), total)
+            self.ui_progress_start(self._('Additional Drivers'),
+                message, total)
             self._install_progress_shown = True
         self.ui_progress_update(cur, total)
         self.ui_idle()
 
     def _remove_progress_handler(self, cur, total):
         if not self._install_progress_shown:
-            self.ui_progress_start(self._('Additional Drivers'), 
+            self.ui_progress_start(self._('Additional Drivers'),
                 self._('Removing driver...'), total)
             self._install_progress_shown = True
         self.ui_progress_update(cur, total)
@@ -595,7 +602,7 @@ class AbstractUI(dbus.service.Object):
 
     def _repository_progress_handler(self, cur, total):
         if not self._repository_progress_shown:
-            self.ui_progress_start(self._('Additional Drivers'), 
+            self.ui_progress_start(self._('Additional Drivers'),
                 self._('Downloading and updating package indexes...'), total)
             self._repository_progress_shown = True
         self.ui_progress_update(cur, total)
@@ -654,7 +661,7 @@ class AbstractUI(dbus.service.Object):
                 title = self._('Disable driver?')
                 action = self.string_button_disable
             n = i['name'] # self._(i['name']) is misinterpreted by xgettext
-            if not self.confirm_action(title, self._(n), 
+            if not self.confirm_action(title, self._(n),
                 self._get_description_rationale_text(i), action):
                 return False
 
@@ -665,8 +672,8 @@ class AbstractUI(dbus.service.Object):
                     self._install_progress_shown = False
                     convert_dbus_exceptions(dbus_sync_call_signal_wrapper, self.backend(),
                         'set_enabled',
-                        {'install_progress': self._install_progress_handler, 
-                         'remove_progress': self._remove_progress_handler}, 
+                        {'install_progress': self._install_progress_handler,
+                         'remove_progress': self._remove_progress_handler},
                         handler_id, enable)
                 finally:
                     if self._install_progress_shown:
@@ -716,7 +723,7 @@ class AbstractUI(dbus.service.Object):
 
     def download_url(self, url, filename=None, data=None):
         '''Download an URL into a local file, and display a progress dialog.
-        
+
         If filename is not given, a temporary file will be created.
 
         Additional POST data can be submitted for HTTP requests in the data
@@ -867,7 +874,7 @@ class AbstractUI(dbus.service.Object):
 
     #
     # Session D-BUS server methods
-    # 
+    #
 
     DBUS_INTERFACE_NAME = 'com.ubuntu.DeviceDriver'
 
@@ -957,7 +964,7 @@ class AbstractUI(dbus.service.Object):
 
     #
     # The following methods must be implemented in subclasses
-    # 
+    #
 
     def convert_keybindings(self, str):
         '''Convert keyboard accelerators to the particular UI's format.
@@ -976,7 +983,7 @@ class AbstractUI(dbus.service.Object):
         show the main window yet; that is done by ui_show_main().
         '''
         raise NotImplementedError('subclasses need to implement this')
-        
+
     def ui_show_main(self):
         '''Show main window.
 
@@ -987,7 +994,7 @@ class AbstractUI(dbus.service.Object):
 
     def ui_main_loop(self):
         '''Main loop for the user interface.
-        
+
         This should return if the user wants to quit the program, and return
         the exit code.
         '''
@@ -1019,12 +1026,12 @@ class AbstractUI(dbus.service.Object):
         try:
             indicator = AppIndicator.Indicator.new('jockey', 'jockey',
                     AppIndicator.IndicatorCategory.HARDWARE)
-            indicator.set_icon_full('jockey', 
+            indicator.set_icon_full('jockey',
                     self._('Restricted drivers available'))
         except Exception as e:
             raise NotImplementedError('appindicator support not available: %s' \
                 '\nsubclasses need to implement this' % str(e))
-        
+
         indicator.set_status(AppIndicator.IndicatorStatus.ATTENTION)
         return indicator
 
@@ -1043,7 +1050,7 @@ class AbstractUI(dbus.service.Object):
 
     def ui_progress_update(self, current, total):
         '''Update status of current progress dialog.
-        
+
         current/total specify the number of steps done and total steps to
         do, or -1 if it cannot be determined. In this case the dialog should
         display an indeterminated progress bar (bouncing back and forth).
