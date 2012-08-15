@@ -236,7 +236,7 @@ class KDEUI(jockey.ui.AbstractUI):
         self.progress_ui.show()
         self.cancel_progress = False 
 
-    def ui_progress_update(self, current, total):
+    def ui_progress_update(self, current, total, description=None):
         '''Update status of current progress dialog.
 
         current/total specify the number of steps done and total steps to
@@ -245,6 +245,7 @@ class KDEUI(jockey.ui.AbstractUI):
 
         This should return True to cancel, and False otherwise.
         '''
+
         if current < 0 or total < 0:
             # indeterminated mode
             if self.progress_ui.progressBar.maximum() != 0:
@@ -252,6 +253,9 @@ class KDEUI(jockey.ui.AbstractUI):
         else:
             self.progress_ui.progressBar.setRange(0, total)
             self.progress_ui.progressBar.setValue(current)
+
+        if description:
+          self.progress_ui.description.setText(description)
 
         return self.cancel_progress
 
