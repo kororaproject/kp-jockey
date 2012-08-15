@@ -352,9 +352,9 @@ class Backend(dbus.service.Object):
             # don't interfere with that
             if not self._package_operation_in_progress:
                 if enable:
-                    self.install_progress('final', -1, -1)
+                    self.install_progress('', -1, -1)
                 else:
-                    self.remove_progress('final', -1, -1)
+                    self.remove_progress('', -1, -1)
         if self._f_exception:
             raise self._f_exception[0], self._f_exception[1], self._f_exception[2]
             # with py3:

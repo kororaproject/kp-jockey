@@ -578,6 +578,7 @@ class AbstractUI(dbus.service.Object):
         return False
 
     def _install_progress_handler(self, phase, cur, total):
+        message = ''
         if phase == 'init':
           message = self._('Calculating...')
         elif phase == 'install':
@@ -590,8 +591,6 @@ class AbstractUI(dbus.service.Object):
           message = self._('Rebuilding initramfs...')
         elif phase == 'final':
           message = self._('Finalising...')
-        else:
-          print("PHASE: %s" % phase)
 
         if not self._install_progress_shown:
             self.ui_progress_start(self._('Additional Drivers'),
@@ -601,6 +600,7 @@ class AbstractUI(dbus.service.Object):
         self.ui_idle()
 
     def _remove_progress_handler(self, phase, cur, total):
+        message = ''
         if phase == 'init':
           message = self._('Calculating...')
         if phase == 'remove':
@@ -609,9 +609,6 @@ class AbstractUI(dbus.service.Object):
           message = self._('Rebuilding initramfs...')
         elif phase == 'final':
           message = self._('Finalising...')
-        else:
-          print("PHASE: %s" % phase)
-
 
         if not self._install_progress_shown:
             self.ui_progress_start(self._('Additional Drivers'),

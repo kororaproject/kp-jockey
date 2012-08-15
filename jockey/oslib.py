@@ -334,7 +334,7 @@ class OSLib:
 
         logging.debug('Removing packages: %s' % driver_packages)
         for pkg in driver_packages:
-            progress_cb('', progress_start, progress_total)
+            progress_cb('remove', progress_start, progress_total)
             self.remove_single_package(pkg, progress_cb, progress_start,
                 progress_total)
             progress_start += 100
