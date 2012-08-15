@@ -310,7 +310,7 @@ class AbstractUI(dbus.service.Object):
             result['license_label'] = self.string_restricted
 
         # TODO: support distro certification of third party drivers
-        if 'repository' not in info:
+        if 'repository' in info:
             result['certified'] = True
             result['certification_label'] = self.string_support_certified
         else:

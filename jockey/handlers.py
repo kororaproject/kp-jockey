@@ -408,7 +408,7 @@ class KernelModuleHandler(Handler):
     _loaded_modules = None
     
     def __init__(self, backend, kernel_module, name=None, description=None, rationale=None,
-                 do_blacklist=True):
+                 do_blacklist=False):
         '''Create handler for a kernel module.
         
         If not given explicitly, the name is read from modinfo's 'description'

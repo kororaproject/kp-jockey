@@ -11,7 +11,7 @@ URL:            https://launchpad.net/jockey
 Source0:        %{name}-%{version}.tar.gz
 
 BuildArch:      noarch
-BuildRequires:  python2-devel python-distutils-extra gettext intltool sed
+BuildRequires:  python2-devel python-distutils-extra gettext intltool
 Requires:       dbus-python polkit PackageKit python-xkit jockey-modaliases
 
 %description
@@ -65,8 +65,6 @@ can be run in enforcing mode.
 
 %prep
 %setup -q
-sed -i.nocert "s|'repository' not in|'repository' in|" jockey/ui.py
-sed -i.noblacklist "s|do_blacklist=True|do_blacklist=False|" jockey/handlers.py
 
 %build
 %{__python} setup.py build
@@ -105,8 +103,6 @@ do
     %{buildroot}%{_datadir}/selinux/${selinuxvariant}/%{name}_custom.pp
 done
 /usr/sbin/hardlink -cv %{buildroot}%{_datadir}/selinux
-
-sed -i s/X-GNOME-Settings-Panel\;//g %{buildroot}%{_datadir}/applications/jockey-gtk.desktop
 
 # validate desktop files
 desktop-file-validate %{buildroot}%{_datadir}/applications/jockey-gtk.desktop
