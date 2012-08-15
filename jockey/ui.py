@@ -578,26 +578,46 @@ class AbstractUI(dbus.service.Object):
         return False
 
     def _install_progress_handler(self, phase, cur, total):
-        if phase == 'akmods':
+        if phase == 'init':
+          message = self._('Calculating...')
+        elif phase == 'install':
+          message = self._('Installing driver...')
+        elif phase == 'download':
+          message = self._('Downloading driver...')
+        elif phase == 'akmods':
           message = self._('Rebuilding kernel modules...')
         elif phase == 'initramfs':
           message = self._('Rebuilding initramfs...')
+        elif phase == 'final':
+          message = self._('Finalising...')
         else:
-          message = self._('Downloading and installing driver...')
+          print("PHASE: %s" % phase)
 
         if not self._install_progress_shown:
             self.ui_progress_start(self._('Additional Drivers'),
                 message, total)
             self._install_progress_shown = True
-        self.ui_progress_update(cur, total)
+        self.ui_progress_update(cur, total, message)
         self.ui_idle()
 
-    def _remove_progress_handler(self, cur, total):
+    def _remove_progress_handler(self, phase, cur, total):
+        if phase == 'init':
+          message = self._('Calculating...')
+        if phase == 'remove':
+          message = self._('Removing driver...')
+        elif phase == 'initramfs':
+          message = self._('Rebuilding initramfs...')
+        elif phase == 'final':
+          message = self._('Finalising...')
+        else:
+          print("PHASE: %s" % phase)
+
+
         if not self._install_progress_shown:
             self.ui_progress_start(self._('Additional Drivers'),
-                self._('Removing driver...'), total)
+                message, total)
             self._install_progress_shown = True
-        self.ui_progress_update(cur, total)
+        self.ui_progress_update(cur, total, message)
         self.ui_idle()
 
     def _repository_progress_handler(self, cur, total):

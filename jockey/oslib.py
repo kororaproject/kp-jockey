@@ -248,27 +248,27 @@ class OSLib:
 
         re_progress = re.compile('Percentage:\t(\d+)')
 
-        phase = None
+        phase = 'init'
         err = line = ''
         fail = False
         while pkcon.poll() == None or line != '':
             line = pkcon.stdout.readline()
             if fail:
                 err += line
+
             if 'Downloading packages' in line:
                 phase = 'download'
             elif 'Testing changes' in line or 'Installing packages' in line:
                 phase = 'install'
-            elif progress_cb and 'Percentage' in line:
-                m = re_progress.search(line)
-                if m and phase:
-                    progress_cb(phase, int(m.group(1)), 100)
-                else:
-                    progress_cb(phase or 'download', -1, -1)
             elif 'WARNING' in line:
                 fail = True
             elif 'transaction-error' in line or 'failed:' in line:
                 err += line
+
+            if progress_cb and 'Percentage' in line:
+                m = re_progress.search(line)
+                if m:
+                    progress_cb(phase, int(m.group(1)), 100)
 
         err += pkcon.stderr.read()
         if pkcon.wait() != 0 or not self.package_installed(package):
@@ -298,7 +298,7 @@ class OSLib:
 
         Any removal failure should be raised as a SystemError.
         '''
-        progress_cb(0, 100)
+        progress_cb('', 0, 100)
         pkcon = subprocess.Popen(['pkcon', '--plain', '--filter=installed',
                                   'search', 'name', package],
             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -334,7 +334,7 @@ class OSLib:
 
         logging.debug('Removing packages: %s' % driver_packages)
         for pkg in driver_packages:
-            progress_cb(progress_start, progress_total)
+            progress_cb('', progress_start, progress_total)
             self.remove_single_package(pkg, progress_cb, progress_start,
                 progress_total)
             progress_start += 100
@@ -372,9 +372,9 @@ class OSLib:
             elif progress_cb and 'Percentage' in line:
                 m = re_progress.search(line)
                 if m:
-                    progress_cb(progress_start + int(m.group(1)), progress_total)
+                    progress_cb('remove', progress_start + int(m.group(1)), progress_total)
                 else:
-                    progress_cb(progress_start, progress_total)
+                    progress_cb('remove', progress_start, progress_total)
             elif 'WARNING' in line:
                 fail = True
             elif 'transaction-error' in line or 'failed:' in line:
@@ -830,10 +830,7 @@ class OSLib:
 
         phase = 'initramfs'
 
-        if enabling:
-            progress_cb(phase, -1, -1)
-        else:
-            progress_cb(-1, -1)
+        progress_cb(phase, -1, -1)
 
         # collect initramfs modules for dracut and build a progress map
         modules_path = '/usr/lib/dracut/modules.d'
@@ -859,10 +856,7 @@ class OSLib:
 
             m = dracut_pattern.match(line)
             if m and m.group(1) in modules_progress_map:
-                if enabling:
-                    progress_cb(phase, modules_progress_map[m.group(1)], 100)
-                else:
-                    progress_cb(modules_progress_map[m.group(1)], 100)
+                progress_cb(phase, modules_progress_map[m.group(1)], 100)
 
 
         #err += dracut.stderr.read()
@@ -870,9 +864,6 @@ class OSLib:
         if dracut.wait() != 0:
             logging.error('Failed to rebuild initramfs: %s' % (err))
         else:
-            if enabling:
-                progress_cb(phase, 100, 100)
-            else:
-                progress_cb(100, 100)
+            progress_cb(phase, 100, 100)
             logging.debug('Successfully rebuilt initramfs')
 

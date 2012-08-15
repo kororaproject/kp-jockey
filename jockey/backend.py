@@ -328,9 +328,9 @@ class Backend(dbus.service.Object):
             # always have a progress bar, avoid delays from the package manager
             # with progress reporting
             if enable:
-                self.install_progress('download', -1, -1)
+                self.install_progress('init', -1, -1)
             else:
-                self.remove_progress(-1, -1)
+                self.remove_progress('init', -1, -1)
 
         def _f_result_wrapper():
             try:
@@ -352,9 +352,9 @@ class Backend(dbus.service.Object):
             # don't interfere with that
             if not self._package_operation_in_progress:
                 if enable:
-                    self.install_progress('install', -1, -1)
+                    self.install_progress('final', -1, -1)
                 else:
-                    self.remove_progress(-1, -1)
+                    self.remove_progress('final', -1, -1)
         if self._f_exception:
             raise self._f_exception[0], self._f_exception[1], self._f_exception[2]
             # with py3:
@@ -563,7 +563,7 @@ class Backend(dbus.service.Object):
         return False # TODO: cancel not implemented
 
     @dbus.service.signal(DBUS_INTERFACE_NAME)
-    def remove_progress(self, curr, total):
+    def remove_progress(self, phase, curr, total):
         '''Report package removal progress.
 
         current and/or total might be -1 if time cannot be determined.
