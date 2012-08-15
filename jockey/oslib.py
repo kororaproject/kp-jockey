@@ -841,7 +841,7 @@ class OSLib:
         for module in modules:
             m = module_pattern.match(module)
             if m:
-                modules_progress_map[m.group(2)] = m.group(1)
+                modules_progress_map[m.group(2)] = int(m.group(1))
 
         logging.debug('Forcing rebuild of initramfs via dracut.')
 

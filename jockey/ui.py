@@ -596,7 +596,7 @@ class AbstractUI(dbus.service.Object):
             self.ui_progress_start(self._('Additional Drivers'),
                 message, total)
             self._install_progress_shown = True
-        self.ui_progress_update(cur, total, message)
+        self.ui_progress_update(int(cur), total, message)
         self.ui_idle()
 
     def _remove_progress_handler(self, phase, cur, total):
@@ -614,7 +614,7 @@ class AbstractUI(dbus.service.Object):
             self.ui_progress_start(self._('Additional Drivers'),
                 message, total)
             self._install_progress_shown = True
-        self.ui_progress_update(cur, total, message)
+        self.ui_progress_update(int(cur), total, message)
         self.ui_idle()
 
     def _repository_progress_handler(self, cur, total):
