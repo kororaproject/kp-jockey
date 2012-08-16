@@ -160,6 +160,10 @@ class OSLib:
 
     def package_installed(self, package):
         '''Return if the given package is installed.'''
+        # explicitly define the kmod kernel version
+        if package.startswith('kmod'):
+            package = "%s-%s" % (package, os.uname()[2])
+            logging.debug('kmod explicit versioning: %s' % (package) )
 
         pkcon = subprocess.Popen(['pkcon', 'resolve', package],
             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -182,7 +186,7 @@ class OSLib:
             # TODO: short description (not accessible with pkcon)
             return (package, m.group(1).replace('\n', ''))
         else:
-            raise ValueError('package %s does not exist' % package)
+            raise SystemError('package %s does not exist' % package)
 
     def package_files(self, package):
         '''Return a list of files shipped by a package.
@@ -229,14 +233,18 @@ class OSLib:
         this would just crash the backend.
         '''
 
-        logging.debug('install_package akmod status: %s', self.akmods_enabled)
         logging.debug('install_package: %s', package)
+
+        package_implicit = package
+        if package.startswith('kmod'):
+            package = "%s-%s" % (package, os.uname()[2])
+            logging.debug('kmod explicit versioning: %s' % (package) )
 
         if repository or fingerprint:
             raise NotImplementedError('PackageKit default implementation does not currently support repositories or fingerprints')
 
         # this will check if the package exists
-        self.package_description(package)
+        self.package_description(package_implicit)
 
         pkcon = subprocess.Popen(['pkcon', 'install', '--plain', '-y', package],
             stdin=subprocess.PIPE, stdout=subprocess.PIPE,
@@ -271,7 +279,7 @@ class OSLib:
                     progress_cb(phase, int(m.group(1)), 100)
 
         err += pkcon.stderr.read()
-        if pkcon.wait() != 0 or not self.package_installed(package):
+        if pkcon.wait() != 0 or not self.package_installed(package_implicit):
             logging.error('package %s failed to install: %s' % (package, err))
 
         if package.startswith('akmod'):
@@ -298,6 +306,12 @@ class OSLib:
 
         Any removal failure should be raised as a SystemError.
         '''
+
+        package_implicit = package
+        if package.startswith('kmod'):
+            package = "%s-%s" % (package, os.uname()[2])
+            logging.debug('kmod explicit versioning: %s' % (package) )
+
         progress_cb('', 0, 100)
         pkcon = subprocess.Popen(['pkcon', '--plain', '--filter=installed',
                                   'search', 'name', package],
@@ -339,7 +353,7 @@ class OSLib:
                 progress_total)
             progress_start += 100
 
-        if self.package_installed(package):
+        if self.package_installed(package_implicit):
             raise SystemError('package %s failed to remove: %s' % (package, err))
 
         self.rebuild_initramfs(progress_cb, False)
