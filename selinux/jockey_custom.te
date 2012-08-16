@@ -1,5 +1,5 @@
 
-module jockey_custom 1.2.0;
+module jockey_custom 1.2.1;
 
 require {
 	type insmod_exec_t;
@@ -49,6 +49,7 @@ require {
 	class file { rename execute setattr read lock create getattr execute_no_trans write ioctl link unlink open append };
 	class lnk_file { getattr read create unlink };
 	class dir { search setattr read create write getattr rmdir remove_name open add_name };
+	class capability mknod;
 }
 
 #============= jockey_t ==============
@@ -125,6 +126,8 @@ allow jockey_t var_lock_t:lnk_file read;
 
 allow jockey_t var_log_t:file { write open };
 allow jockey_t var_t:file { open append };
+
+allow jockey_t self:capability mknod;
 
 #============= policykit_t ==============
 allow policykit_t jockey_t:dbus send_msg;
