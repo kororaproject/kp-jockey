@@ -2,11 +2,11 @@
 _Name=Check for new hardware drivers
 _Comment=Notify about new hardware drivers available for the system
 Icon=jockey
-Exec=sh -c "test -e /var/cache/jockey/check || exec jockey-gtk --check"
+Exec=sh -c "test -e /var/cache/jockey/check || exec jockey-gtk --check 30"
 Terminal=false
 Type=Application
 Categories=System;Settings;GTK;HardwareSettings;
 NotShowIn=KDE;
 X-Ubuntu-Gettext-Domain=jockey
-X-GNOME-Autostart-Delay=320
+X-GNOME-Autostart-Delay=30
 NoDisplay=true
