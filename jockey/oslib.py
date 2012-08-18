@@ -239,6 +239,10 @@ class OSLib:
         if package.startswith('kmod'):
             package = "%s-%s" % (package, os.uname()[2])
             logging.debug('kmod explicit versioning: %s' % (package) )
+            kernel_list = self.get_kernels()
+            if not kernel_list[0] == kernel_list[1]:
+                logging.debug('running kernel %s does not match latest kernel %s' % (kernel_list[0], kernel_list[1]))
+                raise SystemError('The package %s does not match latest installed kernel, please reboot to latest kernel (%s) and try again.' % (package, kernel_list[1]))
 
         if repository or fingerprint:
             raise NotImplementedError('PackageKit default implementation does not currently support repositories or fingerprints')
@@ -554,6 +558,22 @@ class OSLib:
     # The following functions have a reasonable default implementation for
     # Linux, but can be tweaked by distributors
     #
+
+    def get_kernels(self):
+        '''Returns list of running kernel and latest installed kernel.
+        '''
+	current_kernel = os.uname()[2].split('.fc')[0].replace("-",".")
+
+        pkcon = subprocess.Popen(['pkcon', '--filter', 'installed', 'resolve', 'kernel'],
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	out = pkcon.communicate()[0]
+
+	latest_kernel = re.findall('\\b\\d+\.\\d+\.\\d+\.\\d+\\b', out.replace("-","."))
+	latest_kernel.sort()
+
+	kernels = [current_kernel, latest_kernel[-1]]
+
+	return kernels
 
     def set_backup_dir(self):
         '''Setup self.backup_dir, directory where backup files are stored.
