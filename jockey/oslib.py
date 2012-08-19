@@ -239,10 +239,10 @@ class OSLib:
         if package.startswith('kmod'):
             package = "%s-%s" % (package, os.uname()[2])
             logging.debug('kmod explicit versioning: %s' % (package) )
-            kernel_list = self.get_kernels()
-            if not kernel_list[0] == kernel_list[1]:
-                logging.debug('running kernel %s does not match latest kernel %s' % (kernel_list[0], kernel_list[1]))
-                raise SystemError('The package %s does not match latest installed kernel, please reboot to latest kernel (%s) and try again.' % (package, kernel_list[1]))
+            kernels = self.get_kernels()
+            if not self.is_active_kernel_latest_installed():
+                logging.debug('running kernel %s does not match latest kernel %s' % (kernels[0], kernels[1]))
+                raise SystemError('The package %s does not match latest installed kernel, please reboot to the latest kernel (%s) and try again.' % (package, kernels[1]))
 
         if repository or fingerprint:
             raise NotImplementedError('PackageKit default implementation does not currently support repositories or fingerprints')
@@ -559,21 +559,44 @@ class OSLib:
     # Linux, but can be tweaked by distributors
     #
 
+    def kernel_compare(self, a, b):
+        _a = re.findall(r'\d+', a)
+        _b = re.findall(r'\d+', b)
+        for x in range( min(len(_a), len(_b))):
+            if int(_a[x]) < int(_b[x]):
+                return -1
+            elif int(_a[x]) > int(_b[x]):
+                return 1
+        return 0
+
     def get_kernels(self):
         '''Returns list of running kernel and latest installed kernel.
         '''
-	current_kernel = os.uname()[2].split('.fc')[0].replace("-",".")
+	current_kernel = os.uname()[2].split('.fc')[0]
 
         pkcon = subprocess.Popen(['pkcon', '--filter', 'installed', 'resolve', 'kernel'],
             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	out = pkcon.communicate()[0]
 
-	latest_kernel = re.findall('\\b\\d+\.\\d+\.\\d+\.\\d+\\b', out.replace("-","."))
-	latest_kernel.sort()
+	installed_kernels = re.findall('\\b\\d+\.\\d+\.\\d+\-\\d+\\b', out)
+        installed_kernels.sort(self.kernel_compare)
 
-	kernels = [current_kernel, latest_kernel[-1]]
+	kernels = [current_kernel, installed_kernels[-1]]
 
 	return kernels
+
+    def get_active_kernel(self):
+        return self.get_kernels()[0]
+
+    def get_latest_installed_kernel(self):
+        return self.get_kernels()[1]
+
+    def is_active_kernel_latest_installed(self):
+	kernels = self.get_kernels()
+	if kernels[0] == kernels[1]:
+            return True
+	else:
+            return False
 
     def set_backup_dir(self):
         '''Setup self.backup_dir, directory where backup files are stored.
