@@ -5,6 +5,7 @@
 
 from jockey.oslib import OSLib
 from jockey.handlers import Handler, KernelModuleHandler
+import logging
 
 # dummy stub for xgettext
 def _(x): return x
@@ -32,9 +33,11 @@ class NvidiaDriver(KernelModuleHandler):
 
     def recommended(self):
         if self._recommended == None:
-            self._recommended = self.package == "kmod-nvidia" or \
-                self.package == "kmod-nvidia-PAE" or \
-                self.package == "akmod-nvidia"
+            self._recommended = self.package == "kmod-nvidia-173xx" or \
+                self.package == "kmod-nvidia-PAE-173xx" or \
+                self.package == "akmod-nvidia-173xx"
+        if not "older" in self._rationale:
+            self._rationale = "NOTE: This version (173xx) is for older hardware.\n\n" + self._rationale
         return self._recommended
 
     def disable(self):
