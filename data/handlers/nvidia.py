@@ -32,14 +32,13 @@ class NvidiaDriver(KernelModuleHandler):
         return 'kmod:' + self.module
 
     def recommended(self):
-        if "nvidia-173xx" in self.package and not "older hardware" in self._rationale:
-            self._rationale = "NOTE: This version (173xx) is for older hardware.\n\n" + self._rationale
-
         if self._recommended == None:
             self._recommended = self.package == "kmod-nvidia-173xx" or \
                 self.package == "kmod-nvidia-PAE-173xx" or \
                 self.package == "akmod-nvidia-173xx"
-        return self._recommended
+            self.version = '173xx - legacy devices only'
+            self._rationale = '*** THIS DRIVER IS FOR LEGACY DEVICES ONLY. ***\nSee this link for details: http://www.nvidia.com/object/IO_32667.html\n\n' + self._rationale
+        return False
 
     def disable(self):
         '''Prevent the OS from using it even if the hardware is available.
