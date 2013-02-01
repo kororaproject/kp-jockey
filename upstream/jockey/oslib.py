@@ -250,7 +250,7 @@ class OSLib:
         # this will check if the package exists
         self.package_description(package_implicit)
 
-        pkcon = subprocess.Popen(['pkcon', 'install', '--plain', '-y', package],
+        pkcon = subprocess.Popen(['pkcon', 'install', '--plain', '--noninteractive', package],
             stdin=subprocess.PIPE, stdout=subprocess.PIPE,
             stderr=subprocess.PIPE)
 
@@ -376,7 +376,7 @@ class OSLib:
 
         Any removal failure should be raised as a SystemError.
         '''
-        pkcon = subprocess.Popen(['pkcon', 'remove', '--plain', '-y', package],
+        pkcon = subprocess.Popen(['pkcon', 'remove', '--plain', '--noninteractive', package],
             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
         re_progress = re.compile('Percentage:\t(\d+)')
