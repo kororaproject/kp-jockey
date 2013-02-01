@@ -3,7 +3,7 @@
 
 Name:           jockey
 Version:        0.9.7
-Release:        3%{?dist}.2
+Release:        4%{?dist}
 Summary:        Jockey driver manager
 
 License:        GPLv2+
@@ -177,6 +177,9 @@ fi
 %{_datadir}/selinux/*/%{name}_custom.pp
 
 %changelog
+* Fri Jan 01 2013 Chris Smart <csmart@kororaproject.org> - 0.9.7-4
+- Fixed selinux policy which was preventing read on important initramfs files, like /etc/lvm.conf
+
 * Mon Aug 13 2012 Chris Smart <chris@kororaa.org> - 0.9.7-3
 - Package provides user feedback when building akmods and initramfs. Also removes shortcut from GNOME's control center as package cannot be run from there.
 
