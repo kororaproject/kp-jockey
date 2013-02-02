@@ -1,5 +1,5 @@
 
-module jockey_custom 1.2.2;
+module jockey_custom 1.2.3;
 
 require {
 	type rpcd_unit_file_t;
@@ -80,10 +80,10 @@ allow jockey_t ld_so_t:file execute_no_trans;
 allow jockey_t ldconfig_exec_t:file { read getattr open execute execute_no_trans };
 allow jockey_t lldpad_exec_t:file { read getattr open execute };
 allow jockey_t loadkeys_exec_t:file { read getattr open };
-allow jockey_t lvm_etc_t:dir getattr;
+allow jockey_t lvm_etc_t:dir { getattr search };
 allow jockey_t lvm_etc_t:file { read getattr open };
 allow jockey_t lvm_exec_t:file { read getattr open execute };
-allow jockey_t lvm_metadata_t:dir { read getattr open };
+allow jockey_t lvm_metadata_t:dir { read getattr open search };
 allow jockey_t lvm_metadata_t:file { read getattr open };
 allow jockey_t mdadm_exec_t:file { read getattr open execute execute_no_trans };
 allow jockey_t modules_object_t:dir { getattr search };
@@ -125,8 +125,8 @@ allow jockey_t tmp_t:dir { write rmdir setattr read remove_name create add_name 
 allow jockey_t tmp_t:file { rename execute setattr create execute_no_trans write link unlink open };
 allow jockey_t tmp_t:lnk_file { create unlink };
 allow jockey_t udev_exec_t:file { read getattr open execute };
-allow jockey_t udev_rules_t:dir getattr;
-allow jockey_t udev_var_run_t:dir getattr;
+allow jockey_t udev_rules_t:dir { getattr search };
+allow jockey_t udev_var_run_t:dir { getattr search };
 allow jockey_t var_lock_t:dir { search getattr };
 #!!!! The source type 'jockey_t' can write to a 'file' of the following types:
 # jockey_var_log_t, jockey_cache_t
@@ -137,7 +137,9 @@ allow jockey_t var_lock_t:lnk_file read;
 # jockey_var_log_t, jockey_cache_t
 
 allow jockey_t var_log_t:file { write open };
-allow jockey_t var_t:file { open append };
+allow jockey_t var_t:file { write getattr unlink open append };
+
+allow jockey_t rpm_var_lib_t:dir search;
 
 #============= policykit_t ==============
 allow policykit_t jockey_t:dbus send_msg;
