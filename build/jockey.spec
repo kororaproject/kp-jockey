@@ -66,6 +66,7 @@ can be run in enforcing mode.
 %package akmods
 Summary:        Meta-package for akmod support in Jockey
 Epoch:          1
+Requires(post): sed
 Requires:       %{name} akmods gcc kernel-devel make
 
 %description akmods
@@ -136,6 +137,10 @@ do
     %{_datadir}/selinux/${selinuxvariant}/%{name}_custom.pp &> /dev/null || :
 done
 
+%post akmods
+sed -i s/^akmods=.*/akmods=true/ /etc/jockey.conf
+systemctl enable akmods.service || chkconfig akmods on
+
 %postun
 if [ $1 -eq 0 ] ; then
     /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null
@@ -186,6 +191,9 @@ fi
 %files selinux
 %doc selinux/*te
 %{_datadir}/selinux/*/%{name}_custom.pp
+
+%files akmods
+%doc README-akmods.txt
 
 %changelog
 * Sun Jan 03 2013 Chris Smart <csmart@kororaproject.org> - 0.9.7-5
