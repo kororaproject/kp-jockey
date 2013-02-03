@@ -3,7 +3,7 @@
 
 Name:           jockey
 Version:        0.9.7
-Release:        4%{?dist}.1
+Release:        5%{?dist}
 Summary:        Jockey driver manager
 
 License:        GPLv2+
@@ -62,6 +62,17 @@ Requires(postun): /usr/sbin/semodule
 This package provides an SELinux module for Jockey driver manager.
 You should install this package if you are using SELinux, so that Jockey
 can be run in enforcing mode.
+
+%package akmods
+Summary:        Meta-package for akmod support in Jockey
+Epoch:          1
+Requires:       %{name} akmods gcc kernel-devel make
+
+%description akmods
+This package pulls in the dependencies for using akmods with Jockey.
+
+%post akmods
+sed -i s/^akmods=.*/akmods=true/ /etc/jockey.conf
 
 %prep
 %setup -q
@@ -144,7 +155,7 @@ fi
 
 %files -f %{name}.lang
 %doc AUTHORS COPYING README.txt
-%config %{_sysconfdir}/%{name}.conf
+%config(noreplace) %{_sysconfdir}/%{name}.conf
 %{_bindir}/jockey-text
 %{python_sitelib}/*
 %{_datadir}/%{name}/%{name}-backend
@@ -177,6 +188,9 @@ fi
 %{_datadir}/selinux/*/%{name}_custom.pp
 
 %changelog
+* Sun Jan 03 2013 Chris Smart <csmart@kororaproject.org> - 0.9.7-5
+- Added an akmods metapackage which will pull in packages required for akmod support in Jockey.
+
 * Fri Jan 01 2013 Chris Smart <csmart@kororaproject.org> - 0.9.7-4
 - Fixed selinux policy which was preventing read on important initramfs files, like /etc/lvm.conf
 
