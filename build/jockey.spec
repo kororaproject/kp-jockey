@@ -72,9 +72,6 @@ Requires:       %{name} akmods gcc kernel-devel make
 %description akmods
 This package pulls in the dependencies for using akmods with Jockey.
 
-%post akmods
-sed -i s/^akmods=.*/akmods=true/ /etc/jockey.conf
-
 %prep
 %setup -q
 
