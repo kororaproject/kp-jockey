@@ -15,6 +15,7 @@ require {
   type var_lock_t;
   type loadkeys_exec_t;
   type tmp_t;
+  type tmpfs;
   type dhcpc_exec_t;
   type lvm_exec_t;
   type root_t;
