@@ -3,7 +3,7 @@
 
 Name:           jockey
 Version:        0.9.7
-Release:        5%{?dist}
+Release:        5%{?dist}.1
 Summary:        Jockey driver manager
 
 License:        GPLv2+
