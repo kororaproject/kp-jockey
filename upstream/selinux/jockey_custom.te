@@ -1,7 +1,9 @@
 
-module jockey_custom 1.2.4;
+module jockey_custom 1.2.5;
 
 require {
+  type kernel_t;
+  type devlog_t;
   type rpcd_unit_file_t;
   type ld_so_t;
   type udev_exec_t;
@@ -54,12 +56,15 @@ require {
   class process { setsched setfscreate signull setrlimit };
   class dbus send_msg;
   class chr_file { create unlink open getattr };
-  class capability { setgid sys_nice sys_chroot mknod chown dac_override };
-  class file { rename execute setattr read lock create ioctl execute_no_trans write getattr link unlink open append };
+  class capability { setuid audit_write setgid sys_nice sys_chroot mknod chown dac_override };
+  class file { relabelfrom relabelto rename execute setattr read lock create ioctl execute_no_trans write getattr link unlink open append };
+  class filesystem getattr;
+  class sock_file write;
+  class key write;
   class lnk_file { read create unlink getattr };
-  class dir { search setattr read create write getattr rmdir remove_name open add_name };
-  class unix_dgram_socket create;
-  class netlink_audit_socket create;
+  class dir { relabelfrom relabelto search setattr read create write getattr rmdir remove_name open add_name };
+  class unix_dgram_socket { create connect sendto };
+  class netlink_audit_socket { nlmsg_relay create };
 }
 
 #============= jockey_t ==============
@@ -109,9 +114,9 @@ allow jockey_t rpm_exec_t:file { read getattr open execute execute_no_trans };
 allow jockey_t rpm_t:dbus send_msg;
 allow jockey_t rpm_t:process signull;
 allow jockey_t rpm_var_lib_t:file open;
-allow jockey_t self:capability { setgid sys_chroot mknod dac_override chown sys_nice };
-allow jockey_t self:netlink_audit_socket create;
-allow jockey_t self:unix_dgram_socket create;
+allow jockey_t self:capability { setuid setgid audit_write sys_chroot mknod dac_override chown sys_nice };
+allow jockey_t self:netlink_audit_socket { nlmsg_relay create };
+allow jockey_t self:unix_dgram_socket { create connect };
 allow jockey_t self:process { setsched setfscreate setrlimit };
 allow jockey_t setroubleshootd_t:process signull;
 allow jockey_t ssh_exec_t:file { read getattr execute };
@@ -125,8 +130,9 @@ allow jockey_t tmp_t:chr_file { create unlink getattr };
 #!!!! The source type 'jockey_t' can write to a 'dir' of the following types:
 # jockey_var_log_t, jockey_cache_t
 
-allow jockey_t tmp_t:dir { write rmdir setattr read remove_name create add_name };
-allow jockey_t tmp_t:file { rename execute setattr create execute_no_trans write link unlink open };
+allow jockey_t tmp_t:dir { relabelfrom relabelto write rmdir setattr read remove_name create add_name };
+allow jockey_t tmp_t:file { relabelfrom relabelto rename execute setattr create execute_no_trans write link unlink open };
+allow jockey_t tmpfs_t:filesystem getattr;
 allow jockey_t tmp_t:lnk_file { create unlink };
 allow jockey_t udev_exec_t:file { read getattr open execute };
 allow jockey_t udev_rules_t:dir { getattr search };
@@ -144,6 +150,12 @@ allow jockey_t var_log_t:file { write open };
 allow jockey_t var_t:file { write getattr unlink open append };
 
 allow jockey_t rpm_var_lib_t:dir search;
+
+allow jockey_t devlog_t:sock_file write;
+allow jockey_t kernel_t:unix_dgram_socket sendto;
+allow jockey_t self:key write;
+
+
 
 #============= policykit_t ==============
 allow policykit_t jockey_t:dbus send_msg;
