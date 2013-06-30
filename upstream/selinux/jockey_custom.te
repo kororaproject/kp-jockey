@@ -1,5 +1,5 @@
 
-module jockey_custom 1.2.6;
+module jockey_custom 1.2.7;
 
 require {
   type kernel_t;
