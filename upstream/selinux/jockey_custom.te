@@ -72,7 +72,7 @@ require {
   class dbus send_msg;
   class chr_file { read write ioctl create unlink open getattr };
   class capability { setuid audit_write setgid sys_nice sys_chroot mknod chown dac_override };
-  class file { open append unlink getattr relabelfrom relabelto rename execute setattr read lock create ioctl execute_no_trans write getattr link unlink open append };
+  class file { open append unlink getattr relabelfrom relabelto rename execute setattr read lock create ioctl execute_no_trans write getattr link unlink append };
   class filesystem getattr;
   class sock_file write;
   class blk_file { read getattr open ioctl };
@@ -154,6 +154,7 @@ allow jockey_t tmp_t:lnk_file { create unlink };
 allow jockey_t udev_exec_t:file { execute_no_trans read getattr open execute };
 allow jockey_t udev_rules_t:dir { getattr search };
 allow jockey_t udev_var_run_t:dir { read getattr open search };
+allow jockey_t udev_var_run_t:file { read getattr open };
 allow jockey_t var_lock_t:dir { search getattr };
 #!!!! The source type 'jockey_t' can write to a 'file' of the following types:
 # jockey_var_log_t, jockey_cache_t
