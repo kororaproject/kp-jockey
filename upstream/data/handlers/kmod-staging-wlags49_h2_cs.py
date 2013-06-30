@@ -9,14 +9,14 @@ from jockey.oslib import OSLib
 # dummy stub for xgettext
 def _(x): return x
 
-class Staging_r8192e_pci_Driver(KernelModuleHandler):
+class Staging_wlags49_h2_cs_Driver(KernelModuleHandler):
     '''Handler for staging modules provided by kmod-staging package.
     '''
     def __init__(self, ui):
-        KernelModuleHandler.__init__(self, ui, 'r8192e_pci',
+        KernelModuleHandler.__init__(self, ui, 'wlags49_h2_cs',
                 name=_('Staging kernel modules'),
                 description=_('WARNING: Experimental drivers.'),
-                rationale=_('Staging can provide this module: r8192e_pci\n\n'
+                rationale=_('Staging can provide this module: wlags49_h2_cs\n\n'
                     'You probably only want to enable this if '
                     'your hardware does not work at all.\n\n'
                     'These are drivers which are not yet in the '

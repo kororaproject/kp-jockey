@@ -9,14 +9,14 @@ from jockey.oslib import OSLib
 # dummy stub for xgettext
 def _(x): return x
 
-class Staging_rts_pstor_Driver(KernelModuleHandler):
+class Staging_ft1000_Driver(KernelModuleHandler):
     '''Handler for staging modules provided by kmod-staging package.
     '''
     def __init__(self, ui):
-        KernelModuleHandler.__init__(self, ui, 'rts_pstor',
+        KernelModuleHandler.__init__(self, ui, 'ft1000',
                 name=_('Staging kernel modules'),
                 description=_('WARNING: Experimental drivers.'),
-                rationale=_('Staging can provide this module: rts_pstor\n\n'
+                rationale=_('Staging can provide this module: ft1000\n\n'
                     'You probably only want to enable this if '
                     'your hardware does not work at all.\n\n'
                     'These are drivers which are not yet in the '

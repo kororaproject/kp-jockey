@@ -3,7 +3,7 @@
 
 Name:           jockey
 Version:        0.9.7
-Release:        5%{?dist}.2
+Release:        6%{?dist}
 Summary:        Jockey driver manager
 
 License:        GPLv2+
@@ -193,10 +193,13 @@ fi
 %doc README-akmods.txt
 
 %changelog
-* Sun Jan 03 2013 Chris Smart <csmart@kororaproject.org> - 0.9.7-5
+* Sun Jun 30 2013 Chris Smart <csmart@kororaproject.org> - 0.9.7-6
+- Updated staging handlers, update selinux rules for Korora 19.
+
+* Sun Jan 05 2013 Chris Smart <csmart@kororaproject.org> - 0.9.7-5
 - Added an akmods metapackage which will pull in packages required for akmod support in Jockey.
 
-* Fri Jan 01 2013 Chris Smart <csmart@kororaproject.org> - 0.9.7-4
+* Fri Jan 04 2013 Chris Smart <csmart@kororaproject.org> - 0.9.7-4
 - Fixed selinux policy which was preventing read on important initramfs files, like /etc/lvm.conf
 
 * Mon Aug 13 2012 Chris Smart <chris@kororaa.org> - 0.9.7-3
