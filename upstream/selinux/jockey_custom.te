@@ -1,5 +1,5 @@
 
-module jockey_custom 1.2.5;
+module jockey_custom 1.2.6;
 
 require {
   type kernel_t;
@@ -18,7 +18,17 @@ require {
   type tmpfs_t;
   type dhcpc_exec_t;
   type lvm_exec_t;
+  type lvm_lock_t;
+  type adjtime_t;
+  type fixed_disk_device_t;
+  type sysctl_fs_t;
+  type lvm_control_t;
+  type system_conf_t;
+  type lvm_t;
+  type lvm_var_run_t;
+  type file_context_t;
   type root_t;
+  type etc_runtime_t;
   type power_unit_file_t;
   type plymouthd_exec_t;
   type init_exec_t;
@@ -43,11 +53,15 @@ require {
   type rpcbind_exec_t;
   type lvm_etc_t;
   type systemd_passwd_agent_exec_t;
+  type systemd_sysctl_exec_t;
+  udev_exec_ttype removable_device_t;
   type iscsid_exec_t;
   type systemd_unit_file_t;
+  type hostname_etc_t;
   type rpcd_exec_t;
   type brctl_exec_t;
   type mdadm_exec_t;
+  type home_root_t;
   type udev_var_run_t;
   type net_conf_t;
   type var_t;
@@ -56,16 +70,18 @@ require {
   type modules_object_t;
   class process { setsched setfscreate signull setrlimit };
   class dbus send_msg;
-  class chr_file { create unlink open getattr };
+  class chr_file { read write ioctl create unlink open getattr };
   class capability { setuid audit_write setgid sys_nice sys_chroot mknod chown dac_override };
-  class file { relabelfrom relabelto rename execute setattr read lock create ioctl execute_no_trans write getattr link unlink open append };
+  class file { open append unlink getattr relabelfrom relabelto rename execute setattr read lock create ioctl execute_no_trans write getattr link unlink open append };
   class filesystem getattr;
   class sock_file write;
+  class blk_file { read getattr open ioctl };
   class key write;
   class lnk_file { read create unlink getattr };
-  class dir { relabelfrom relabelto search setattr read create write getattr rmdir remove_name open add_name };
+  class dir { add_name relabelfrom relabelto search setattr read create write getattr rmdir remove_name open add_name };
   class unix_dgram_socket { create connect sendto };
   class netlink_audit_socket { nlmsg_relay create };
+  class unix_stream_socket connectto;
 }
 
 #============= jockey_t ==============
@@ -73,7 +89,7 @@ require {
 # jockey_var_log_t, var_log_t, var_t, jockey_cache_t
 
 allow jockey_t boot_t:dir { write remove_name add_name };
-allow jockey_t boot_t:file { write create unlink };
+allow jockey_t boot_t:file { write create unlink rename };
 allow jockey_t brctl_exec_t:file { read getattr open };
 allow jockey_t console_device_t:chr_file open;
 allow jockey_t dhcpc_exec_t:file { read getattr open execute };
@@ -90,7 +106,7 @@ allow jockey_t lldpad_exec_t:file { read getattr open execute };
 allow jockey_t loadkeys_exec_t:file { read getattr open };
 allow jockey_t lvm_etc_t:dir { getattr search };
 allow jockey_t lvm_etc_t:file { read getattr open };
-allow jockey_t lvm_exec_t:file { read getattr open execute };
+allow jockey_t lvm_exec_t:file { execute_no_trans read getattr open execute };
 allow jockey_t lvm_metadata_t:dir { read getattr open search };
 allow jockey_t lvm_metadata_t:file { read getattr open };
 allow jockey_t mdadm_exec_t:file { read getattr open execute execute_no_trans };
@@ -135,9 +151,9 @@ allow jockey_t tmp_t:dir { relabelfrom relabelto write rmdir setattr read remove
 allow jockey_t tmp_t:file { relabelfrom relabelto rename execute setattr create execute_no_trans write link unlink open };
 allow jockey_t tmpfs_t:filesystem getattr;
 allow jockey_t tmp_t:lnk_file { create unlink };
-allow jockey_t udev_exec_t:file { read getattr open execute };
+allow jockey_t udev_exec_t:file { execute_no_trans read getattr open execute };
 allow jockey_t udev_rules_t:dir { getattr search };
-allow jockey_t udev_var_run_t:dir { getattr search };
+allow jockey_t udev_var_run_t:dir { read getattr open search };
 allow jockey_t var_lock_t:dir { search getattr };
 #!!!! The source type 'jockey_t' can write to a 'file' of the following types:
 # jockey_var_log_t, jockey_cache_t
@@ -156,7 +172,22 @@ allow jockey_t devlog_t:sock_file write;
 allow jockey_t kernel_t:unix_dgram_socket sendto;
 allow jockey_t self:key write;
 
-
+allow jockey_t adjtime_t:file { read getattr open };
+allow jockey_t etc_runtime_t:file getattr;
+allow jockey_t file_context_t:dir search;
+allow jockey_t file_context_t:file { read getattr open };
+allow jockey_t fixed_disk_device_t:blk_file { read getattr open ioctl };
+allow jockey_t home_root_t:dir getattr;
+allow jockey_t hostname_etc_t:file { read getattr open };
+allow jockey_t lvm_lock_t:dir { write search read remove_name getattr add_name };
+allow jockey_t lvm_lock_t:file { getattr read lock create unlink open append };
+allow jockey_t lvm_control_t:chr_file { read write getattr open ioctl };
+allow jockey_t lvm_t:unix_stream_socket connectto;
+allow jockey_t lvm_var_run_t:sock_file write;
+allow jockey_t removable_device_t:blk_file getattr;
+allow jockey_t sysctl_fs_t:dir search;
+allow jockey_t system_conf_t:file { read getattr open };
+allow jockey_t systemd_sysctl_exec_t:file { read getattr open execute };
 
 #============= policykit_t ==============
 allow policykit_t jockey_t:dbus send_msg;
