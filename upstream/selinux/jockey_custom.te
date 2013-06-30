@@ -1,5 +1,5 @@
 
-module jockey_custom 1.2.7;
+module jockey_custom 1.2.8;
 
 require {
   type kernel_t;
@@ -36,6 +36,7 @@ require {
   type lldpad_exec_t;
   type policykit_t;
   type rpm_var_lib_t;
+  type rpm_var_cache_t;
   type ssh_exec_t;
   type ldconfig_exec_t;
   type rpm_t;
@@ -168,6 +169,7 @@ allow jockey_t var_log_t:file { write open };
 allow jockey_t var_t:file { write getattr unlink open append };
 
 allow jockey_t rpm_var_lib_t:dir search;
+allow jockey_t rpm_var_cache_t:dir getattr;
 
 allow jockey_t devlog_t:sock_file write;
 allow jockey_t kernel_t:unix_dgram_socket sendto;
