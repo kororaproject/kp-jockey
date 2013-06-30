@@ -54,7 +54,7 @@ require {
   type lvm_etc_t;
   type systemd_passwd_agent_exec_t;
   type systemd_sysctl_exec_t;
-  udev_exec_ttype removable_device_t;
+  type removable_device_t;
   type iscsid_exec_t;
   type systemd_unit_file_t;
   type hostname_etc_t;
