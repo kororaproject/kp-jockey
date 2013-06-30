@@ -1,5 +1,5 @@
 
-module jockey_custom 1.2.9;
+module jockey_custom 1.2.10;
 
 require {
   type jockey_t;
@@ -73,7 +73,7 @@ require {
   class process { setsched setfscreate signull setrlimit };
   class dbus send_msg;
   class chr_file { read write ioctl create unlink open getattr };
-  class capability { setuid audit_write setgid sys_nice sys_chroot mknod chown dac_override };
+  class capability { setuid audit_write setgid sys_admin sys_nice sys_chroot mknod chown dac_override };
   class file { open append unlink getattr relabelfrom relabelto rename execute setattr read lock create ioctl execute_no_trans write getattr link unlink append };
   class filesystem getattr;
   class sock_file write;
@@ -133,7 +133,7 @@ allow jockey_t rpm_exec_t:file { read getattr open execute execute_no_trans };
 allow jockey_t rpm_t:dbus send_msg;
 allow jockey_t rpm_t:process signull;
 allow jockey_t rpm_var_lib_t:file open;
-allow jockey_t self:capability { setuid setgid audit_write sys_chroot mknod dac_override chown sys_nice };
+allow jockey_t self:capability { setuid setgid audit_write sys_chroot sys_admin mknod dac_override chown sys_nice };
 allow jockey_t self:netlink_audit_socket { nlmsg_relay create };
 allow jockey_t self:unix_dgram_socket { create connect };
 allow jockey_t self:process { setsched setfscreate setrlimit };
@@ -188,6 +188,7 @@ allow jockey_t lvm_lock_t:file { getattr read lock create unlink open append };
 allow jockey_t lvm_control_t:chr_file { read write getattr open ioctl };
 allow jockey_t lvm_t:unix_stream_socket connectto;
 allow jockey_t lvm_var_run_t:sock_file write;
+allow jockey_t lvm_var_run_t:dir search;
 allow jockey_t removable_device_t:blk_file getattr;
 allow jockey_t sysctl_fs_t:dir search;
 allow jockey_t system_conf_t:file { read getattr open };
