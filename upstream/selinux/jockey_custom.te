@@ -1,15 +1,16 @@
 
-module jockey_custom 1.2.8;
+module jockey_custom 1.2.9;
 
 require {
+  type jockey_t;
   type kernel_t;
+  type sysfs_t;
   type devlog_t;
   type rpcd_unit_file_t;
   type ld_so_t;
   type udev_exec_t;
   type console_device_t;
   type ifconfig_exec_t;
-  type jockey_t;
   type gpg_exec_t;
   type netutils_exec_t;
   type var_lock_t;
@@ -191,6 +192,8 @@ allow jockey_t removable_device_t:blk_file getattr;
 allow jockey_t sysctl_fs_t:dir search;
 allow jockey_t system_conf_t:file { read getattr open };
 allow jockey_t systemd_sysctl_exec_t:file { read getattr open execute };
+
+allow jockey_t sysfs_t:file write;
 
 #============= policykit_t ==============
 allow policykit_t jockey_t:dbus send_msg;
