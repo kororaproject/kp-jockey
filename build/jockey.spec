@@ -1,9 +1,9 @@
 %global selinux_variants targeted mls
-%global selinux_policyver %(%{__sed} -e 's,.*selinux-policy-\\([^/]*\\)/.*,\\1,' /usr/share/selinux/devel/policyhelp || echo 0.0.0)
+#%global selinux_policyver %(%{__sed} -e 's,.*selinux-policy-\\([^/]*\\)/.*,\\1,' /usr/share/selinux/devel/policyhelp || echo 0.0.0)
 
 Name:           jockey
 Version:        0.9.7
-Release:        6%{?dist}.2
+Release:        7%{?dist}.4
 Summary:        Jockey driver manager
 
 License:        GPLv2+
@@ -52,11 +52,15 @@ command line).
 Summary:        SELinux module for Jockey driver manager
 Epoch:          1
 BuildRequires:  checkpolicy selinux-policy selinux-policy-devel hardlink
-BuildRequires:  /usr/share/selinux/devel/policyhelp
-Requires:       %{name}
-Requires:       selinux-policy >= %{selinux_policyver} selinux-policy-targeted
+BuildRequires:  selinux-policy-doc
+Requires:       %{name} = %{version}-%{release}
+%if "%{_selinux_policy_version}" != ""
+Requires:       selinux-policy >= %{_selinux_policy_version}
+%endif
+#Requires:       selinux-policy >= %{selinux_policyver} selinux-policy-targeted selinux-policy-doc
 Requires(post):   /usr/sbin/semodule
 Requires(postun): /usr/sbin/semodule
+
 
 %description selinux
 This package provides an SELinux module for Jockey driver manager.
@@ -193,6 +197,9 @@ fi
 %doc README-akmods.txt
 
 %changelog
+* Sun Jan 17 2014 Chris Smart <csmart@kororaproject.org> - 0.9.7-7
+- Fix dependency issue in jockey-selinux
+
 * Sun Jun 30 2013 Chris Smart <csmart@kororaproject.org> - 0.9.7-6
 - Updated staging handlers, update selinux rules for Korora 19.
 
